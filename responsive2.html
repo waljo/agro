@@ -5,38 +5,55 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Termos de Agronegócio</title>
   <style>
-    /* Global Styles */
+    :root {
+      /* Colors: 7 rainbow colors for the first categories, then pink for Article and light brown for Numeral */
+      --cor-substantivo: #FF0000;    /* Vermelho */
+      --cor-verbo: #FFA500;           /* Laranja */
+      --cor-adjetivo: #FFFF00;        /* Amarelo */
+      --cor-adverbio: #008000;        /* Verde */
+      --cor-preposicao: #0000FF;      /* Azul */
+      --cor-conjuncao: #4B0082;       /* Índigo */
+      --cor-pronome: #EE82EE;         /* Violeta */
+      --cor-artigo: #FFC0CB;          /* Rosa */
+      --cor-numeral: #D2B48C;         /* Marrom claro */
+    }
+    
     body {
-      margin: 0;
-      padding: 20px;
       background-color: #2E2E2E;
       color: #EEE;
       font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
       max-width: 1000px;
       margin-left: auto;
       margin-right: auto;
     }
+    
     h1 {
       text-align: center;
       margin-bottom: 20px;
       font-size: 2em;
     }
-    /* Container */
+    
+    /* Container for the term and its components */
     .container {
       display: flex;
       flex-direction: column;
       gap: 20px;
     }
-    /* Image */
+    
+    /* Image Section */
     .image-section {
       text-align: center;
     }
+    
     .image-section img {
       max-width: 100%;
       border: 3px solid #555;
       border-radius: 10px;
     }
-    /* Term Title Row */
+    
+    /* Term Title and Pronunciation Icons */
     .term-title {
       display: flex;
       align-items: center;
@@ -44,19 +61,28 @@
       gap: 10px;
       font-size: 1.4em;
     }
+    
     .pronunciation {
       cursor: pointer;
       color: #3498db;
       font-size: 1.2em;
     }
+    
     .pronunciation:hover {
       color: #2079b0;
     }
+    
+    /* Hidden paragraphs for phonetic and hint text */
+    .hidden {
+      display: none;
+    }
+    
     /* Language Buttons */
     .lang-buttons {
-      margin-top: 10px;
       text-align: center;
+      margin-top: 10px;
     }
+    
     .lang-buttons button {
       background-color: #555;
       border: none;
@@ -65,45 +91,45 @@
       margin: 0 5px;
       border-radius: 5px;
       cursor: pointer;
+      font-size: 1em;
     }
+    
     .lang-buttons button:hover {
       background-color: #777;
     }
+    
     /* Definitions */
     .definition {
+      text-align: center;
       margin-top: 10px;
       font-size: 1em;
-      text-align: center;
     }
+    
     #defPT {
-      display: block; /* PT is shown by default */
+      display: block;
     }
+    
     #defEN {
       display: none;
     }
-    /* Phonetic & Hint paragraphs */
-    #phoneticText, #hintText {
-      text-align: center;
-      margin: 5px 0;
-      display: none; /* hidden by default */
-    }
-    /* Morphological Categories */
-    .noun { color: #FF0000; }        /* Vermelho */
-    .verb { color: #FFA500; }        /* Laranja */
-    .adjective { color: #FFFF00; }   /* Amarelo */
-    .adverb { color: #008000; }      /* Verde */
-    .preposition { color: #0000FF; } /* Azul */
-    .conjunction { color: #4B0082; } /* Índigo */
-    .pronoun { color: #EE82EE; }     /* Violeta */
-    .article { color: #FFC0CB; }     /* Rosa */
-    .numeral { color: #D2B48C; }     /* Marrom claro */
-    /* Disabled color to remove highlight */
+    
+    /* Morphological Categories styling */
+    .noun { color: var(--cor-substantivo); }
+    .verb { color: var(--cor-verbo); }
+    .adjective { color: var(--cor-adjetivo); }
+    .adverb { color: var(--cor-adverbio); }
+    .preposition { color: var(--cor-preposicao); }
+    .conjunction { color: var(--cor-conjuncao); }
+    .pronoun { color: var(--cor-pronome); }
+    .article { color: var(--cor-artigo); }
+    .numeral { color: var(--cor-numeral); }
+    
     .disabled-color {
       color: inherit !important;
     }
-    /* Legend */
+    
+    /* Legend Panel */
     .legend {
-      margin-top: 20px;
       background-color: #3E3E3E;
       border: 1px solid #555;
       border-radius: 5px;
@@ -111,16 +137,17 @@
       box-shadow: 0 2px 5px rgba(0,0,0,0.5);
       color: #EEE;
       max-width: 500px;
-      margin-left: auto;
-      margin-right: auto;
+      margin: 20px auto;
     }
+    
     .legend h3 {
-      margin-top: 0;
       text-align: center;
       font-size: 1em;
       border-bottom: 1px solid #555;
       padding-bottom: 5px;
+      margin-top: 0;
     }
+    
     .legend ul {
       list-style: none;
       padding: 0;
@@ -130,11 +157,13 @@
       gap: 10px;
       justify-content: center;
     }
+    
     .legend li {
       display: flex;
       align-items: center;
       gap: 5px;
     }
+    
     .color-box {
       display: inline-block;
       width: 15px;
@@ -142,29 +171,55 @@
       border-radius: 3px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.5);
     }
-    .color-box.noun { background-color: #FF0000; }
-    .color-box.verb { background-color: #FFA500; }
-    .color-box.adjective { background-color: #FFFF00; }
-    .color-box.adverb { background-color: #008000; }
-    .color-box.preposition { background-color: #0000FF; }
-    .color-box.conjunction { background-color: #4B0082; }
-    .color-box.pronoun { background-color: #EE82EE; }
-    .color-box.article { background-color: #FFC0CB; }
-    .color-box.numeral { background-color: #D2B48C; }
+    
+    .color-box.noun { background-color: var(--cor-substantivo); }
+    .color-box.verb { background-color: var(--cor-verbo); }
+    .color-box.adjective { background-color: var(--cor-adjetivo); }
+    .color-box.adverb { background-color: var(--cor-adverbio); }
+    .color-box.preposition { background-color: var(--cor-preposicao); }
+    .color-box.conjunction { background-color: var(--cor-conjuncao); }
+    .color-box.pronoun { background-color: var(--cor-pronome); }
+    .color-box.article { background-color: var(--cor-artigo); }
+    .color-box.numeral { background-color: var(--cor-numeral); }
+    
     .legend button {
-      margin-top: 10px;
       width: 100%;
+      margin-top: 10px;
+      padding: 8px;
       background-color: #2ecc71;
       border: none;
       color: #EEE;
-      padding: 8px;
       border-radius: 5px;
       cursor: pointer;
+      font-size: 1em;
     }
+    
     .legend button:hover {
       background-color: #26a65b;
     }
-    /* Responsive */
+    
+    /* Navigation Buttons */
+    .navigation {
+      text-align: center;
+      margin-top: 20px;
+    }
+    
+    .navigation button {
+      background-color: #555;
+      border: none;
+      color: #EEE;
+      padding: 10px 15px;
+      margin: 0 10px;
+      font-size: 1.2em;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    
+    .navigation button:hover {
+      background-color: #777;
+    }
+    
+    /* Responsive adjustments */
     @media (max-width: 768px) {
       .term-title {
         font-size: 1.2em;
@@ -172,6 +227,10 @@
       .lang-buttons button {
         font-size: 0.9em;
         padding: 5px 8px;
+      }
+      .navigation button {
+        font-size: 1em;
+        padding: 8px 12px;
       }
     }
   </style>
@@ -182,19 +241,19 @@
   <div class="container">
     <!-- Image Section -->
     <div class="image-section">
-      <img src="zero.png" alt="Zero Hunger"/>
+      <img src="zero.png" alt="Zero Hunger" />
     </div>
     
-    <!-- Term Title + Phonetic/Hint Icons -->
+    <!-- Term Title and Pronunciation Icons -->
     <div class="term-title">
       <span>50. Zero Hunger</span>
       <span class="pronunciation" data-target="phoneticText" title="Show Phonetic">🔊</span>
       <span class="pronunciation" data-target="hintText" title="Show Hint">💡</span>
     </div>
     
-    <!-- Phonetic & Hint -->
-    <p id="phoneticText">/ˈzɪərəʊ ˈhʌŋɡə/</p>
-    <p id="hintText">(zírou rânguer)</p>
+    <!-- Phonetic and Hint Text -->
+    <p id="phoneticText" class="hidden">/ˈzɪərəʊ ˈhʌŋɡə/</p>
+    <p id="hintText" class="hidden">(zírou rânguer)</p>
     
     <!-- Language Buttons -->
     <div class="lang-buttons">
@@ -216,11 +275,11 @@
         <span class="verb disabled-color">visa</span> 
         <span class="verb disabled-color">erradicar</span> 
         <span class="article disabled-color">a</span> 
-        <span class="noun disabled-color">fome</span>,
+        <span class="noun disabled-color">fome</span>, 
         <span class="verb disabled-color">alcançar</span> 
         <span class="article disabled-color">a</span> 
         <span class="noun disabled-color">segurança</span> 
-        <span class="adjective disabled-color">alimentar</span>,
+        <span class="adjective disabled-color">alimentar</span>, 
         <span class="verb disabled-color">melhorar</span> 
         <span class="article disabled-color">a</span> 
         <span class="noun disabled-color">nutrição</span> 
@@ -241,7 +300,7 @@
         <span class="article disabled-color">a</span> 
         <span class="noun disabled-color">produção</span> 
         <span class="preposition disabled-color">de</span> 
-        <span class="noun disabled-color">alimentos</span>,
+        <span class="noun disabled-color">alimentos</span>, 
         <span class="verb disabled-color">reduzir</span> 
         <span class="article disabled-color">o</span> 
         <span class="noun disabled-color">desperdício</span> 
@@ -258,7 +317,7 @@
         <span class="pronoun disabled-color">todos</span>.
       </p>
     </div>
-    <div class="definition" id="defEN">
+    <div class="definition hidden" id="defEN">
       <p>
         <span class="noun disabled-color">Goal</span> 
         <span class="preposition disabled-color">of</span> 
@@ -271,13 +330,12 @@
         <span class="verb disabled-color">aims</span> 
         <span class="preposition disabled-color">to</span> 
         <span class="verb disabled-color">eradicate</span> 
-        <span class="noun disabled-color">hunger</span>,
+        <span class="noun disabled-color">hunger</span>, 
         <span class="verb disabled-color">achieve</span> 
         <span class="noun disabled-color">food</span> 
-        <span class="noun disabled-color">security</span>,
+        <span class="noun disabled-color">security</span>, 
         <span class="verb disabled-color">improve</span> 
-        <span class="noun disabled-color">nutrition</span> 
-        <span class="conjunction disabled-color">and</span> 
+        <span class="noun disabled-color">nutrition</span>, 
         <span class="verb disabled-color">promote</span> 
         <span class="adjective disabled-color">sustainable</span> 
         <span class="noun disabled-color">agriculture</span> 
@@ -293,7 +351,7 @@
         <span class="verb disabled-color">increase</span> 
         <span class="article disabled-color">the</span> 
         <span class="noun disabled-color">food</span> 
-        <span class="noun disabled-color">production</span>,
+        <span class="noun disabled-color">production</span>, 
         <span class="verb disabled-color">reduce</span> 
         <span class="article disabled-color">the</span> 
         <span class="noun disabled-color">food</span> 
@@ -310,54 +368,60 @@
     </div>
   </div>
   
-  <!-- Legend for morphological categories -->
+  <!-- Navigation Buttons -->
+  <div class="navigation">
+    <button id="prev-term">← Anterior</button>
+    <button id="next-term">Próximo →</button>
+  </div>
+  
+  <!-- Legend Panel -->
   <aside class="legend">
-    <h3>Legenda de Categorias Morfológicas</h3>
+    <h3>Legenda de Categorias Morfológi­cas</h3>
     <ul>
       <li>
         <span class="color-box noun"></span>
         <label>Substantivo (Noun)</label>
-        <input type="checkbox" class="legend-toggle" data-target="noun"/>
+        <input type="checkbox" class="legend-toggle" data-target="noun" />
       </li>
       <li>
         <span class="color-box verb"></span>
         <label>Verbo (Verb)</label>
-        <input type="checkbox" class="legend-toggle" data-target="verb"/>
+        <input type="checkbox" class="legend-toggle" data-target="verb" />
       </li>
       <li>
         <span class="color-box adjective"></span>
         <label>Adjetivo (Adjective)</label>
-        <input type="checkbox" class="legend-toggle" data-target="adjective"/>
+        <input type="checkbox" class="legend-toggle" data-target="adjective" />
       </li>
       <li>
         <span class="color-box adverb"></span>
         <label>Advérbio (Adverb)</label>
-        <input type="checkbox" class="legend-toggle" data-target="adverb"/>
+        <input type="checkbox" class="legend-toggle" data-target="adverb" />
       </li>
       <li>
         <span class="color-box preposition"></span>
         <label>Preposição (Preposition)</label>
-        <input type="checkbox" class="legend-toggle" data-target="preposition"/>
+        <input type="checkbox" class="legend-toggle" data-target="preposition" />
       </li>
       <li>
         <span class="color-box conjunction"></span>
         <label>Conjunção (Conjunction)</label>
-        <input type="checkbox" class="legend-toggle" data-target="conjunction"/>
+        <input type="checkbox" class="legend-toggle" data-target="conjunction" />
       </li>
       <li>
         <span class="color-box pronoun"></span>
         <label>Pronome (Pronoun)</label>
-        <input type="checkbox" class="legend-toggle" data-target="pronoun"/>
+        <input type="checkbox" class="legend-toggle" data-target="pronoun" />
       </li>
       <li>
         <span class="color-box article"></span>
         <label>Artigo (Article)</label>
-        <input type="checkbox" class="legend-toggle" data-target="article"/>
+        <input type="checkbox" class="legend-toggle" data-target="article" />
       </li>
       <li>
         <span class="color-box numeral"></span>
         <label>Numeral (Numeral)</label>
-        <input type="checkbox" class="legend-toggle" data-target="numeral"/>
+        <input type="checkbox" class="legend-toggle" data-target="numeral" />
       </li>
     </ul>
     <button id="toggleAllBtn">Marcar/Desmarcar Todas</button>
@@ -365,79 +429,75 @@
   
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      // 1. Pronunciation toggles
+      // Pronunciation toggles for phonetic and hint text
       const pronunciationIcons = document.querySelectorAll(".pronunciation");
       pronunciationIcons.forEach(icon => {
         icon.addEventListener("click", function() {
           const targetId = this.dataset.target;
           const targetEl = document.getElementById(targetId);
-          if (targetEl.style.display === "none" || targetEl.style.display === "") {
-            targetEl.style.display = "block";
-          } else {
-            targetEl.style.display = "none";
-          }
+          targetEl.style.display = (targetEl.style.display === "block") ? "none" : "block";
         });
       });
       
-      // 2. Language toggles
+      // Language buttons functionality
       const langButtons = document.querySelectorAll(".lang-btn");
       langButtons.forEach(btn => {
         btn.addEventListener("click", function() {
           const lang = this.dataset.lang; // "pt", "en", or "both"
-          const ptDiv = document.getElementById("defPT");
-          const enDiv = document.getElementById("defEN");
-          
+          const defPT = document.getElementById("defPT");
+          const defEN = document.getElementById("defEN");
           if (lang === "pt") {
-            ptDiv.style.display = "block";
-            enDiv.style.display = "none";
+            defPT.style.display = "block";
+            defEN.style.display = "none";
           } else if (lang === "en") {
-            ptDiv.style.display = "none";
-            enDiv.style.display = "block";
+            defPT.style.display = "none";
+            defEN.style.display = "block";
           } else {
-            ptDiv.style.display = "block";
-            enDiv.style.display = "block";
+            defPT.style.display = "block";
+            defEN.style.display = "block";
           }
         });
       });
       
-      // 3. Legend toggles
+      // Legend toggles for morphological categories
       const legendToggles = document.querySelectorAll(".legend-toggle");
       legendToggles.forEach(chk => {
-        // Initially unchecked => morphological text is "disabled-color"
         chk.checked = false;
-        
+        const category = chk.dataset.target;
+        updateCategoryColor(category, false);
         chk.addEventListener("change", function() {
-          const category = this.dataset.target; // e.g. "noun", "verb"
-          const elements = document.querySelectorAll("." + category);
-          elements.forEach(el => {
-            if (this.checked) {
-              // Remove the "disabled-color" class to show highlight
-              el.classList.remove("disabled-color");
-            } else {
-              // Add the "disabled-color" class to hide highlight
-              el.classList.add("disabled-color");
-            }
-          });
+          const category = this.dataset.target;
+          updateCategoryColor(category, this.checked);
         });
       });
       
-      // 4. Mark/Unmark All
+      function updateCategoryColor(category, isEnabled) {
+        const elements = document.querySelectorAll("." + category);
+        elements.forEach(el => {
+          if (isEnabled) {
+            el.classList.remove("disabled-color");
+          } else {
+            el.classList.add("disabled-color");
+          }
+        });
+      }
+      
+      // Mark/Unmark All button
       const toggleAllBtn = document.getElementById("toggleAllBtn");
       toggleAllBtn.addEventListener("click", function() {
         const allChecked = Array.from(legendToggles).every(chk => chk.checked);
-        // If all are checked, uncheck them. Otherwise, check them.
         legendToggles.forEach(chk => {
           chk.checked = !allChecked;
-          const category = chk.dataset.target;
-          const elements = document.querySelectorAll("." + category);
-          if (!allChecked) {
-            // Checking
-            elements.forEach(el => el.classList.remove("disabled-color"));
-          } else {
-            // Unchecking
-            elements.forEach(el => el.classList.add("disabled-color"));
-          }
+          updateCategoryColor(chk.dataset.target, chk.checked);
         });
+      });
+      
+      // Navigation Buttons
+      document.getElementById("prev-term").addEventListener("click", function() {
+        console.log("Previous term clicked (implement navigation logic)");
+      });
+      document.getElementById("next-term").addEventListener("click", function() {
+        console.log("Next term clicked (implement navigation logic)");
       });
     });
   </script>
