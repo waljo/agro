@@ -331,14 +331,13 @@
         title: "Agroecology",
         image: "agroecology.png",
         phonetic: "/əˌgroʊ.ɪˈkɒl.ə.dʒi/",
-        hint: "(estudo ecológico aplicado à agricultura)",
+        hint: "(agro-icoloji)",
         definitionPT: `<p>
 Agroecologia é o estudo dos processos ecológicos aplicados aos sistemas de produção agrícola.
 </p>`,
         definitionEN: `<p>
 Agroecology is the study of ecological processes applied to agricultural production systems.
 </p>`,
-        // Mapeamento morfológico para realce (apenas exemplo)
         morph: {
           noun: ["Agroecologia", "estudo", "processos", "sistemas", "produção", "agrícola"],
           verb: ["aplicados"],
@@ -349,7 +348,7 @@ Agroecology is the study of ecological processes applied to agricultural product
         title: "Agronomy",
         image: "agronomy.png",
         phonetic: "/əˈɡrɒnəmi/",
-        hint: "(ciência do manejo do solo e da produção de culturas)",
+        hint: "(agrônomi)",
         definitionPT: `<p>
 Agronomia é a ciência do manejo do solo e da produção de culturas.
 </p>`,
@@ -366,7 +365,7 @@ Agronomy is the science of soil management and crop production.
         title: "Animal Welfare",
         image: "animal_welfare.png",
         phonetic: "/ˈæn.ɪ.məl ˈwɛl.fɛər/",
-        hint: "(bem-estar animal)",
+        hint: "(ânimal uélfér)",
         definitionPT: `<p>
 Bem-estar animal são práticas que asseguram o bem-estar físico e mental dos animais de criação.
 </p>`,
@@ -383,7 +382,7 @@ Animal Welfare refers to practices ensuring the physical and mental well-being o
         title: "Aquaculture",
         image: "aquaculture.png",
         phonetic: "/ˈæk.wəˌkʌl.tʃər/",
-        hint: "(criação de organismos aquáticos)",
+        hint: "(aquacôlcher)",
         definitionPT: `<p>
 Aquicultura é a criação de organismos aquáticos, como peixes, moluscos e plantas aquáticas.
 </p>`,
@@ -400,7 +399,7 @@ Aquaculture is the farming of aquatic organisms such as fish, shellfish, and aqu
         title: "Biodiversity",
         image: "biodiversity.png",
         phonetic: "/ˌbaɪ.oʊ.daɪˈvɜːr.sə.ti/",
-        hint: "(variedade biológica)",
+        hint: "(baio-daivérsiti)",
         definitionPT: `<p>
 Biodiversidade é a variedade de vida vegetal e animal em um habitat ou ecossistema específico.
 </p>`,
@@ -413,12 +412,11 @@ Biodiversity is the variety of plant and animal life in a particular habitat or 
           preposition: ["de", "em", "um", "ou"]
         }
       },
-      // ... (continue inserindo os demais termos conforme a lista fornecida)
       {
         title: "Zero Hunger",
         image: "zero.png",
         phonetic: "/ˈzɪərəʊ ˈhʌŋɡə/",
-        hint: "(fome zero)",
+        hint: "(zírou rânguer)",
         definitionPT: `<p>
 Zero Fome é uma iniciativa global que visa acabar com a fome, garantir segurança alimentar e promover a agricultura sustentável.
 </p>`,
@@ -433,7 +431,6 @@ Zero Hunger is a global initiative aimed at ending hunger, ensuring food securit
           article: ["a", "com", "e"]
         }
       }
-      // Certifique-se de incluir os outros 40 termos aqui seguindo o mesmo padrão.
     ];
     
     let currentTermIndex = 0;
@@ -529,7 +526,7 @@ Zero Hunger is a global initiative aimed at ending hunger, ensuring food securit
         const defEN = document.getElementById("defEN");
         // Atualiza ambos os blocos de definição
         [defPT, defEN].forEach(def => {
-          const regex = new RegExp(`(\\b${category}\\b)`, "gi");
+          const regex = new RegExp(`(\b${category}\b)`, "gi");
           // Nota: Como as definições foram inseridas manualmente com marcação (ou não),
           // aqui esperamos que o conteúdo já contenha spans com classes se for necessário.
           // Se não houver spans, a implementação de destaque precisará ser ajustada.
