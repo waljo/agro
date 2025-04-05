@@ -6,7 +6,7 @@
   <title>Termos de Agronegócio</title>
   <style>
     :root {
-      /* Cores para cada categoria */
+      /* Cores para as categorias */
       --cor-substantivo: #FF0000;    /* Vermelho */
       --cor-verbo: #FFA500;           /* Laranja */
       --cor-adjetivo: #FFFF00;        /* Amarelo */
@@ -17,7 +17,6 @@
       --cor-artigo: #FFC0CB;          /* Rosa */
       --cor-numeral: #D2B48C;         /* Marrom claro */
     }
-    
     body {
       background-color: #2E2E2E;
       color: #EEE;
@@ -28,29 +27,24 @@
       margin-left: auto;
       margin-right: auto;
     }
-    
     h1 {
       text-align: center;
       margin-bottom: 20px;
       font-size: 2em;
     }
-    
     .container {
       display: flex;
       flex-direction: column;
       gap: 20px;
     }
-    
     .image-section {
       text-align: center;
     }
-    
     .image-section img {
       max-width: 100%;
       border: 3px solid #555;
       border-radius: 10px;
     }
-    
     .term-title {
       display: flex;
       align-items: center;
@@ -58,26 +52,21 @@
       gap: 10px;
       font-size: 1.4em;
     }
-    
     .pronunciation {
       cursor: pointer;
       color: #3498db;
       font-size: 1.2em;
     }
-    
     .pronunciation:hover {
       color: #2079b0;
     }
-    
     .hidden {
       display: none;
     }
-    
     .lang-buttons {
       text-align: center;
       margin-top: 10px;
     }
-    
     .lang-buttons button {
       background-color: #555;
       border: none;
@@ -88,37 +77,29 @@
       cursor: pointer;
       font-size: 1em;
     }
-    
     .lang-buttons button:hover {
       background-color: #777;
     }
-    
-    /* Definições em parágrafo único com texto justificado.
-       Note que as palavras já estão envolvidas em spans com classes que 
-       por padrão têm disabled-color, para que apareçam sem evidência. */
+    /* Definições: parágrafo único com texto justificado */
     .definition {
       text-align: justify;
       margin-top: 10px;
       font-size: 1em;
     }
-    
     #defPT {
       display: block;
     }
-    
     #defEN {
       display: none;
     }
-    
-    /* Linha única para fonética e dica (ex: "/ˈzɪərəʊ ˈhʌŋɡə/ (zírou rânguer)") */
+    /* Linha para fonética e dica – será exibida ao clicar no ícone de lâmpada */
     #hintLine {
       text-align: justify;
       margin: 5px 0;
       font-size: 16px;
       display: none;
     }
-    
-    /* Estilização dos spans que marcam as classes (esses spans estarão presentes na definição, mas com disabled-color para não alterar a aparência inicialmente) */
+    /* As classes morfológicas permanecem, mas as definições agora não estão separadas */
     .noun { color: var(--cor-substantivo); }
     .verb { color: var(--cor-verbo); }
     .adjective { color: var(--cor-adjetivo); }
@@ -128,11 +109,9 @@
     .pronoun { color: var(--cor-pronome); }
     .article { color: var(--cor-artigo); }
     .numeral { color: var(--cor-numeral); }
-    
     .disabled-color {
       color: inherit !important;
     }
-    
     /* Painel de Legenda */
     .legend {
       background-color: #3E3E3E;
@@ -144,7 +123,6 @@
       max-width: 500px;
       margin: 20px auto;
     }
-    
     .legend h3 {
       text-align: center;
       font-size: 1em;
@@ -152,7 +130,6 @@
       padding-bottom: 5px;
       margin-top: 0;
     }
-    
     .legend ul {
       list-style: none;
       padding: 0;
@@ -161,22 +138,18 @@
       flex-direction: column;
       gap: 10px;
     }
-    
     .legend li {
       display: flex;
       align-items: center;
       justify-content: flex-start;
       gap: 5px;
     }
-    
     .legend li input {
       margin: 0;
     }
-    
     .legend label {
       text-align: left;
     }
-    
     .color-box {
       display: inline-block;
       width: 15px;
@@ -184,7 +157,6 @@
       border-radius: 3px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.5);
     }
-    
     .color-box.noun { background-color: var(--cor-substantivo); }
     .color-box.verb { background-color: var(--cor-verbo); }
     .color-box.adjective { background-color: var(--cor-adjetivo); }
@@ -194,13 +166,11 @@
     .color-box.pronoun { background-color: var(--cor-pronome); }
     .color-box.article { background-color: var(--cor-artigo); }
     .color-box.numeral { background-color: var(--cor-numeral); }
-    
     /* Botões de Navegação: Início, Anterior, Próximo, Fim */
     .navigation {
       text-align: center;
       margin-top: 20px;
     }
-    
     .navigation button {
       background-color: #555;
       border: none;
@@ -211,12 +181,10 @@
       border-radius: 5px;
       cursor: pointer;
     }
-    
     .navigation button:hover {
       background-color: #777;
     }
-    
-    /* Ajustes responsivos */
+    /* Responsive */
     @media (max-width: 768px) {
       .term-title {
         font-size: 1.2em;
@@ -243,13 +211,13 @@
     
     <!-- Título do Termo e Ícones -->
     <div class="term-title">
-      <span id="termTitle">50. Zero Hunger</span>
+      <span id="termTitle">Zero Hunger</span>
       <span class="pronunciation" id="soundIcon" title="Tocar som">🔊</span>
       <span class="pronunciation" id="hintIcon" title="Mostrar dica">💡</span>
     </div>
     
     <!-- Linha combinada para fonética e dica -->
-    <p id="hintLine" class="hidden">/ˈzɪərəʊ ˈhʌŋɡə/ (zírou rânguer)</p>
+    <p id="hintLine" class="hidden">/ˈzɪərəʊ ˈhʌŋɡə/ (zírou Rânguer)</p>
     
     <!-- Botões de Idioma -->
     <div class="lang-buttons">
@@ -258,12 +226,12 @@
       <button class="lang-btn" data-lang="both" data-term="def">Eng/Port</button>
     </div>
     
-    <!-- Definições (inicialmente, exibe a definição em português) -->
+    <!-- Definições -->
     <div class="definition" id="defPT"></div>
     <div class="definition hidden" id="defEN"></div>
   </div>
   
-  <!-- Botões de Navegação: Início, Anterior, Próximo, Fim -->
+  <!-- Botões de Navegação -->
   <div class="navigation">
     <button id="first-term">Início</button>
     <button id="prev-term">← Anterior</button>
@@ -331,105 +299,401 @@
         title: "Agroecology",
         image: "agroecology.png",
         phonetic: "/əˌgroʊ.ɪˈkɒl.ə.dʒi/",
-        hint: "(agro-icoloji)",
-        definitionPT: `<p>
-Agroecologia é o estudo dos processos ecológicos aplicados aos sistemas de produção agrícola.
-</p>`,
-        definitionEN: `<p>
-Agroecology is the study of ecological processes applied to agricultural production systems.
-</p>`,
-        morph: {
-          noun: ["Agroecologia", "estudo", "processos", "sistemas", "produção", "agrícola"],
-          verb: ["aplicados"],
-          adjective: ["ecológicos"]
-        }
+        hint: "agro-icoloji",
+        definitionPT: `<p>Agroecologia é o estudo dos processos ecológicos aplicados aos sistemas de produção agrícola.</p>`,
+        definitionEN: `<p>Agroecology is the study of ecological processes applied to agricultural production systems.</p>`
       },
       {
         title: "Agronomy",
         image: "agronomy.png",
         phonetic: "/əˈɡrɒnəmi/",
-        hint: "(agrônomi)",
-        definitionPT: `<p>
-Agronomia é a ciência do manejo do solo e da produção de culturas.
-</p>`,
-        definitionEN: `<p>
-Agronomy is the science of soil management and crop production.
-</p>`,
-        morph: {
-          noun: ["Agronomia", "ciência", "manejo", "solo", "produção", "culturas"],
-          article: ["a", "do"],
-          preposition: ["de", "e"]
-        }
+        hint: "agrônomi",
+        definitionPT: `<p>Agronomia é a ciência do manejo do solo e da produção de culturas.</p>`,
+        definitionEN: `<p>Agronomy is the science of soil management and crop production.</p>`
       },
       {
         title: "Animal Welfare",
         image: "animal_welfare.png",
         phonetic: "/ˈæn.ɪ.məl ˈwɛl.fɛər/",
-        hint: "(ânimal uélfér)",
-        definitionPT: `<p>
-Bem-estar animal são práticas que asseguram o bem-estar físico e mental dos animais de criação.
-</p>`,
-        definitionEN: `<p>
-Animal Welfare refers to practices ensuring the physical and mental well-being of livestock.
-</p>`,
-        morph: {
-          noun: ["Bem-estar", "práticas", "bem-estar", "físico", "mental", "animais", "criação"],
-          verb: ["asseguram"],
-          conjunction: ["e"]
-        }
+        hint: "ânimal uélfér",
+        definitionPT: `<p>Bem-estar animal são práticas que asseguram o bem-estar físico e mental dos animais de criação.</p>`,
+        definitionEN: `<p>Animal Welfare refers to practices ensuring the physical and mental well-being of livestock.</p>`
       },
       {
         title: "Aquaculture",
         image: "aquaculture.png",
         phonetic: "/ˈæk.wəˌkʌl.tʃər/",
-        hint: "(aquacôlcher)",
-        definitionPT: `<p>
-Aquicultura é a criação de organismos aquáticos, como peixes, moluscos e plantas aquáticas.
-</p>`,
-        definitionEN: `<p>
-Aquaculture is the farming of aquatic organisms such as fish, shellfish, and aquatic plants.
-</p>`,
-        morph: {
-          noun: ["Aquicultura", "criação", "organismos", "aquáticos", "peixes", "moluscos", "plantas"],
-          article: ["a", "de"],
-          preposition: ["como"]
-        }
+        hint: "aquacôlcher",
+        definitionPT: `<p>Aquicultura é a criação de organismos aquáticos, como peixes, moluscos e plantas aquáticas.</p>`,
+        definitionEN: `<p>Aquaculture is the farming of aquatic organisms such as fish, shellfish, and aquatic plants.</p>`
       },
       {
         title: "Biodiversity",
         image: "biodiversity.png",
         phonetic: "/ˌbaɪ.oʊ.daɪˈvɜːr.sə.ti/",
-        hint: "(baio-daivérsiti)",
-        definitionPT: `<p>
-Biodiversidade é a variedade de vida vegetal e animal em um habitat ou ecossistema específico.
-</p>`,
-        definitionEN: `<p>
-Biodiversity is the variety of plant and animal life in a particular habitat or ecosystem.
-</p>`,
-        morph: {
-          noun: ["Biodiversidade", "variedade", "vida", "vegetal", "animal", "habitat", "ecossistema"],
-          article: ["a"],
-          preposition: ["de", "em", "um", "ou"]
-        }
+        hint: "baio-daivérsiti",
+        definitionPT: `<p>Biodiversidade é a variedade de vida vegetal e animal em um habitat ou ecossistema específico.</p>`,
+        definitionEN: `<p>Biodiversity is the variety of plant and animal life in a particular habitat or ecosystem.</p>`
+      },
+      {
+        title: "Biofortification",
+        image: "biofortification.png",
+        phonetic: "/ˌbaɪ.oʊ.fɔːr.tɪˈfɪk.eɪ.ʃən/",
+        hint: "baio-fortifiquêichan",
+        definitionPT: `<p>Biofortificação é o aumento do valor nutricional dos cultivos por meio do melhoramento genético ou biotecnologia.</p>`,
+        definitionEN: `<p>Biofortification is the process of enhancing the nutritional value of crops through breeding or biotechnology.</p>`
+      },
+      {
+        title: "Biofuels",
+        image: "biofuels.png",
+        phonetic: "/ˈbaɪ.oʊ.fjuːlz/",
+        hint: "baio-fiuels",
+        definitionPT: `<p>Biocombustíveis são combustíveis derivados de matéria orgânica, como etanol ou biodiesel.</p>`,
+        definitionEN: `<p>Biofuels are fuels derived from organic matter, such as ethanol or biodiesel.</p>`
+      },
+      {
+        title: "Biosecurity",
+        image: "biosecurity.png",
+        phonetic: "/ˌbaɪ.oʊ.sɪˈkjʊr.ɪ.ti/",
+        hint: "baio-siquiúriti",
+        definitionPT: `<p>Biosegurança são medidas para prevenir a introdução e disseminação de organismos prejudiciais em animais e plantas.</p>`,
+        definitionEN: `<p>Biosecurity refers to measures to prevent the introduction and spread of harmful organisms to animals and plants.</p>`
+      },
+      {
+        title: "Blockchain",
+        image: "blockchain.png",
+        phonetic: "/ˈblɒk.tʃeɪn/",
+        hint: "blóc-tchein",
+        definitionPT: `<p>Blockchain é uma tecnologia de ledger digital descentralizado usada para rastrear produtos agrícolas.</p>`,
+        definitionEN: `<p>Blockchain is a decentralized digital ledger technology used for tracing agricultural products.</p>`
+      },
+      {
+        title: "Carbon Sequestration",
+        image: "carbon_sequestration.png",
+        phonetic: "/ˈkɑːr.bən ˌsɛk.wəˈstreɪ.ʃən/",
+        hint: "cárbon siqüestrêichan",
+        definitionPT: `<p>Sequestro de Carbono é o processo de capturar e armazenar dióxido de carbono atmosférico no solo ou nas plantas.</p>`,
+        definitionEN: `<p>Carbon Sequestration is the process of capturing and storing atmospheric carbon dioxide in soil or plants.</p>`
+      },
+      {
+        title: "Circular Economy",
+        image: "circular_economy.png",
+        phonetic: "/ˈsɜː.kjʊ.lər iˈkɒn.ə.mi/",
+        hint: "círquiular icônomi",
+        definitionPT: `<p>Economia Circular é um sistema econômico que busca eliminar o desperdício e maximizar o uso dos recursos.</p>`,
+        definitionEN: `<p>Circular Economy is an economic system aimed at eliminating waste and maximizing resource use.</p>`
+      },
+      {
+        title: "Climate-Smart Agriculture",
+        image: "climate_smart_agriculture.png",
+        phonetic: "/ˈklaɪ.mət smɑːrt ˌæɡ.rɪˈkʌl.tʃər/",
+        hint: "clâimet-smárt âgricâlcher",
+        definitionPT: `<p>Agricultura Climaticamente Inteligente é a prática de aumentar a produtividade adaptando-se às mudanças climáticas.</p>`,
+        definitionEN: `<p>Climate-Smart Agriculture is farming practices that increase productivity while adapting to climate change.</p>`
+      },
+      {
+        title: "Commodity",
+        image: "commodity.png",
+        phonetic: "/kəˈmɒd.ɪ.ti/",
+        hint: "comóditi",
+        definitionPT: `<p>Commodity é uma matéria-prima ou produto agrícola que pode ser comprado e vendido.</p>`,
+        definitionEN: `<p>Commodity is a raw material or primary agricultural product that can be bought and sold.</p>`
+      },
+      {
+        title: "Crop Rotation",
+        image: "crop_rotation.png",
+        phonetic: "/krɒp roʊˈteɪ.ʃən/",
+        hint: "crop rotêichan",
+        definitionPT: `<p>Rotação de Culturas é a prática de cultivar diferentes tipos de culturas na mesma área em diferentes estações.</p>`,
+        definitionEN: `<p>Crop Rotation is the practice of growing different types of crops in the same area across seasons.</p>`
+      },
+      {
+        title: "Digital Agriculture",
+        image: "digital_agriculture.png",
+        phonetic: "/ˈdɪdʒ.ɪ.təl ˌæɡ.rɪˈkʌl.tʃər/",
+        hint: "díjital âgricâlcher",
+        definitionPT: `<p>Agricultura Digital é o uso de tecnologias digitais para otimizar processos agrícolas.</p>`,
+        definitionEN: `<p>Digital Agriculture is the use of digital technologies to optimize agricultural processes.</p>`
+      },
+      {
+        title: "Drone Technology",
+        image: "drone_technology.png",
+        phonetic: "/droʊn tɛkˈnɒl.ə.dʒi/",
+        hint: "drôun tecnôloji",
+        definitionPT: `<p>Tecnologia de Drones refere-se a veículos aéreos não tripulados usados para monitoramento e agricultura de precisão.</p>`,
+        definitionEN: `<p>Drone Technology refers to unmanned aerial vehicles used for crop monitoring and precision agriculture.</p>`
+      },
+      {
+        title: "Eco-labeling",
+        image: "eco_labeling.png",
+        phonetic: "/ˈiː.koʊˌleɪ.bəl.ɪŋ/",
+        hint: "íco-lêibeling",
+        definitionPT: `<p>Ecoetiquetagem é a certificação e rotulagem de produtos com base em seu impacto ambiental.</p>`,
+        definitionEN: `<p>Eco-labeling is the certification and labeling of products based on environmental impact.</p>`
+      },
+      {
+        title: "Farm-to-Table",
+        image: "farm_to_table.png",
+        phonetic: "/fɑːrm tə ˈteɪ.bəl/",
+        hint: "farm-tu-têibol",
+        definitionPT: `<p>Farm-to-Table é um movimento que foca na produção local e na entrega direta aos consumidores.</p>`,
+        definitionEN: `<p>Farm-to-Table is a movement focused on producing food locally and delivering it directly to consumers.</p>`
+      },
+      {
+        title: "Food Security",
+        image: "food_security.png",
+        phonetic: "/fuːd sɪˈkjʊər.ɪ.ti/",
+        hint: "fúd siquiúriti",
+        definitionPT: `<p>Segurança Alimentar é o estado de ter acesso confiável a alimentos suficientes, acessíveis e nutritivos.</p>`,
+        definitionEN: `<p>Food Security is the state of having reliable access to sufficient, affordable, nutritious food.</p>`
+      },
+      {
+        title: "Genetically Modified Organism (GMO)",
+        image: "gmo.png",
+        phonetic: "/dʒəˈnet.ɪ.kəl.i ˈmɒd.ɪ.faɪd ˈɔːr.ɡə.nɪ.zəm/",
+        hint: "jenétical-i módifaid órganizm",
+        definitionPT: `<p>Organismo Geneticamente Modificado (OGM) é um organismo cujo material genético foi alterado por técnicas de engenharia genética.</p>`,
+        definitionEN: `<p>Genetically Modified Organism (GMO) is an organism whose genetic material has been altered using genetic engineering techniques.</p>`
+      },
+      {
+        title: "Global Food System",
+        image: "global_food_system.png",
+        phonetic: "/ˈɡloʊ.bəl fuːd ˈsɪs.təm/",
+        hint: "glôbal fúd sistem",
+        definitionPT: `<p>O Sistema Alimentar Global é a complexa rede de atividades envolvendo a produção, processamento e distribuição de alimentos em todo o mundo.</p>`,
+        definitionEN: `<p>The Global Food System is the complex network of activities involving food production, processing, and distribution worldwide.</p>`
+      },
+      {
+        title: "Greenhouse Gas Emissions",
+        image: "greenhouse_gas_emissions.png",
+        phonetic: "/ˈɡriːn.haʊs ɡæs ɪˈmɪʃ.ənz/",
+        hint: "grín-raus gás imíchans",
+        definitionPT: `<p>Emissões de Gases de Efeito Estufa são os gases que retêm calor na atmosfera, contribuindo para o aquecimento global.</p>`,
+        definitionEN: `<p>Greenhouse Gas Emissions are gases that trap heat in the Earth's atmosphere, contributing to global warming.</p>`
+      },
+      {
+        title: "Hydroponics",
+        image: "hydroponics.png",
+        phonetic: "/haɪˈdrɒp.ə.nɪks/",
+        hint: "raidropônics",
+        definitionPT: `<p>Hidroponia é um método de cultivo de plantas sem solo, utilizando soluções nutritivas em água.</p>`,
+        definitionEN: `<p>Hydroponics is a method of growing plants without soil, using mineral nutrient solutions in water.</p>`
+      },
+      {
+        title: "Internet of Things (IoT)",
+        image: "iot.png",
+        phonetic: "/ˈɪn.tər.net əv θɪŋz/",
+        hint: "ínternet of tings",
+        definitionPT: `<p>Internet das Coisas (IoT) é uma rede de dispositivos interconectados usados para coleta de dados e automação na agricultura.</p>`,
+        definitionEN: `<p>Internet of Things (IoT) is a network of interconnected devices used for data collection and automation in agriculture.</p>`
+      },
+      {
+        title: "Integrated Pest Management (IPM)",
+        image: "ipm.png",
+        phonetic: "/ˈɪn.tɪ.ɡreɪ.tɪd pɛst ˈmæn.ɪdʒ.mənt/",
+        hint: "integrêited pést mênijment",
+        definitionPT: `<p>Manejo Integrado de Pragas é uma abordagem ecológica que combina diferentes estratégias para a proteção das culturas.</p>`,
+        definitionEN: `<p>Integrated Pest Management (IPM) is an ecosystem-based approach to crop protection that combines different management strategies.</p>`
+      },
+      {
+        title: "Irrigation",
+        image: "irrigation.png",
+        phonetic: "/ˌɪr.ɪˈɡeɪ.ʃən/",
+        hint: "irrigêichan",
+        definitionPT: `<p>Irrigação é o fornecimento de água para a terra ou culturas para auxiliar no crescimento, geralmente por meios artificiais.</p>`,
+        definitionEN: `<p>Irrigation is the supply of water to land or crops to help growth, typically by artificial means.</p>`
+      },
+      {
+        title: "Land Use Change",
+        image: "land_use_change.png",
+        phonetic: "/lænd juːs tʃeɪndʒ/",
+        hint: "lênd iús tchêinj",
+        definitionPT: `<p>Mudança no Uso da Terra é a transformação do propósito ou manejo da terra, muitas vezes da natureza para uso agrícola.</p>`,
+        definitionEN: `<p>Land Use Change is the transformation of the purpose or management of land.</p>`
+      },
+      {
+        title: "Mechanization",
+        image: "mechanization.png",
+        phonetic: "/məˌkæn.ɪˈzeɪ.ʃən/",
+        hint: "mecanizêichan",
+        definitionPT: `<p>Mechanization é o uso de máquinas para realizar tarefas agrícolas.</p>`,
+        definitionEN: `<p>Mechanization is the use of machines to perform agricultural tasks.</p>`
+      },
+      {
+        title: "Microbial Fertilizers",
+        image: "microbial_fertilizers.png",
+        phonetic: "/maɪˈkrəʊ.bi.əl ˈfɜːr.tɪ.laɪ.zərz/",
+        hint: "maicrôbial fértilâizers",
+        definitionPT: `<p>Fertilizantes Microbianos são fertilizantes que contêm microrganismos vivos para promover o crescimento das plantas.</p>`,
+        definitionEN: `<p>Microbial Fertilizers are fertilizers containing living microorganisms to enhance plant growth.</p>`
+      },
+      {
+        title: "Monoculture",
+        image: "monoculture.png",
+        phonetic: "/ˌmɒn.əˈkʌl.tʃər/",
+        hint: "monôcâlcher",
+        definitionPT: `<p>Monocultura é a prática agrícola de cultivar uma única cultura em uma determinada área.</p>`,
+        definitionEN: `<p>Monoculture is the agricultural practice of growing a single crop in a given area.</p>`
+      },
+      {
+        title: "No-Till Farming",
+        image: "no_till_farming.png",
+        phonetic: "/noʊ tɪl ˈfɑːr.mɪŋ/",
+        hint: "nôu-til fárming",
+        definitionPT: `<p>No-Till Farming é uma forma de cultivar sem revolver o solo por meio do preparo mínimo.</p>`,
+        definitionEN: `<p>No-Till Farming is a way of growing crops without disturbing the soil through tillage.</p>`
+      },
+      {
+        title: "Organic Farming",
+        image: "organic_farming.png",
+        phonetic: "/ɔːrˈɡæn.ɪk ˈfɑːr.mɪŋ/",
+        hint: "orgânic fárming",
+        definitionPT: `<p>Agricultura Orgânica é a produção agrícola sem o uso de químicos sintéticos ou organismos geneticamente modificados.</p>`,
+        definitionEN: `<p>Organic Farming is agricultural production without the use of synthetic chemicals or genetically modified organisms.</p>`
+      },
+      {
+        title: "Permaculture",
+        image: "permaculture.png",
+        phonetic: "/ˈpɜːr.mə.kʌl.tʃər/",
+        hint: "pêrmacâlcher",
+        definitionPT: `<p>Permacultura é um sistema de princípios de design agrícola e social que simula ecossistemas naturais.</p>`,
+        definitionEN: `<p>Permaculture is a system of agricultural and social design principles centered on simulating natural ecosystems.</p>`
+      },
+      {
+        title: "Pesticide Resistance",
+        image: "pesticide_resistance.png",
+        phonetic: "/ˈpɛs.tɪ.saɪd rɪˈzɪs.təns/",
+        hint: "pésticaid rezístens",
+        definitionPT: `<p>Resistência a Pesticidas é a capacidade de pragas de resistir aos efeitos dos pesticidas.</p>`,
+        definitionEN: `<p>Pesticide Resistance is the ability of pests to withstand the effects of pesticides.</p>`
+      },
+      {
+        title: "Plant Breeding",
+        image: "plant_breeding.png",
+        phonetic: "/plænt ˈbriː.dɪŋ/",
+        hint: "plânt bríding",
+        definitionPT: `<p>Plant Breeding é a ciência de modificar características das plantas para obter traços desejados.</p>`,
+        definitionEN: `<p>Plant Breeding is the science of changing plant traits to produce desired characteristics.</p>`
+      },
+      {
+        title: "Precision Agriculture",
+        image: "precision_agriculture.png",
+        phonetic: "/prɪˈsɪʒ.ən ˌæɡ.rɪˈkʌl.tʃər/",
+        hint: "pricíjan âgricâlcher",
+        definitionPT: `<p>Agricultura de Precisão é o manejo agrícola baseado na observação, medição e resposta à variabilidade das culturas.</p>`,
+        definitionEN: `<p>Precision Agriculture is farming management based on observing, measuring, and responding to variability in crops.</p>`
+      },
+      {
+        title: "Regenerative Agriculture",
+        image: "regenerative_agriculture.png",
+        phonetic: "/rɪˈdʒen.ə.rə.tɪv ˌæɡ.rɪˈkʌl.tʃər/",
+        hint: "rijénerativ âgricâlcher",
+        definitionPT: `<p>Agricultura Regenerativa consiste em práticas que restauram a matéria orgânica do solo e promovem a biodiversidade.</p>`,
+        definitionEN: `<p>Regenerative Agriculture is farming practices that reverse climate change by rebuilding soil organic matter and restoring biodiversity.</p>`
+      },
+      {
+        title: "Remote Sensing",
+        image: "remote_sensing.png",
+        phonetic: "/rɪˈmoʊt ˈsɛn.sɪŋ/",
+        hint: "rimôut sénsing",
+        definitionPT: `<p>Sensoriamento Remoto é a obtenção de informações sobre culturas e solo a partir de distâncias, geralmente por satélite.</p>`,
+        definitionEN: `<p>Remote Sensing is gathering information about crops and soil from a distance, typically using satellite imagery.</p>`
+      },
+      {
+        title: "Resilience",
+        image: "resilience.png",
+        phonetic: "/rɪˈzɪl.jəns/",
+        hint: "rizíliense",
+        definitionPT: `<p>Resiliência é a capacidade dos sistemas agrícolas de resistir e se recuperar de estresses e choques.</p>`,
+        definitionEN: `<p>Resilience is the capacity of agricultural systems to withstand and recover from stresses and shocks.</p>`
+      },
+      {
+        title: "Smallholder Farmer",
+        image: "smallholder_farmer.png",
+        phonetic: "/ˈsmɔːl.hoʊl.dər ˈfɑːr.mər/",
+        hint: "smôl-rôlder fármer",
+        definitionPT: `<p>Pequeno Agricultor é o produtor que possui uma pequena área para o cultivo de alimentos para subsistência e para a venda.</p>`,
+        definitionEN: `<p>Smallholder Farmer is a farmer owning a small plot of land on which they grow subsistence and cash crops.</p>`
+      },
+      {
+        title: "Smart Irrigation",
+        image: "smart_irrigation.png",
+        phonetic: "/smɑːrt ɪˈrɪɡeɪʃən/",
+        hint: "smárt irrigêichan",
+        definitionPT: `<p>Smart Irrigation é um sistema avançado de irrigação que usa dados para otimizar o uso de água.</p>`,
+        definitionEN: `<p>Smart Irrigation is an advanced irrigation system that uses data to optimize water usage.</p>`
+      },
+      {
+        title: "Soil Health",
+        image: "soil_health.png",
+        phonetic: "/sɔɪl hɛlθ/",
+        hint: "sóil rélth",
+        definitionPT: `<p>Saúde do Solo refere-se à capacidade do solo de funcionar como um ecossistema vital para plantas, animais e humanos.</p>`,
+        definitionEN: `<p>Soil Health is the continued capacity of soil to function as a vital living ecosystem that sustains plants, animals, and humans.</p>`
+      },
+      {
+        title: "Sustainable Intensification",
+        image: "sustainable_intensification.png",
+        phonetic: "/səˈsteɪ.nə.bəl ɪnˌtɛn.sɪ.fɪˈkeɪ.ʃən/",
+        hint: "sastêinabel intensifiquêichan",
+        definitionPT: `<p>Sustentável Intensificação é o aumento da produção agrícola minimizando o impacto ambiental.</p>`,
+        definitionEN: `<p>Sustainable Intensification is increasing agricultural production while minimizing environmental impact.</p>`
+      },
+      {
+        title: "Supply Chain",
+        image: "supply_chain.png",
+        phonetic: "/səˈplaɪ tʃeɪn/",
+        hint: "saplái tchêin",
+        definitionPT: `<p>Cadeia de Suprimentos é a rede que conecta uma empresa aos seus fornecedores para produzir e distribuir produtos agrícolas.</p>`,
+        definitionEN: `<p>Supply Chain is the network between a company and its suppliers to produce and distribute agricultural products.</p>`
+      },
+      {
+        title: "Traceability",
+        image: "traceability.png",
+        phonetic: "/treɪsəˈbɪl.ɪ.ti/",
+        hint: "trêisabíliti",
+        definitionPT: `<p>Rastreabilidade é a capacidade de acompanhar o movimento de produtos agrícolas através das etapas de produção, processamento e distribuição.</p>`,
+        definitionEN: `<p>Traceability is the ability to track the movement of agricultural products through stages of production, processing, and distribution.</p>`
+      },
+      {
+        title: "Vertical Farming",
+        image: "vertical_farming.png",
+        phonetic: "/ˈvɜː.tɪ.kəl ˈfɑːr.mɪŋ/",
+        hint: "vértical fárming",
+        definitionPT: `<p>Cultivo Vertical é a prática de cultivar plantas em camadas empilhadas verticalmente, geralmente em ambientes controlados.</p>`,
+        definitionEN: `<p>Vertical Farming is the practice of growing crops in vertically stacked layers, often in controlled environments.</p>`
+      },
+      {
+        title: "Water Footprint",
+        image: "water_footprint.png",
+        phonetic: "/ˈwɔː.tər ˈfʊt.prɪnt/",
+        hint: "uóter fútprint",
+        definitionPT: `<p>Pegada Hídrica é um indicador do uso de água em relação à produção agrícola.</p>`,
+        definitionEN: `<p>Water Footprint is an indicator of water use in relation to agricultural production.</p>`
+      },
+      {
+        title: "Weather Futures",
+        image: "weather_futures.png",
+        phonetic: "/ˈwɛð.ər ˈfjuː.tʃərz/",
+        hint: "uéder fiútchers",
+        definitionPT: `<p>Futuros Climáticos são contratos financeiros que permitem às empresas agrícolas se protegerem contra condições climáticas adversas.</p>`,
+        definitionEN: `<p>Weather Futures are financial contracts that allow agricultural businesses to hedge against adverse weather conditions.</p>`
+      },
+      {
+        title: "Yield",
+        image: "yield.png",
+        phonetic: "/jiːld/",
+        hint: "iíld",
+        definitionPT: `<p>Rendimento é a quantidade de produção agrícola colhida por unidade de área.</p>`,
+        definitionEN: `<p>Yield is the amount of agricultural production harvested per unit of land area.</p>`
       },
       {
         title: "Zero Hunger",
         image: "zero.png",
         phonetic: "/ˈzɪərəʊ ˈhʌŋɡə/",
-        hint: "(zírou rânguer)",
-        definitionPT: `<p>
-Zero Fome é uma iniciativa global que visa acabar com a fome, garantir segurança alimentar e promover a agricultura sustentável.
-</p>`,
-        definitionEN: `<p>
-Zero Hunger is a global initiative aimed at ending hunger, ensuring food security, and promoting sustainable agriculture.
-</p>`,
-        morph: {
-          numeral: ["Zero"],
-          noun: ["Fome", "iniciativa", "global", "hunger", "segurança", "alimentar", "agricultura"],
-          verb: ["visa", "acabar", "garantir", "promover"],
-          adjective: ["sustentável"],
-          article: ["a", "com", "e"]
-        }
+        hint: "zírou rânguer",
+        definitionPT: `<p>Zero Fome é uma iniciativa global que visa acabar com a fome, garantir segurança alimentar e promover a agricultura sustentável.</p>`,
+        definitionEN: `<p>Zero Hunger is a global initiative aimed at ending hunger, ensuring food security, and promoting sustainable agriculture.</p>`
       }
     ];
     
@@ -440,7 +704,6 @@ Zero Hunger is a global initiative aimed at ending hunger, ensuring food securit
       document.getElementById("termTitle").textContent = term.title;
       document.getElementById("termImage").src = term.image;
       document.getElementById("hintLine").textContent = `${term.phonetic} ${term.hint}`;
-      // Exibe as definições com as marcações morfológicas já inseridas.
       document.getElementById("defPT").innerHTML = term.definitionPT;
       document.getElementById("defEN").innerHTML = term.definitionEN;
     }
@@ -470,18 +733,18 @@ Zero Hunger is a global initiative aimed at ending hunger, ensuring food securit
     });
     
     document.addEventListener("DOMContentLoaded", function() {
-      // Som: ao clicar no ícone de som, usa a Web Speech API para pronunciar o termo (sem o número, se houver)
+      // Ícone de som: pronuncia o título do termo (sem o número, se houver)
       const soundIcon = document.getElementById("soundIcon");
       soundIcon.addEventListener("click", function() {
-        // Remove número se presente (assume que o título pode conter "n. Termo")
         const titleText = terms[currentTermIndex].title;
+        // Remove número se houver (ex.: "50. Zero Hunger")
         const cleanTitle = titleText.replace(/^\d+\.\s*/, "");
         const utterance = new SpeechSynthesisUtterance(cleanTitle);
         utterance.lang = "en-US";
         speechSynthesis.speak(utterance);
       });
       
-      // Dica: ao clicar no ícone de lâmpada, mostra ou esconde a linha combinada de fonética e dica
+      // Ícone de dica: mostra/oculta a linha combinada de fonética e dica
       const hintIcon = document.getElementById("hintIcon");
       hintIcon.addEventListener("click", function() {
         const hintLine = document.getElementById("hintLine");
@@ -508,7 +771,7 @@ Zero Hunger is a global initiative aimed at ending hunger, ensuring food securit
         });
       });
       
-      // Legenda: Ao marcar, remove a classe disabled-color dos spans correspondentes
+      // Legenda: ao marcar, remove a classe disabled-color dos spans correspondentes
       const legendToggles = document.querySelectorAll(".legend-toggle");
       legendToggles.forEach(chk => {
         chk.checked = false;
@@ -521,16 +784,10 @@ Zero Hunger is a global initiative aimed at ending hunger, ensuring food securit
       });
       
       function updateCategoryColor(category, isEnabled) {
-        // Procura spans com a classe da categoria dentro das definições
+        // Atualiza os spans dentro das definições
         const defPT = document.getElementById("defPT");
         const defEN = document.getElementById("defEN");
-        // Atualiza ambos os blocos de definição
         [defPT, defEN].forEach(def => {
-          const regex = new RegExp(`(\b${category}\b)`, "gi");
-          // Nota: Como as definições foram inseridas manualmente com marcação (ou não),
-          // aqui esperamos que o conteúdo já contenha spans com classes se for necessário.
-          // Se não houver spans, a implementação de destaque precisará ser ajustada.
-          // Para este exemplo, assumimos que as definições já foram preparadas com spans.
           const elements = def.querySelectorAll(`span.${category}`);
           elements.forEach(el => {
             if (isEnabled) {
