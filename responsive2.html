@@ -108,7 +108,7 @@
       display: none;
     }
     
-    /* Parágrafo combinado para fonética e dica (mesma linha) */
+    /* Parágrafo único para fonética e dica na mesma linha */
     #hintLine {
       text-align: justify;
       margin: 5px 0;
@@ -131,7 +131,7 @@
       color: inherit !important;
     }
     
-    /* Legenda fixa (ou centralizada em mobile) */
+    /* Legend Panel */
     .legend {
       background-color: #3E3E3E;
       border: 1px solid #555;
@@ -167,7 +167,10 @@
       gap: 5px;
     }
     
-    /* Alinha as labels à esquerda */
+    .legend li input {
+      margin: 0;
+    }
+    
     .legend label {
       text-align: left;
     }
@@ -248,16 +251,16 @@
   <div class="container">
     <!-- Image Section -->
     <div class="image-section">
-      <img src="zero.png" alt="Zero Hunger" />
+      <img src="zero.png" alt="Imagem do termo" />
     </div>
     
     <!-- Term Title and Icons -->
     <div class="term-title">
-      <span>50. Zero Hunger</span>
-      <!-- Sound Icon: triggers text-to-speech -->
-      <span class="pronunciation" id="soundIcon" title="Play Sound">🔊</span>
-      <!-- Hint Icon: shows combined phonetic & hint text inline -->
-      <span class="pronunciation" id="hintIcon" title="Show Hint">💡</span>
+      <span id="termTitle">50. Zero Hunger</span>
+      <!-- Sound Icon -->
+      <span class="pronunciation" id="soundIcon" title="Tocar som">🔊</span>
+      <!-- Hint Icon -->
+      <span class="pronunciation" id="hintIcon" title="Mostrar dica">💡</span>
     </div>
     
     <!-- Combined phonetic & hint text -->
@@ -265,13 +268,14 @@
     
     <!-- Language Buttons -->
     <div class="lang-buttons">
-      <button class="lang-btn" data-lang="pt" data-term="def">Portuguese</button>
+      <button class="lang-btn" data-lang="pt" data-term="def">Português</button>
       <button class="lang-btn" data-lang="en" data-term="def">English</button>
       <button class="lang-btn" data-lang="both" data-term="def">Eng/Port</button>
     </div>
     
     <!-- Definitions -->
     <div class="definition" id="defPT">
+      <!-- A definição abaixo é um exemplo; você poderá personalizar cada termo -->
       <p>
         <span class="noun disabled-color">Objetivo</span> 
         <span class="preposition disabled-color">de</span> 
@@ -283,46 +287,7 @@
         <span class="verb disabled-color">visa</span> 
         <span class="verb disabled-color">erradicar</span> 
         <span class="article disabled-color">a</span> 
-        <span class="noun disabled-color">fome</span>, 
-        <span class="verb disabled-color">alcançar</span> 
-        <span class="article disabled-color">a</span> 
-        <span class="noun disabled-color">segurança</span> 
-        <span class="adjective disabled-color">alimentar</span>, 
-        <span class="verb disabled-color">melhorar</span> 
-        <span class="article disabled-color">a</span> 
-        <span class="noun disabled-color">nutrição</span> 
-        <span class="conjunction disabled-color">e</span> 
-        <span class="verb disabled-color">promover</span> 
-        <span class="article disabled-color">a</span> 
-        <span class="noun disabled-color">agricultura</span> 
-        <span class="adjective disabled-color">sustentável</span> 
-        <span class="preposition disabled-color">até</span> 
-        <span class="numeral disabled-color">2030</span>. 
-        <span class="verb disabled-color">Requer</span> 
-        <span class="article disabled-color">um</span> 
-        <span class="noun disabled-color">esforço</span> 
-        <span class="adjective disabled-color">global</span> 
-        <span class="adjective disabled-color">coordenado</span> 
-        <span class="preposition disabled-color">para</span> 
-        <span class="verb disabled-color">aumentar</span> 
-        <span class="article disabled-color">a</span> 
-        <span class="noun disabled-color">produção</span> 
-        <span class="preposition disabled-color">de</span> 
-        <span class="noun disabled-color">alimentos</span>, 
-        <span class="verb disabled-color">reduzir</span> 
-        <span class="article disabled-color">o</span> 
-        <span class="noun disabled-color">desperdício</span> 
-        <span class="preposition disabled-color">de</span> 
-        <span class="noun disabled-color">alimentos</span> 
-        <span class="conjunction disabled-color">e</span> 
-        <span class="verb disabled-color">garantir</span> 
-        <span class="article disabled-color">o</span> 
-        <span class="noun disabled-color">acesso</span> 
-        <span class="preposition disabled-color">a</span> 
-        <span class="noun disabled-color">alimentos</span> 
-        <span class="adjective disabled-color">nutritivos</span> 
-        <span class="preposition disabled-color">para</span> 
-        <span class="pronoun disabled-color">todos</span>.
+        <span class="noun disabled-color">fome</span>.
       </p>
     </div>
     <div class="definition hidden" id="defEN">
@@ -333,45 +298,7 @@
         <span class="noun disabled-color">development</span> 
         <span class="preposition disabled-color">by</span> 
         <span class="article disabled-color">the</span> 
-        <span class="noun disabled-color">UN</span> 
-        <span class="pronoun disabled-color">that</span> 
-        <span class="verb disabled-color">aims</span> 
-        <span class="preposition disabled-color">to</span> 
-        <span class="verb disabled-color">eradicate</span> 
-        <span class="noun disabled-color">hunger</span>, 
-        <span class="verb disabled-color">achieve</span> 
-        <span class="noun disabled-color">food</span> 
-        <span class="noun disabled-color">security</span>, 
-        <span class="verb disabled-color">improve</span> 
-        <span class="noun disabled-color">nutrition</span>, 
-        <span class="verb disabled-color">promote</span> 
-        <span class="adjective disabled-color">sustainable</span> 
-        <span class="noun disabled-color">agriculture</span> 
-        <span class="preposition disabled-color">by</span> 
-        <span class="numeral disabled-color">2030</span>. 
-        <span class="pronoun disabled-color">It</span> 
-        <span class="verb disabled-color">requires</span> 
-        <span class="article disabled-color">a</span> 
-        <span class="adjective disabled-color">coordinated</span> 
-        <span class="adjective disabled-color">global</span> 
-        <span class="noun disabled-color">effort</span> 
-        <span class="preposition disabled-color">to</span> 
-        <span class="verb disabled-color">increase</span> 
-        <span class="article disabled-color">the</span> 
-        <span class="noun disabled-color">food</span> 
-        <span class="noun disabled-color">production</span>, 
-        <span class="verb disabled-color">reduce</span> 
-        <span class="article disabled-color">the</span> 
-        <span class="noun disabled-color">food</span> 
-        <span class="noun disabled-color">waste</span>, 
-        <span class="verb disabled-color">and</span> 
-        <span class="verb disabled-color">ensure</span> 
-        <span class="article disabled-color">access</span> 
-        <span class="preposition disabled-color">to</span> 
-        <span class="adjective disabled-color">nutritious</span> 
-        <span class="noun disabled-color">food</span> 
-        <span class="preposition disabled-color">for</span> 
-        <span class="pronoun disabled-color">all</span>.
+        <span class="noun disabled-color">UN</span>.
       </p>
     </div>
   </div>
@@ -436,27 +363,103 @@
   </aside>
   
   <script>
+    // Array de 50 termos com definições (placeholders)
+    const termNames = [
+      "Agroecology", "Agronomy", "Animal Welfare", "Aquaculture", "Biodiversity", 
+      "Biofortification", "Biofuels", "Biosecurity", "Blockchain", "Carbon Sequestration", 
+      "Circular Economy", "Climate-Smart Agriculture", "Commodity", "Crop Rotation", 
+      "Digital Agriculture", "Drone Technology", "Eco-labeling", "Farm-to-Table", 
+      "Food Security", "Genetically Modified Organism (GMO)", "Global Food System", 
+      "Greenhouse Gas Emissions", "Hydroponics", "Internet of Things (IoT)", 
+      "Integrated Pest Management (IPM)", "Irrigation", "Land Use Change", "Mechanization", 
+      "Microbial Fertilizers", "Monoculture", "No-Till Farming", "Organic Farming", 
+      "Permaculture", "Pesticide Resistance", "Plant Breeding", "Precision Agriculture", 
+      "Regenerative Agriculture", "Remote Sensing", "Resilience", "Smallholder Farmer", 
+      "Smart Irrigation", "Soil Health", "Sustainable Intensification", "Supply Chain", 
+      "Traceability", "Vertical Farming", "Water Footprint", "Weather Futures", "Yield"
+    ];
+    
+    // Cria um array de objetos com os termos e placeholders para as definições
+    const terms = termNames.map(name => ({
+      title: name,
+      image: "zero.png", // Imagem placeholder; altere quando tiver imagens específicas
+      phonetic: `/placeholder/`, // Placeholder para fonética
+      hint: `(dica placeholder)`,
+      // Exemplo de definição com classificação morfológica (use este modelo e ajuste conforme necessário)
+      definitionPT: `<p>
+        <span class="noun disabled-color">${name}</span> 
+        <span class="verb disabled-color">é</span> 
+        <span class="adjective disabled-color">um</span> 
+        <span class="noun disabled-color">conceito</span> 
+        <span class="preposition disabled-color">de</span> 
+        <span class="noun disabled-color">agronegócio</span> 
+        <span class="conjunction disabled-color">que</span> 
+        <span class="verb disabled-color">promove</span> 
+        <span class="adjective disabled-color">práticas</span> 
+        <span class="noun disabled-color">sustentáveis</span>.
+      </p>`,
+      definitionEN: `<p>
+        <span class="noun disabled-color">${name}</span> 
+        <span class="verb disabled-color">is</span> 
+        <span class="noun disabled-color">a</span> 
+        <span class="noun disabled-color">concept</span> 
+        <span class="preposition disabled-color">in</span> 
+        <span class="noun disabled-color">agribusiness</span> 
+        <span class="conjunction disabled-color">that</span> 
+        <span class="verb disabled-color">promotes</span> 
+        <span class="adjective disabled-color">sustainable</span> 
+        <span class="noun disabled-color">practices</span>.
+      </p>`
+    }));
+    
+    let currentTermIndex = 0;
+    
+    // Função para exibir o termo atual
+    function showTerm(index) {
+      const term = terms[index];
+      document.getElementById("termTitle").textContent = term.title;
+      document.querySelector(".image-section img").src = term.image;
+      document.getElementById("hintLine").textContent = `${term.phonetic} ${term.hint}`;
+      document.getElementById("defPT").innerHTML = term.definitionPT;
+      document.getElementById("defEN").innerHTML = term.definitionEN;
+    }
+    
+    // Exibe o primeiro termo
+    showTerm(currentTermIndex);
+    
+    // Navegação entre termos
+    document.getElementById("prev-term").addEventListener("click", function() {
+      currentTermIndex = (currentTermIndex > 0) ? currentTermIndex - 1 : terms.length - 1;
+      showTerm(currentTermIndex);
+    });
+    
+    document.getElementById("next-term").addEventListener("click", function() {
+      currentTermIndex = (currentTermIndex < terms.length - 1) ? currentTermIndex + 1 : 0;
+      showTerm(currentTermIndex);
+    });
+    
     document.addEventListener("DOMContentLoaded", function() {
-      // Sound Icon: When clicked, plays sound using Web Speech API
+      // Sound Icon: Toca o som usando a Web Speech API
       const soundIcon = document.getElementById("soundIcon");
       soundIcon.addEventListener("click", function() {
-        const utterance = new SpeechSynthesisUtterance("Zero Hunger");
+        // Usa o título do termo (pode ajustar para usar outro campo, se necessário)
+        const utterance = new SpeechSynthesisUtterance(terms[currentTermIndex].title);
         utterance.lang = "en-US";
         speechSynthesis.speak(utterance);
       });
       
-      // Hint Icon: When clicked, toggles display of combined phonetic and hint text
+      // Hint Icon: Mostra/Esconde a linha combinada de fonética e dica
       const hintIcon = document.getElementById("hintIcon");
       hintIcon.addEventListener("click", function() {
         const hintLine = document.getElementById("hintLine");
         hintLine.style.display = (hintLine.style.display === "block") ? "none" : "block";
       });
       
-      // Language buttons functionality
+      // Botões de idioma
       const langButtons = document.querySelectorAll(".lang-btn");
       langButtons.forEach(btn => {
         btn.addEventListener("click", function() {
-          const lang = this.dataset.lang; // "pt", "en", or "both"
+          const lang = this.dataset.lang; // "pt", "en", ou "both"
           const defPT = document.getElementById("defPT");
           const defEN = document.getElementById("defEN");
           if (lang === "pt") {
@@ -472,7 +475,7 @@
         });
       });
       
-      // Legend toggles for morphological categories
+      // Legend toggles para categorias morfológicas
       const legendToggles = document.querySelectorAll(".legend-toggle");
       legendToggles.forEach(chk => {
         chk.checked = false;
@@ -495,7 +498,7 @@
         });
       }
       
-      // Mark/Unmark All button in legend
+      // Botão Marcar/Desmarcar Todas na legenda
       const toggleAllBtn = document.getElementById("toggleAllBtn");
       toggleAllBtn.addEventListener("click", function() {
         const allChecked = Array.from(legendToggles).every(chk => chk.checked);
@@ -503,14 +506,6 @@
           chk.checked = !allChecked;
           updateCategoryColor(chk.dataset.target, chk.checked);
         });
-      });
-      
-      // Navigation Buttons (currently just logging messages)
-      document.getElementById("prev-term").addEventListener("click", function() {
-        console.log("Previous term clicked (implement navigation logic)");
-      });
-      document.getElementById("next-term").addEventListener("click", function() {
-        console.log("Next term clicked (implement navigation logic)");
       });
     });
   </script>
