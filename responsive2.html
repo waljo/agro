@@ -93,8 +93,7 @@
       background-color: #777;
     }
     
-    /* Audio icon now triggers sound instead of showing a separate button */
-    /* Definitions: texto justificado */
+    /* Definitions com texto justificado */
     .definition {
       text-align: justify;
       margin-top: 10px;
@@ -109,7 +108,7 @@
       display: none;
     }
     
-    /* Combined hint line (phonetic + dica) */
+    /* Parágrafo combinado para fonética e dica (mesma linha) */
     #hintLine {
       text-align: justify;
       margin: 5px 0;
@@ -164,10 +163,11 @@
     .legend li {
       display: flex;
       align-items: center;
-      justify-content: flex-start;  /* Alinha à esquerda */
+      justify-content: flex-start;
       gap: 5px;
     }
     
+    /* Alinha as labels à esquerda */
     .legend label {
       text-align: left;
     }
@@ -254,13 +254,13 @@
     <!-- Term Title and Icons -->
     <div class="term-title">
       <span>50. Zero Hunger</span>
-      <!-- Sound Icon: when clicked, plays sound -->
+      <!-- Sound Icon: triggers text-to-speech -->
       <span class="pronunciation" id="soundIcon" title="Play Sound">🔊</span>
-      <!-- Hint Icon: when clicked, shows combined phonetic and hint text inline -->
+      <!-- Hint Icon: shows combined phonetic & hint text inline -->
       <span class="pronunciation" id="hintIcon" title="Show Hint">💡</span>
     </div>
     
-    <!-- Container for combined phonetic & hint text (hidden initially) -->
+    <!-- Combined phonetic & hint text -->
     <p id="hintLine" class="hidden">/ˈzɪərəʊ ˈhʌŋɡə/ (zírou rânguer)</p>
     
     <!-- Language Buttons -->
@@ -388,48 +388,48 @@
     <ul>
       <li>
         <span class="color-box noun"></span>
-        <label>Substantivo (Noun)</label>
         <input type="checkbox" class="legend-toggle" data-target="noun" />
+        <label>Substantivo (Noun)</label>
       </li>
       <li>
         <span class="color-box verb"></span>
-        <label>Verbo (Verb)</label>
         <input type="checkbox" class="legend-toggle" data-target="verb" />
+        <label>Verbo (Verb)</label>
       </li>
       <li>
         <span class="color-box adjective"></span>
-        <label>Adjetivo (Adjective)</label>
         <input type="checkbox" class="legend-toggle" data-target="adjective" />
+        <label>Adjetivo (Adjective)</label>
       </li>
       <li>
         <span class="color-box adverb"></span>
-        <label>Advérbio (Adverb)</label>
         <input type="checkbox" class="legend-toggle" data-target="adverb" />
+        <label>Advérbio (Adverb)</label>
       </li>
       <li>
         <span class="color-box preposition"></span>
-        <label>Preposição (Preposition)</label>
         <input type="checkbox" class="legend-toggle" data-target="preposition" />
+        <label>Preposição (Preposition)</label>
       </li>
       <li>
         <span class="color-box conjunction"></span>
-        <label>Conjunção (Conjunction)</label>
         <input type="checkbox" class="legend-toggle" data-target="conjunction" />
+        <label>Conjunção (Conjunction)</label>
       </li>
       <li>
         <span class="color-box pronoun"></span>
-        <label>Pronome (Pronoun)</label>
         <input type="checkbox" class="legend-toggle" data-target="pronoun" />
+        <label>Pronome (Pronoun)</label>
       </li>
       <li>
         <span class="color-box article"></span>
-        <label>Artigo (Article)</label>
         <input type="checkbox" class="legend-toggle" data-target="article" />
+        <label>Artigo (Article)</label>
       </li>
       <li>
         <span class="color-box numeral"></span>
-        <label>Numeral (Numeral)</label>
         <input type="checkbox" class="legend-toggle" data-target="numeral" />
+        <label>Numeral (Numeral)</label>
       </li>
     </ul>
     <button id="toggleAllBtn">Marcar/Desmarcar Todas</button>
@@ -445,7 +445,7 @@
         speechSynthesis.speak(utterance);
       });
       
-      // Hint Icon: When clicked, toggles display of the combined phonetic and hint text
+      // Hint Icon: When clicked, toggles display of combined phonetic and hint text
       const hintIcon = document.getElementById("hintIcon");
       hintIcon.addEventListener("click", function() {
         const hintLine = document.getElementById("hintLine");
@@ -505,7 +505,7 @@
         });
       });
       
-      // Navigation Buttons (logging messages for now)
+      // Navigation Buttons (currently just logging messages)
       document.getElementById("prev-term").addEventListener("click", function() {
         console.log("Previous term clicked (implement navigation logic)");
       });
