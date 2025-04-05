@@ -6,7 +6,7 @@
   <title>Termos de Agronegócio</title>
   <style>
     :root {
-      /* Colors: 7 rainbow colors for the first categories, then pink for Article and light brown for Numeral */
+      /* Cores: 7 cores do arco-íris para as primeiras categorias, rosa para Artigo e marrom claro para Numeral */
       --cor-substantivo: #FF0000;    /* Vermelho */
       --cor-verbo: #FFA500;           /* Laranja */
       --cor-adjetivo: #FFFF00;        /* Amarelo */
@@ -93,9 +93,10 @@
       background-color: #777;
     }
     
-    /* Definitions */
+    /* Audio icon now triggers sound instead of showing a separate button */
+    /* Definitions: texto justificado */
     .definition {
-      text-align: center;
+      text-align: justify;
       margin-top: 10px;
       font-size: 1em;
     }
@@ -108,15 +109,15 @@
       display: none;
     }
     
-    /* Here we create a single paragraph that will show both phonetic and hint on the same line */
+    /* Combined hint line (phonetic + dica) */
     #hintLine {
-      text-align: center;
+      text-align: justify;
       margin: 5px 0;
       font-size: 16px;
       display: none;
     }
     
-    /* Morphological Categories */
+    /* Categorias morfológicas */
     .noun { color: var(--cor-substantivo); }
     .verb { color: var(--cor-verbo); }
     .adjective { color: var(--cor-adjetivo); }
@@ -131,7 +132,7 @@
       color: inherit !important;
     }
     
-    /* Legend Panel */
+    /* Legenda fixa (ou centralizada em mobile) */
     .legend {
       background-color: #3E3E3E;
       border: 1px solid #555;
@@ -156,15 +157,19 @@
       padding: 0;
       margin: 0;
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
       gap: 10px;
-      justify-content: center;
     }
     
     .legend li {
       display: flex;
       align-items: center;
+      justify-content: flex-start;  /* Alinha à esquerda */
       gap: 5px;
+    }
+    
+    .legend label {
+      text-align: left;
     }
     
     .color-box {
@@ -201,7 +206,6 @@
       background-color: #26a65b;
     }
     
-    /* Navigation Buttons */
     .navigation {
       text-align: center;
       margin-top: 20px;
@@ -222,7 +226,7 @@
       background-color: #777;
     }
     
-    /* Responsive Adjustments */
+    /* Responsive adjustments */
     @media (max-width: 768px) {
       .term-title {
         font-size: 1.2em;
@@ -250,9 +254,9 @@
     <!-- Term Title and Icons -->
     <div class="term-title">
       <span>50. Zero Hunger</span>
-      <!-- Sound Icon: When clicked, speaks "Zero Hunger" -->
+      <!-- Sound Icon: when clicked, plays sound -->
       <span class="pronunciation" id="soundIcon" title="Play Sound">🔊</span>
-      <!-- Hint Icon: When clicked, shows both phonetic and hint text inline -->
+      <!-- Hint Icon: when clicked, shows combined phonetic and hint text inline -->
       <span class="pronunciation" id="hintIcon" title="Show Hint">💡</span>
     </div>
     
@@ -433,7 +437,7 @@
   
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      // Sound icon: when clicked, speak "Zero Hunger"
+      // Sound Icon: When clicked, plays sound using Web Speech API
       const soundIcon = document.getElementById("soundIcon");
       soundIcon.addEventListener("click", function() {
         const utterance = new SpeechSynthesisUtterance("Zero Hunger");
@@ -441,7 +445,7 @@
         speechSynthesis.speak(utterance);
       });
       
-      // Hint icon: when clicked, show both phonetic and hint on the same line
+      // Hint Icon: When clicked, toggles display of the combined phonetic and hint text
       const hintIcon = document.getElementById("hintIcon");
       hintIcon.addEventListener("click", function() {
         const hintLine = document.getElementById("hintLine");
@@ -501,7 +505,7 @@
         });
       });
       
-      // Navigation Buttons (currently just logging messages)
+      // Navigation Buttons (logging messages for now)
       document.getElementById("prev-term").addEventListener("click", function() {
         console.log("Previous term clicked (implement navigation logic)");
       });
