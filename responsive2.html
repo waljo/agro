@@ -93,23 +93,7 @@
       background-color: #777;
     }
     
-    /* Additional button for audio pronunciation */
-    .audio-button {
-      background-color: #555;
-      border: none;
-      color: #EEE;
-      padding: 8px 12px;
-      margin: 10px auto;
-      display: block;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 1em;
-    }
-    
-    .audio-button:hover {
-      background-color: #777;
-    }
-    
+    /* Definitions */
     .definition {
       text-align: center;
       margin-top: 10px;
@@ -124,6 +108,15 @@
       display: none;
     }
     
+    /* Here we create a single paragraph that will show both phonetic and hint on the same line */
+    #hintLine {
+      text-align: center;
+      margin: 5px 0;
+      font-size: 16px;
+      display: none;
+    }
+    
+    /* Morphological Categories */
     .noun { color: var(--cor-substantivo); }
     .verb { color: var(--cor-verbo); }
     .adjective { color: var(--cor-adjetivo); }
@@ -138,6 +131,7 @@
       color: inherit !important;
     }
     
+    /* Legend Panel */
     .legend {
       background-color: #3E3E3E;
       border: 1px solid #555;
@@ -207,6 +201,7 @@
       background-color: #26a65b;
     }
     
+    /* Navigation Buttons */
     .navigation {
       text-align: center;
       margin-top: 20px;
@@ -227,12 +222,12 @@
       background-color: #777;
     }
     
+    /* Responsive Adjustments */
     @media (max-width: 768px) {
       .term-title {
         font-size: 1.2em;
       }
-      .lang-buttons button,
-      .audio-button {
+      .lang-buttons button {
         font-size: 0.9em;
         padding: 5px 8px;
       }
@@ -252,16 +247,17 @@
       <img src="zero.png" alt="Zero Hunger" />
     </div>
     
-    <!-- Term Title and Pronunciation Icons -->
+    <!-- Term Title and Icons -->
     <div class="term-title">
       <span>50. Zero Hunger</span>
-      <span class="pronunciation" data-target="phoneticText" title="Show Phonetic">🔊</span>
-      <span class="pronunciation" data-target="hintText" title="Show Hint">💡</span>
+      <!-- Sound Icon: When clicked, speaks "Zero Hunger" -->
+      <span class="pronunciation" id="soundIcon" title="Play Sound">🔊</span>
+      <!-- Hint Icon: When clicked, shows both phonetic and hint text inline -->
+      <span class="pronunciation" id="hintIcon" title="Show Hint">💡</span>
     </div>
     
-    <!-- Phonetic and Hint Text -->
-    <p id="phoneticText" class="hidden">/ˈzɪərəʊ ˈhʌŋɡə/</p>
-    <p id="hintText" class="hidden">(zírou rânguer)</p>
+    <!-- Container for combined phonetic & hint text (hidden initially) -->
+    <p id="hintLine" class="hidden">/ˈzɪərəʊ ˈhʌŋɡə/ (zírou rânguer)</p>
     
     <!-- Language Buttons -->
     <div class="lang-buttons">
@@ -269,9 +265,6 @@
       <button class="lang-btn" data-lang="en" data-term="def">English</button>
       <button class="lang-btn" data-lang="both" data-term="def">Eng/Port</button>
     </div>
-    
-    <!-- New Audio Button for TTS -->
-    <button class="audio-button" id="speakButton">Hear Pronunciation</button>
     
     <!-- Definitions -->
     <div class="definition" id="defPT">
@@ -440,14 +433,19 @@
   
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      // Pronunciation toggles for phonetic and hint text
-      const pronunciationIcons = document.querySelectorAll(".pronunciation");
-      pronunciationIcons.forEach(icon => {
-        icon.addEventListener("click", function() {
-          const targetId = this.dataset.target;
-          const targetEl = document.getElementById(targetId);
-          targetEl.style.display = (targetEl.style.display === "block") ? "none" : "block";
-        });
+      // Sound icon: when clicked, speak "Zero Hunger"
+      const soundIcon = document.getElementById("soundIcon");
+      soundIcon.addEventListener("click", function() {
+        const utterance = new SpeechSynthesisUtterance("Zero Hunger");
+        utterance.lang = "en-US";
+        speechSynthesis.speak(utterance);
+      });
+      
+      // Hint icon: when clicked, show both phonetic and hint on the same line
+      const hintIcon = document.getElementById("hintIcon");
+      hintIcon.addEventListener("click", function() {
+        const hintLine = document.getElementById("hintLine");
+        hintLine.style.display = (hintLine.style.display === "block") ? "none" : "block";
       });
       
       // Language buttons functionality
@@ -503,19 +501,12 @@
         });
       });
       
-      // Navigation Buttons (currently log messages)
+      // Navigation Buttons (currently just logging messages)
       document.getElementById("prev-term").addEventListener("click", function() {
         console.log("Previous term clicked (implement navigation logic)");
       });
       document.getElementById("next-term").addEventListener("click", function() {
         console.log("Next term clicked (implement navigation logic)");
-      });
-      
-      // Audio Button using Web Speech API
-      document.getElementById("speakButton").addEventListener("click", function() {
-        const utterance = new SpeechSynthesisUtterance("Zero Hunger");
-        utterance.lang = "en-US";
-        speechSynthesis.speak(utterance);
       });
     });
   </script>
