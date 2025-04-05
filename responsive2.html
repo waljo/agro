@@ -6,7 +6,7 @@
   <title>Termos de Agronegócio</title>
   <style>
     :root {
-      /* Cores para as categorias */
+      /* Cores para cada categoria */
       --cor-substantivo: #FF0000;    /* Vermelho */
       --cor-verbo: #FFA500;           /* Laranja */
       --cor-adjetivo: #FFFF00;        /* Amarelo */
@@ -80,7 +80,7 @@
     .lang-buttons button:hover {
       background-color: #777;
     }
-    /* Definições: parágrafo único com texto justificado */
+    /* Definições em parágrafo único com texto justificado */
     .definition {
       text-align: justify;
       margin-top: 10px;
@@ -92,14 +92,14 @@
     #defEN {
       display: none;
     }
-    /* Linha para fonética e dica – será exibida ao clicar no ícone de lâmpada */
+    /* Linha para fonética e dica */
     #hintLine {
       text-align: justify;
       margin: 5px 0;
       font-size: 16px;
       display: none;
     }
-    /* As classes morfológicas permanecem, mas as definições agora não estão separadas */
+    /* Estilização dos spans para realce; por padrão, com disabled-color para aparecer normal */
     .noun { color: var(--cor-substantivo); }
     .verb { color: var(--cor-verbo); }
     .adjective { color: var(--cor-adjetivo); }
@@ -109,9 +109,7 @@
     .pronoun { color: var(--cor-pronome); }
     .article { color: var(--cor-artigo); }
     .numeral { color: var(--cor-numeral); }
-    .disabled-color {
-      color: inherit !important;
-    }
+    .disabled-color { color: inherit !important; }
     /* Painel de Legenda */
     .legend {
       background-color: #3E3E3E;
@@ -144,12 +142,8 @@
       justify-content: flex-start;
       gap: 5px;
     }
-    .legend li input {
-      margin: 0;
-    }
-    .legend label {
-      text-align: left;
-    }
+    .legend li input { margin: 0; }
+    .legend label { text-align: left; }
     .color-box {
       display: inline-block;
       width: 15px;
@@ -166,7 +160,7 @@
     .color-box.pronoun { background-color: var(--cor-pronome); }
     .color-box.article { background-color: var(--cor-artigo); }
     .color-box.numeral { background-color: var(--cor-numeral); }
-    /* Botões de Navegação: Início, Anterior, Próximo, Fim */
+    /* Botões de Navegação */
     .navigation {
       text-align: center;
       margin-top: 20px;
@@ -186,17 +180,9 @@
     }
     /* Responsive */
     @media (max-width: 768px) {
-      .term-title {
-        font-size: 1.2em;
-      }
-      .lang-buttons button {
-        font-size: 0.9em;
-        padding: 5px 8px;
-      }
-      .navigation button {
-        font-size: 1em;
-        padding: 8px 12px;
-      }
+      .term-title { font-size: 1.2em; }
+      .lang-buttons button { font-size: 0.9em; padding: 5px 8px; }
+      .navigation button { font-size: 1em; padding: 8px 12px; }
     }
   </style>
 </head>
@@ -209,14 +195,14 @@
       <img id="termImage" src="zero.png" alt="Imagem do termo" />
     </div>
     
-    <!-- Título do Termo e Ícones -->
+    <!-- Título e Ícones do Termo -->
     <div class="term-title">
       <span id="termTitle">Zero Hunger</span>
       <span class="pronunciation" id="soundIcon" title="Tocar som">🔊</span>
       <span class="pronunciation" id="hintIcon" title="Mostrar dica">💡</span>
     </div>
     
-    <!-- Linha combinada para fonética e dica -->
+    <!-- Linha para fonética e dica -->
     <p id="hintLine" class="hidden">/ˈzɪərəʊ ˈhʌŋɡə/ (zírou Rânguer)</p>
     
     <!-- Botões de Idioma -->
@@ -293,408 +279,609 @@
   </aside>
   
   <script>
-    // Array de 50 termos com suas definições, fonética, dica, etc.
+    // Array de 50 termos com definições, fonética e hint (pronúncia aportuguesada)
     const terms = [
       {
         title: "Agroecology",
         image: "agroecology.png",
         phonetic: "/əˌgroʊ.ɪˈkɒl.ə.dʒi/",
-        hint: "agro-icoloji",
-        definitionPT: `<p>Agroecologia é o estudo dos processos ecológicos aplicados aos sistemas de produção agrícola.</p>`,
-        definitionEN: `<p>Agroecology is the study of ecological processes applied to agricultural production systems.</p>`
+        hint: "(agro-icoloji)",
+        definitionPT: `<p>
+<span class="noun disabled-color">Agroecologia</span> <span class="verb disabled-color">é</span> <span class="article disabled-color">o</span> <span class="noun disabled-color">estudo</span> <span class="preposition disabled-color">dos</span> <span class="noun disabled-color">processos</span> <span class="adjective disabled-color">ecológicos</span> <span class="verb disabled-color">aplicados</span> <span class="preposition disabled-color">aos</span> <span class="noun disabled-color">sistemas</span> <span class="preposition disabled-color">de</span> <span class="noun disabled-color">produção</span> <span class="adjective disabled-color">agrícola</span>.
+</p>`,
+        definitionEN: `<p>
+<span class="noun disabled-color">Agroecology</span> <span class="verb disabled-color">is</span> <span class="article disabled-color">the</span> <span class="noun disabled-color">study</span> <span class="preposition disabled-color">of</span> <span class="adjective disabled-color">ecological</span> <span class="noun disabled-color">processes</span> <span class="verb disabled-color">applied</span> <span class="preposition disabled-color">to</span> <span class="adjective disabled-color">agricultural</span> <span class="noun disabled-color">production</span> <span class="noun disabled-color">systems</span>.
+</p>`
       },
       {
         title: "Agronomy",
         image: "agronomy.png",
         phonetic: "/əˈɡrɒnəmi/",
-        hint: "agrônomi",
-        definitionPT: `<p>Agronomia é a ciência do manejo do solo e da produção de culturas.</p>`,
-        definitionEN: `<p>Agronomy is the science of soil management and crop production.</p>`
+        hint: "(agrônomi)",
+        definitionPT: `<p>
+<span class="noun disabled-color">Agronomia</span> <span class="verb disabled-color">é</span> <span class="article disabled-color">a</span> <span class="noun disabled-color">ciência</span> <span class="preposition disabled-color">do</span> <span class="noun disabled-color">manejo</span> <span class="preposition disabled-color">do</span> <span class="noun disabled-color">solo</span> <span class="conjunction disabled-color">e</span> <span class="article disabled-color">da</span> <span class="noun disabled-color">produção</span> <span class="preposition disabled-color">de</span> <span class="noun disabled-color">culturas</span>.
+</p>`,
+        definitionEN: `<p>
+<span class="noun disabled-color">Agronomy</span> <span class="verb disabled-color">is</span> <span class="article disabled-color">the</span> <span class="noun disabled-color">science</span> <span class="preposition disabled-color">of</span> <span class="noun disabled-color">soil</span> <span class="noun disabled-color">management</span> <span class="conjunction disabled-color">and</span> <span class="noun disabled-color">crop</span> <span class="noun disabled-color">production</span>.
+</p>`
       },
       {
         title: "Animal Welfare",
         image: "animal_welfare.png",
         phonetic: "/ˈæn.ɪ.məl ˈwɛl.fɛər/",
-        hint: "ânimal uélfér",
-        definitionPT: `<p>Bem-estar animal são práticas que asseguram o bem-estar físico e mental dos animais de criação.</p>`,
-        definitionEN: `<p>Animal Welfare refers to practices ensuring the physical and mental well-being of livestock.</p>`
+        hint: "(ânimal uélfér)",
+        definitionPT: `<p>
+<span class="noun disabled-color">Bem-estar</span> <span class="noun disabled-color">animal</span> <span class="verb disabled-color">são</span> <span class="noun disabled-color">práticas</span> <span class="verb disabled-color">que</span> <span class="verb disabled-color">asseguram</span> <span class="article disabled-color">o</span> <span class="noun disabled-color">bem-estar</span> <span class="adjective disabled-color">físico</span> <span class="conjunction disabled-color">e</span> <span class="adjective disabled-color">mental</span> <span class="noun disabled-color">dos</span> <span class="noun disabled-color">animais</span> <span class="preposition disabled-color">de</span> <span class="noun disabled-color">criação</span>.
+</p>`,
+        definitionEN: `<p>
+<span class="noun disabled-color">Animal</span> <span class="noun disabled-color">Welfare</span> <span class="verb disabled-color">refers</span> <span class="preposition disabled-color">to</span> <span class="noun disabled-color">practices</span> <span class="verb disabled-color">ensuring</span> <span class="article disabled-color">the</span> <span class="adjective disabled-color">physical</span> <span class="conjunction disabled-color">and</span> <span class="adjective disabled-color">mental</span> <span class="noun disabled-color">well-being</span> <span class="preposition disabled-color">of</span> <span class="noun disabled-color">livestock</span>.
+</p>`
       },
       {
         title: "Aquaculture",
         image: "aquaculture.png",
         phonetic: "/ˈæk.wəˌkʌl.tʃər/",
-        hint: "aquacôlcher",
-        definitionPT: `<p>Aquicultura é a criação de organismos aquáticos, como peixes, moluscos e plantas aquáticas.</p>`,
-        definitionEN: `<p>Aquaculture is the farming of aquatic organisms such as fish, shellfish, and aquatic plants.</p>`
+        hint: "(aquacôlcher)",
+        definitionPT: `<p>
+<span class="noun disabled-color">Aquicultura</span> <span class="verb disabled-color">é</span> <span class="article disabled-color">a</span> <span class="noun disabled-color">criação</span> <span class="preposition disabled-color">de</span> <span class="noun disabled-color">organismos</span> <span class="adjective disabled-color">aquáticos</span>, <span class="conjunction disabled-color">como</span> <span class="noun disabled-color">peixes</span>, <span class="noun disabled-color">moluscos</span> <span class="conjunction disabled-color">e</span> <span class="noun disabled-color">plantas</span> <span class="adjective disabled-color">aquáticas</span>.
+</p>`,
+        definitionEN: `<p>
+<span class="noun disabled-color">Aquaculture</span> <span class="verb disabled-color">is</span> <span class="article disabled-color">the</span> <span class="noun disabled-color">farming</span> <span class="preposition disabled-color">of</span> <span class="adjective disabled-color">aquatic</span> <span class="noun disabled-color">organisms</span> <span class="conjunction disabled-color">such</span> <span class="preposition disabled-color">as</span> <span class="noun disabled-color">fish</span>, <span class="noun disabled-color">shellfish</span>, <span class="conjunction disabled-color">and</span> <span class="adjective disabled-color">aquatic</span> <span class="noun disabled-color">plants</span>.
+</p>`
       },
       {
         title: "Biodiversity",
         image: "biodiversity.png",
         phonetic: "/ˌbaɪ.oʊ.daɪˈvɜːr.sə.ti/",
         hint: "baio-daivérsiti",
-        definitionPT: `<p>Biodiversidade é a variedade de vida vegetal e animal em um habitat ou ecossistema específico.</p>`,
-        definitionEN: `<p>Biodiversity is the variety of plant and animal life in a particular habitat or ecosystem.</p>`
+        definitionPT: `<p>
+<span class="noun disabled-color">Biodiversidade</span> <span class="verb disabled-color">é</span> <span class="article disabled-color">a</span> <span class="noun disabled-color">variedade</span> <span class="preposition disabled-color">de</span> <span class="noun disabled-color">vida</span> <span class="noun disabled-color">vegetal</span> <span class="conjunction disabled-color">e</span> <span class="noun disabled-color">animal</span> <span class="preposition disabled-color">em</span> <span class="article disabled-color">um</span> <span class="adjective disabled-color">habitat</span> <span class="conjunction disabled-color">ou</span> <span class="noun disabled-color">ecossistema</span>.
+</p>`,
+        definitionEN: `<p>
+<span class="noun disabled-color">Biodiversity</span> <span class="verb disabled-color">is</span> <span class="article disabled-color">the</span> <span class="noun disabled-color">variety</span> <span class="preposition disabled-color">of</span> <span class="noun disabled-color">plant</span> <span class="conjunction disabled-color">and</span> <span class="noun disabled-color">animal</span> <span class="noun disabled-color">life</span> <span class="preposition disabled-color">in</span> <span class="article disabled-color">a</span> <span class="adjective disabled-color">particular</span> <span class="noun disabled-color">habitat</span> <span class="conjunction disabled-color">or</span> <span class="noun disabled-color">ecosystem</span>.
+</p>`
       },
       {
         title: "Biofortification",
         image: "biofortification.png",
         phonetic: "/ˌbaɪ.oʊ.fɔːr.tɪˈfɪk.eɪ.ʃən/",
         hint: "baio-fortifiquêichan",
-        definitionPT: `<p>Biofortificação é o aumento do valor nutricional dos cultivos por meio do melhoramento genético ou biotecnologia.</p>`,
-        definitionEN: `<p>Biofortification is the process of enhancing the nutritional value of crops through breeding or biotechnology.</p>`
+        definitionPT: `<p>
+<span class="noun disabled-color">Biofortificação</span> <span class="verb disabled-color">é</span> <span class="article disabled-color">o</span> <span class="noun disabled-color">aumento</span> <span class="preposition disabled-color">do</span> <span class="noun disabled-color">valor</span> <span class="adjective disabled-color">nutricional</span> <span class="preposition disabled-color">dos</span> <span class="noun disabled-color">cultivos</span> <span class="preposition disabled-color">por</span> <span class="noun disabled-color">meio</span> <span class="preposition disabled-color">do</span> <span class="noun disabled-color">melhoramento</span> <span class="adjective disabled-color">genético</span> <span class="conjunction disabled-color">ou</span> <span class="noun disabled-color">biotecnologia</span>.
+</p>`,
+        definitionEN: `<p>
+<span class="noun disabled-color">Biofortification</span> <span class="verb disabled-color">is</span> <span class="article disabled-color">the</span> <span class="noun disabled-color">process</span> <span class="preposition disabled-color">of</span> <span class="verb disabled-color">enhancing</span> <span class="article disabled-color">the</span> <span class="adjective disabled-color">nutritional</span> <span class="noun disabled-color">value</span> <span class="preposition disabled-color">of</span> <span class="noun disabled-color">crops</span> <span class="preposition disabled-color">through</span> <span class="noun disabled-color">breeding</span> <span class="conjunction disabled-color">or</span> <span class="noun disabled-color">biotechnology</span>.
+</p>`
       },
       {
         title: "Biofuels",
         image: "biofuels.png",
         phonetic: "/ˈbaɪ.oʊ.fjuːlz/",
         hint: "baio-fiuels",
-        definitionPT: `<p>Biocombustíveis são combustíveis derivados de matéria orgânica, como etanol ou biodiesel.</p>`,
-        definitionEN: `<p>Biofuels are fuels derived from organic matter, such as ethanol or biodiesel.</p>`
+        definitionPT: `<p>
+<span class="noun disabled-color">Biocombustíveis</span> <span class="verb disabled-color">são</span> <span class="noun disabled-color">combustíveis</span> <span class="verb disabled-color">derivados</span> <span class="preposition disabled-color">de</span> <span class="noun disabled-color">matéria</span> <span class="adjective disabled-color">orgânica</span>, <span class="conjunction disabled-color">como</span> <span class="noun disabled-color">etanol</span> <span class="conjunction disabled-color">ou</span> <span class="noun disabled-color">biodiesel</span>.
+</p>`,
+        definitionEN: `<p>
+<span class="noun disabled-color">Biofuels</span> <span class="verb disabled-color">are</span> <span class="noun disabled-color">fuels</span> <span class="verb disabled-color">derived</span> <span class="preposition disabled-color">from</span> <span class="adjective disabled-color">organic</span> <span class="noun disabled-color">matter</span>, <span class="conjunction disabled-color">such</span> <span class="preposition disabled-color">as</span> <span class="noun disabled-color">ethanol</span> <span class="conjunction disabled-color">or</span> <span class="noun disabled-color">biodiesel</span>.
+</p>`
       },
       {
         title: "Biosecurity",
         image: "biosecurity.png",
         phonetic: "/ˌbaɪ.oʊ.sɪˈkjʊr.ɪ.ti/",
         hint: "baio-siquiúriti",
-        definitionPT: `<p>Biosegurança são medidas para prevenir a introdução e disseminação de organismos prejudiciais em animais e plantas.</p>`,
-        definitionEN: `<p>Biosecurity refers to measures to prevent the introduction and spread of harmful organisms to animals and plants.</p>`
+        definitionPT: `<p>
+<span class="noun disabled-color">Biosegurança</span> <span class="verb disabled-color">são</span> <span class="noun disabled-color">medidas</span> <span class="preposition disabled-color">para</span> <span class="verb disabled-color">prevenir</span> <span class="article disabled-color">a</span> <span class="noun disabled-color">introdução</span> <span class="conjunction disabled-color">e</span> <span class="noun disabled-color">disseminação</span> <span class="preposition disabled-color">de</span> <span class="adjective disabled-color">organismos</span> <span class="adjective disabled-color">prejudiciais</span> <span class="preposition disabled-color">em</span> <span class="noun disabled-color">animais</span> <span class="conjunction disabled-color">e</span> <span class="noun disabled-color">plantas</span>.
+</p>`,
+        definitionEN: `<p>
+<span class="noun disabled-color">Biosecurity</span> <span class="verb disabled-color">refers</span> <span class="preposition disabled-color">to</span> <span class="noun disabled-color">measures</span> <span class="preposition disabled-color">to</span> <span class="verb disabled-color">prevent</span> <span class="article disabled-color">the</span> <span class="noun disabled-color">introduction</span> <span class="conjunction disabled-color">and</span> <span class="noun disabled-color">spread</span> <span class="preposition disabled-color">of</span> <span class="adjective disabled-color">harmful</span> <span class="noun disabled-color">organisms</span> <span class="preposition disabled-color">to</span> <span class="noun disabled-color">animals</span> <span class="conjunction disabled-color">and</span> <span class="noun disabled-color">plants</span>.
+</p>`
       },
       {
         title: "Blockchain",
         image: "blockchain.png",
         phonetic: "/ˈblɒk.tʃeɪn/",
         hint: "blóc-tchein",
-        definitionPT: `<p>Blockchain é uma tecnologia de ledger digital descentralizado usada para rastrear produtos agrícolas.</p>`,
-        definitionEN: `<p>Blockchain is a decentralized digital ledger technology used for tracing agricultural products.</p>`
+        definitionPT: `<p>
+<span class="noun disabled-color">Blockchain</span> <span class="verb disabled-color">é</span> <span class="article disabled-color">uma</span> <span class="adjective disabled-color">tecnologia</span> <span class="preposition disabled-color">de</span> <span class="noun disabled-color">ledger</span> <span class="adjective disabled-color">digital</span> <span class="adjective disabled-color">descentralizado</span> <span class="verb disabled-color">usada</span> <span class="preposition disabled-color">para</span> <span class="verb disabled-color">rastrear</span> <span class="noun disabled-color">produtos</span> <span class="adjective disabled-color">agrícolas</span>.
+</p>`,
+        definitionEN: `<p>
+<span class="noun disabled-color">Blockchain</span> <span class="verb disabled-color">is</span> <span class="article disabled-color">a</span> <span class="adjective disabled-color">decentralized</span> <span class="adjective disabled-color">digital</span> <span class="noun disabled-color">ledger</span> <span class="noun disabled-color">technology</span> <span class="verb disabled-color">used</span> <span class="preposition disabled-color">for</span> <span class="verb disabled-color">tracing</span> <span class="adjective disabled-color">agricultural</span> <span class="noun disabled-color">products</span>.
+</p>`
       },
       {
         title: "Carbon Sequestration",
         image: "carbon_sequestration.png",
         phonetic: "/ˈkɑːr.bən ˌsɛk.wəˈstreɪ.ʃən/",
         hint: "cárbon siqüestrêichan",
-        definitionPT: `<p>Sequestro de Carbono é o processo de capturar e armazenar dióxido de carbono atmosférico no solo ou nas plantas.</p>`,
-        definitionEN: `<p>Carbon Sequestration is the process of capturing and storing atmospheric carbon dioxide in soil or plants.</p>`
+        definitionPT: `<p>
+<span class="noun disabled-color">Sequestro</span> <span class="preposition disabled-color">de</span> <span class="noun disabled-color">Carbono</span> <span class="verb disabled-color">é</span> <span class="article disabled-color">o</span> <span class="noun disabled-color">processo</span> <span class="preposition disabled-color">de</span> <span class="verb disabled-color">capturar</span> <span class="conjunction disabled-color">e</span> <span class="verb disabled-color">armazenar</span> <span class="noun disabled-color">dióxido</span> <span class="preposition disabled-color">de</span> <span class="noun disabled-color">Carbono</span> <span class="adjective disabled-color">atmosférico</span> <span class="preposition disabled-color">no</span> <span class="noun disabled-color">solo</span> <span class="conjunction disabled-color">ou</span> <span class="noun disabled-color">nas</span> <span class="noun disabled-color">plantas</span>.
+</p>`,
+        definitionEN: `<p>
+<span class="noun disabled-color">Carbon</span> <span class="noun disabled-color">Sequestration</span> <span class="verb disabled-color">is</span> <span class="article disabled-color">the</span> <span class="noun disabled-color">process</span> <span class="preposition disabled-color">of</span> <span class="verb disabled-color">capturing</span> <span class="adjective disabled-color">atmospheric</span> <span class="noun disabled-color">carbon</span> <span class="noun disabled-color">dioxide</span> <span class="preposition disabled-color">in</span> <span class="noun disabled-color">soil</span> <span class="conjunction disabled-color">or</span> <span class="noun disabled-color">plants</span>.
+</p>`
       },
       {
         title: "Circular Economy",
         image: "circular_economy.png",
         phonetic: "/ˈsɜː.kjʊ.lər iˈkɒn.ə.mi/",
         hint: "círquiular icônomi",
-        definitionPT: `<p>Economia Circular é um sistema econômico que busca eliminar o desperdício e maximizar o uso dos recursos.</p>`,
-        definitionEN: `<p>Circular Economy is an economic system aimed at eliminating waste and maximizing resource use.</p>`
+        definitionPT: `<p>
+<span class="adjective disabled-color">Economia</span> <span class="adjective disabled-color">Circular</span> <span class="verb disabled-color">é</span> <span class="article disabled-color">um</span> <span class="noun disabled-color">sistema</span> <span class="adjective disabled-color">econômico</span> <span class="verb disabled-color">que</span> <span class="verb disabled-color">busca</span> <span class="verb disabled-color">eliminar</span> <span class="noun disabled-color">o</span> <span class="noun disabled-color">desperdício</span> <span class="conjunction disabled-color">e</span> <span class="verb disabled-color">maximizar</span> <span class="noun disabled-color">o</span> <span class="noun disabled-color">uso</span> <span class="preposition disabled-color">dos</span> <span class="noun disabled-color">recursos</span>.
+</p>`,
+        definitionEN: `<p>
+<span class="adjective disabled-color">Circular</span> <span class="noun disabled-color">Economy</span> <span class="verb disabled-color">is</span> <span class="article disabled-color">an</span> <span class="adjective disabled-color">economic</span> <span class="noun disabled-color">system</span> <span class="verb disabled-color">aimed</span> <span class="preposition disabled-color">at</span> <span class="verb disabled-color">eliminating</span> <span class="noun disabled-color">waste</span> <span class="conjunction disabled-color">and</span> <span class="verb disabled-color">maximizing</span> <span class="noun disabled-color">resource</span> <span class="noun disabled-color">use</span>.
+</p>`
       },
       {
         title: "Climate-Smart Agriculture",
         image: "climate_smart_agriculture.png",
         phonetic: "/ˈklaɪ.mət smɑːrt ˌæɡ.rɪˈkʌl.tʃər/",
         hint: "clâimet-smárt âgricâlcher",
-        definitionPT: `<p>Agricultura Climaticamente Inteligente é a prática de aumentar a produtividade adaptando-se às mudanças climáticas.</p>`,
-        definitionEN: `<p>Climate-Smart Agriculture is farming practices that increase productivity while adapting to climate change.</p>`
+        definitionPT: `<p>
+<span class="noun disabled-color">Agricultura</span> <span class="adjective disabled-color">Climaticamente</span> <span class="adjective disabled-color">Inteligente</span> <span class="verb disabled-color">é</span> <span class="article disabled-color">a</span> <span class="noun disabled-color">prática</span> <span class="preposition disabled-color">de</span> <span class="verb disabled-color">aumentar</span> <span class="article disabled-color">a</span> <span class="noun disabled-color">produtividade</span> <span class="verb disabled-color">adaptando-se</span> <span class="preposition disabled-color">às</span> <span class="noun disabled-color">mudanças</span> <span class="noun disabled-color">climáticas</span>.
+</p>`,
+        definitionEN: `<p>
+<span class="noun disabled-color">Climate-Smart</span> <span class="noun disabled-color">Agriculture</span> <span class="verb disabled-color">is</span> <span class="noun disabled-color">farming</span> <span class="noun disabled-color">practices</span> <span class="verb disabled-color">that</span> <span class="verb disabled-color">increase</span> <span class="noun disabled-color">productivity</span> <span class="verb disabled-color">while</span> <span class="verb disabled-color">adapting</span> <span class="preposition disabled-color">to</span> <span class="noun disabled-color">climate</span> <span class="noun disabled-color">change</span>.
+</p>`
       },
       {
         title: "Commodity",
         image: "commodity.png",
         phonetic: "/kəˈmɒd.ɪ.ti/",
         hint: "comóditi",
-        definitionPT: `<p>Commodity é uma matéria-prima ou produto agrícola que pode ser comprado e vendido.</p>`,
-        definitionEN: `<p>Commodity is a raw material or primary agricultural product that can be bought and sold.</p>`
+        definitionPT: `<p>
+<span class="noun disabled-color">Commodity</span> <span class="verb disabled-color">é</span> <span class="article disabled-color">uma</span> <span class="noun disabled-color">matéria-prima</span> <span class="conjunction disabled-color">ou</span> <span class="noun disabled-color">produto</span> <span class="adjective disabled-color">agrícola</span> <span class="verb disabled-color">que</span> <span class="verb disabled-color">pode</span> <span class="verb disabled-color">ser</span> <span class="verb disabled-color">comprado</span> <span class="conjunction disabled-color">e</span> <span class="verb disabled-color">vendido</span>.
+</p>`,
+        definitionEN: `<p>
+<span class="noun disabled-color">Commodity</span> <span class="verb disabled-color">is</span> <span class="article disabled-color">a</span> <span class="noun disabled-color">raw material</span> <span class="conjunction disabled-color">or</span> <span class="noun disabled-color">primary</span> <span class="adjective disabled-color">agricultural</span> <span class="noun disabled-color">product</span> <span class="verb disabled-color">that</span> <span class="verb disabled-color">can</span> <span class="verb disabled-color">be</span> <span class="verb disabled-color">bought</span> <span class="conjunction disabled-color">and</span> <span class="verb disabled-color">sold</span>.
+</p>`
       },
       {
         title: "Crop Rotation",
         image: "crop_rotation.png",
         phonetic: "/krɒp roʊˈteɪ.ʃən/",
         hint: "crop rotêichan",
-        definitionPT: `<p>Rotação de Culturas é a prática de cultivar diferentes tipos de culturas na mesma área em diferentes estações.</p>`,
-        definitionEN: `<p>Crop Rotation is the practice of growing different types of crops in the same area across seasons.</p>`
+        definitionPT: `<p>
+<span class="noun disabled-color">Rotação</span> <span class="preposition disabled-color">de</span> <span class="noun disabled-color">Culturas</span> <span class="verb disabled-color">é</span> <span class="article disabled-color">a</span> <span class="noun disabled-color">prática</span> <span class="preposition disabled-color">de</span> <span class="verb disabled-color">cultivar</span> <span class="adjective disabled-color">diferentes</span> <span class="noun disabled-color">tipos</span> <span class="preposition disabled-color">de</span> <span class="noun disabled-color">culturas</span> <span class="preposition disabled-color">na</span> <span class="noun disabled-color">mesma</span> <span class="noun disabled-color">área</span> <span class="preposition disabled-color">em</span> <span class="noun disabled-color">diferentes</span> <span class="noun disabled-color">estações</span>.
+</p>`,
+        definitionEN: `<p>
+<span class="noun disabled-color">Crop Rotation</span> <span class="verb disabled-color">is</span> <span class="article disabled-color">the</span> <span class="noun disabled-color">practice</span> <span class="preposition disabled-color">of</span> <span class="verb disabled-color">growing</span> <span class="adjective disabled-color">different</span> <span class="noun disabled-color">types</span> <span class="preposition disabled-color">of</span> <span class="noun disabled-color">crops</span> <span class="preposition disabled-color">in</span> <span class="article disabled-color">the</span> <span class="noun disabled-color">same</span> <span class="noun disabled-color">area</span> <span class="preposition disabled-color">across</span> <span class="noun disabled-color">seasons</span>.
+</p>`
       },
       {
         title: "Digital Agriculture",
         image: "digital_agriculture.png",
         phonetic: "/ˈdɪdʒ.ɪ.təl ˌæɡ.rɪˈkʌl.tʃər/",
         hint: "díjital âgricâlcher",
-        definitionPT: `<p>Agricultura Digital é o uso de tecnologias digitais para otimizar processos agrícolas.</p>`,
-        definitionEN: `<p>Digital Agriculture is the use of digital technologies to optimize agricultural processes.</p>`
+        definitionPT: `<p>
+<span class="noun disabled-color">Agricultura</span> <span class="adjective disabled-color">Digital</span> <span class="verb disabled-color">é</span> <span class="article disabled-color">o</span> <span class="noun disabled-color">uso</span> <span class="preposition disabled-color">de</span> <span class="adjective disabled-color">tecnologias</span> <span class="noun disabled-color">digitais</span> <span class="preposition disabled-color">para</span> <span class="verb disabled-color">otimizar</span> <span class="noun disabled-color">processos</span> <span class="noun disabled-color">agrícolas</span>.
+</p>`,
+        definitionEN: `<p>
+<span class="noun disabled-color">Digital Agriculture</span> <span class="verb disabled-color">is</span> <span class="article disabled-color">the</span> <span class="noun disabled-color">use</span> <span class="preposition disabled-color">of</span> <span class="adjective disabled-color">digital</span> <span class="noun disabled-color">technologies</span> <span class="preposition disabled-color">to</span> <span class="verb disabled-color">optimize</span> <span class="noun disabled-color">agricultural</span> <span class="noun disabled-color">processes</span>.
+</p>`
       },
       {
         title: "Drone Technology",
         image: "drone_technology.png",
         phonetic: "/droʊn tɛkˈnɒl.ə.dʒi/",
         hint: "drôun tecnôloji",
-        definitionPT: `<p>Tecnologia de Drones refere-se a veículos aéreos não tripulados usados para monitoramento e agricultura de precisão.</p>`,
-        definitionEN: `<p>Drone Technology refers to unmanned aerial vehicles used for crop monitoring and precision agriculture.</p>`
+        definitionPT: `<p>
+<span class="noun disabled-color">Tecnologia</span> <span class="preposition disabled-color">de</span> <span class="noun disabled-color">Drones</span> <span class="verb disabled-color">refere-se</span> <span class="preposition disabled-color">a</span> <span class="noun disabled-color">veículos</span> <span class="adjective disabled-color">aéreos</span> <span class="adverb disabled-color">não</span> <span class="noun disabled-color">tripulados</span> <span class="verb disabled-color">usados</span> <span class="preposition disabled-color">para</span> <span class="noun disabled-color">monitoramento</span> <span class="conjunction disabled-color">e</span> <span class="noun disabled-color">agricultura</span> <span class="adjective disabled-color">de</span> <span class="noun disabled-color">precisão</span>.
+</p>`,
+        definitionEN: `<p>
+<span class="noun disabled-color">Drone Technology</span> <span class="verb disabled-color">refers</span> <span class="preposition disabled-color">to</span> <span class="noun disabled-color">unmanned</span> <span class="adjective disabled-color">aerial</span> <span class="noun disabled-color">vehicles</span> <span class="verb disabled-color">used</span> <span class="preposition disabled-color">for</span> <span class="noun disabled-color">crop</span> <span class="noun disabled-color">monitoring</span> <span class="conjunction disabled-color">and</span> <span class="noun disabled-color">precision</span> <span class="noun disabled-color">agriculture</span>.
+</p>`
       },
       {
         title: "Eco-labeling",
         image: "eco_labeling.png",
         phonetic: "/ˈiː.koʊˌleɪ.bəl.ɪŋ/",
         hint: "íco-lêibeling",
-        definitionPT: `<p>Ecoetiquetagem é a certificação e rotulagem de produtos com base em seu impacto ambiental.</p>`,
-        definitionEN: `<p>Eco-labeling is the certification and labeling of products based on environmental impact.</p>`
+        definitionPT: `<p>
+<span class="noun disabled-color">Ecoetiquetagem</span> <span class="verb disabled-color">é</span> <span class="article disabled-color">a</span> <span class="noun disabled-color">certificação</span> <span class="conjunction disabled-color">e</span> <span class="noun disabled-color">rotulagem</span> <span class="preposition disabled-color">de</span> <span class="noun disabled-color">produtos</span> <span class="preposition disabled-color">com</span> <span class="noun disabled-color">base</span> <span class="preposition disabled-color">em</span> <span class="noun disabled-color">seu</span> <span class="noun disabled-color">impacto</span> <span class="noun disabled-color">ambiental</span>.
+</p>`,
+        definitionEN: `<p>
+<span class="noun disabled-color">Eco-labeling</span> <span class="verb disabled-color">is</span> <span class="article disabled-color">the</span> <span class="noun disabled-color">certification</span> <span class="conjunction disabled-color">and</span> <span class="noun disabled-color">labeling</span> <span class="preposition disabled-color">of</span> <span class="noun disabled-color">products</span> <span class="preposition disabled-color">based</span> <span class="preposition disabled-color">on</span> <span class="noun disabled-color">environmental</span> <span class="noun disabled-color">impact</span>.
+</p>`
       },
       {
         title: "Farm-to-Table",
         image: "farm_to_table.png",
         phonetic: "/fɑːrm tə ˈteɪ.bəl/",
         hint: "farm-tu-têibol",
-        definitionPT: `<p>Farm-to-Table é um movimento que foca na produção local e na entrega direta aos consumidores.</p>`,
-        definitionEN: `<p>Farm-to-Table is a movement focused on producing food locally and delivering it directly to consumers.</p>`
+        definitionPT: `<p>
+<span class="noun disabled-color">Farm-to-Table</span> <span class="verb disabled-color">é</span> <span class="article disabled-color">um</span> <span class="noun disabled-color">movimento</span> <span class="verb disabled-color">que</span> <span class="verb disabled-color">foca</span> <span class="preposition disabled-color">na</span> <span class="noun disabled-color">produção</span> <span class="adverb disabled-color">local</span> <span class="conjunction disabled-color">e</span> <span class="verb disabled-color">na</span> <span class="noun disabled-color">entrega</span> <span class="adverb disabled-color">direta</span> <span class="preposition disabled-color">aos</span> <span class="noun disabled-color">consumidores</span>.
+</p>`,
+        definitionEN: `<p>
+<span class="noun disabled-color">Farm-to-Table</span> <span class="verb disabled-color">is</span> <span class="article disabled-color">a</span> <span class="noun disabled-color">movement</span> <span class="verb disabled-color">focused</span> <span class="preposition disabled-color">on</span> <span class="verb disabled-color">producing</span> <span class="noun disabled-color">food</span> <span class="adverb disabled-color">locally</span> <span class="conjunction disabled-color">and</span> <span class="verb disabled-color">delivering</span> <span class="pronoun disabled-color">it</span> <span class="adverb disabled-color">directly</span> <span class="preposition disabled-color">to</span> <span class="noun disabled-color">consumers</span>.
+</p>`
       },
       {
         title: "Food Security",
         image: "food_security.png",
         phonetic: "/fuːd sɪˈkjʊər.ɪ.ti/",
         hint: "fúd siquiúriti",
-        definitionPT: `<p>Segurança Alimentar é o estado de ter acesso confiável a alimentos suficientes, acessíveis e nutritivos.</p>`,
-        definitionEN: `<p>Food Security is the state of having reliable access to sufficient, affordable, nutritious food.</p>`
+        definitionPT: `<p>
+<span class="noun disabled-color">Segurança</span> <span class="noun disabled-color">Alimentar</span> <span class="verb disabled-color">é</span> <span class="article disabled-color">o</span> <span class="noun disabled-color">estado</span> <span class="preposition disabled-color">de</span> <span class="verb disabled-color">ter</span> <span class="noun disabled-color">acesso</span> <span class="adverb disabled-color">confiável</span> <span class="preposition disabled-color">a</span> <span class="noun disabled-color">alimentos</span> <span class="adjective disabled-color">suficientes</span>, <span class="adjective disabled-color">acessíveis</span> <span class="conjunction disabled-color">e</span> <span class="adjective disabled-color">nutritivos</span>.
+</p>`,
+        definitionEN: `<p>
+<span class="noun disabled-color">Food</span> <span class="noun disabled-color">Security</span> <span class="verb disabled-color">is</span> <span class="article disabled-color">the</span> <span class="noun disabled-color">state</span> <span class="preposition disabled-color">of</span> <span class="verb disabled-color">having</span> <span class="adjective disabled-color">reliable</span> <span class="noun disabled-color">access</span> <span class="preposition disabled-color">to</span> <span class="adjective disabled-color">sufficient</span>, <span class="adjective disabled-color">affordable</span>, <span class="adjective disabled-color">nutritious</span> <span class="noun disabled-color">food</span>.
+</p>`
       },
       {
         title: "Genetically Modified Organism (GMO)",
         image: "gmo.png",
         phonetic: "/dʒəˈnet.ɪ.kəl.i ˈmɒd.ɪ.faɪd ˈɔːr.ɡə.nɪ.zəm/",
         hint: "jenétical-i módifaid órganizm",
-        definitionPT: `<p>Organismo Geneticamente Modificado (OGM) é um organismo cujo material genético foi alterado por técnicas de engenharia genética.</p>`,
-        definitionEN: `<p>Genetically Modified Organism (GMO) is an organism whose genetic material has been altered using genetic engineering techniques.</p>`
+        definitionPT: `<p>
+<span class="adverb disabled-color">Geneticamente</span> <span class="verb disabled-color">modificado</span> <span class="noun disabled-color">Organismo</span> <span class="verb disabled-color">é</span> <span class="article disabled-color">um</span> <span class="noun disabled-color">organismo</span> <span class="relative disabled-color">cujo</span> <span class="noun disabled-color">material</span> <span class="noun disabled-color">genético</span> <span class="verb disabled-color">foi</span> <span class="verb disabled-color">alterado</span> <span class="preposition disabled-color">por</span> <span class="noun disabled-color">técnicas</span> <span class="preposition disabled-color">de</span> <span class="noun disabled-color">engenharia</span> <span class="noun disabled-color">genética</span>.
+</p>`,
+        definitionEN: `<p>
+<span class="adverb disabled-color">Genetically</span> <span class="verb disabled-color">Modified</span> <span class="noun disabled-color">Organism</span> <span class="verb disabled-color">is</span> <span class="article disabled-color">an</span> <span class="noun disabled-color">organism</span> <span class="relative disabled-color">whose</span> <span class="noun disabled-color">genetic</span> <span class="noun disabled-color">material</span> <span class="verb disabled-color">has</span> <span class="verb disabled-color">been</span> <span class="verb disabled-color">altered</span> <span class="preposition disabled-color">using</span> <span class="noun disabled-color">genetic</span> <span class="noun disabled-color">engineering</span> <span class="noun disabled-color">techniques</span>.
+</p>`
       },
       {
         title: "Global Food System",
         image: "global_food_system.png",
         phonetic: "/ˈɡloʊ.bəl fuːd ˈsɪs.təm/",
         hint: "glôbal fúd sistem",
-        definitionPT: `<p>O Sistema Alimentar Global é a complexa rede de atividades envolvendo a produção, processamento e distribuição de alimentos em todo o mundo.</p>`,
-        definitionEN: `<p>The Global Food System is the complex network of activities involving food production, processing, and distribution worldwide.</p>`
+        definitionPT: `<p>
+<span class="adjective disabled-color">Global</span> <span class="noun disabled-color">Sistema</span> <span class="noun disabled-color">Alimentar</span> <span class="verb disabled-color">é</span> <span class="article disabled-color">a</span> <span class="adjective disabled-color">complexa</span> <span class="noun disabled-color">rede</span> <span class="preposition disabled-color">de</span> <span class="noun disabled-color">atividades</span> <span class="verb disabled-color">envolvendo</span> <span class="noun disabled-color">a</span> <span class="noun disabled-color">produção</span>, <span class="noun disabled-color">processamento</span> <span class="conjunction disabled-color">e</span> <span class="noun disabled-color">distribuição</span> <span class="preposition disabled-color">de</span> <span class="noun disabled-color">alimentos</span> <span class="preposition disabled-color">em</span> <span class="noun disabled-color">todo</span> <span class="noun disabled-color">o</span> <span class="noun disabled-color">mundo</span>.
+</p>`,
+        definitionEN: `<p>
+<span class="adjective disabled-color">Global</span> <span class="noun disabled-color">Food</span> <span class="noun disabled-color">System</span> <span class="verb disabled-color">is</span> <span class="article disabled-color">the</span> <span class="adjective disabled-color">complex</span> <span class="noun disabled-color">network</span> <span class="preposition disabled-color">of</span> <span class="noun disabled-color">activities</span> <span class="verb disabled-color">involving</span> <span class="noun disabled-color">food</span> <span class="noun disabled-color">production</span>, <span class="noun disabled-color">processing</span> <span class="conjunction disabled-color">and</span> <span class="noun disabled-color">distribution</span> <span class="noun disabled-color">worldwide</span>.
+</p>`
       },
       {
         title: "Greenhouse Gas Emissions",
         image: "greenhouse_gas_emissions.png",
         phonetic: "/ˈɡriːn.haʊs ɡæs ɪˈmɪʃ.ənz/",
         hint: "grín-raus gás imíchans",
-        definitionPT: `<p>Emissões de Gases de Efeito Estufa são os gases que retêm calor na atmosfera, contribuindo para o aquecimento global.</p>`,
-        definitionEN: `<p>Greenhouse Gas Emissions are gases that trap heat in the Earth's atmosphere, contributing to global warming.</p>`
+        definitionPT: `<p>
+<span class="noun disabled-color">Emissões</span> <span class="preposition disabled-color">de</span> <span class="noun disabled-color">Gases</span> <span class="preposition disabled-color">de</span> <span class="noun disabled-color">Efeito</span> <span class="noun disabled-color">Estufa</span> <span class="verb disabled-color">são</span> <span class="noun disabled-color">os</span> <span class="noun disabled-color">gases</span> <span class="verb disabled-color">que</span> <span class="verb disabled-color">retêm</span> <span class="noun disabled-color">calor</span> <span class="preposition disabled-color">na</span> <span class="noun disabled-color">atmosfera</span>, <span class="verb disabled-color">contribuindo</span> <span class="preposition disabled-color">para</span> <span class="noun disabled-color">o</span> <span class="noun disabled-color">aquecimento</span> <span class="noun disabled-color">global</span>.
+</p>`,
+        definitionEN: `<p>
+<span class="noun disabled-color">Greenhouse</span> <span class="noun disabled-color">Gas</span> <span class="noun disabled-color">Emissions</span> <span class="verb disabled-color">are</span> <span class="noun disabled-color">gases</span> <span class="verb disabled-color">that</span> <span class="verb disabled-color">trap</span> <span class="noun disabled-color">heat</span> <span class="preposition disabled-color">in</span> <span class="article disabled-color">the</span> <span class="noun disabled-color">Earth's</span> <span class="noun disabled-color">atmosphere</span>, <span class="verb disabled-color">contributing</span> <span class="preposition disabled-color">to</span> <span class="adjective disabled-color">global</span> <span class="noun disabled-color">warming</span>.
+</p>`
       },
       {
         title: "Hydroponics",
         image: "hydroponics.png",
         phonetic: "/haɪˈdrɒp.ə.nɪks/",
         hint: "raidropônics",
-        definitionPT: `<p>Hidroponia é um método de cultivo de plantas sem solo, utilizando soluções nutritivas em água.</p>`,
-        definitionEN: `<p>Hydroponics is a method of growing plants without soil, using mineral nutrient solutions in water.</p>`
+        definitionPT: `<p>
+<span class="noun disabled-color">Hidroponia</span> <span class="verb disabled-color">é</span> <span class="article disabled-color">um</span> <span class="noun disabled-color">método</span> <span class="preposition disabled-color">de</span> <span class="verb disabled-color">cultivar</span> <span class="noun disabled-color">plantas</span> <span class="preposition disabled-color">sem</span> <span class="noun disabled-color">solo</span>, <span class="verb disabled-color">utilizando</span> <span class="noun disabled-color">soluções</span> <span class="adjective disabled-color">nutritivas</span> <span class="preposition disabled-color">em</span> <span class="noun disabled-color">água</span>.
+</p>`,
+        definitionEN: `<p>
+<span class="noun disabled-color">Hydroponics</span> <span class="verb disabled-color">is</span> <span class="article disabled-color">a</span> <span class="noun disabled-color">method</span> <span class="preposition disabled-color">of</span> <span class="verb disabled-color">growing</span> <span class="noun disabled-color">plants</span> <span class="preposition disabled-color">without</span> <span class="noun disabled-color">soil</span>, <span class="verb disabled-color">using</span> <span class="noun disabled-color">mineral</span> <span class="noun disabled-color">nutrient</span> <span class="noun disabled-color">solutions</span> <span class="preposition disabled-color">in</span> <span class="noun disabled-color">water</span>.
+</p>`
       },
       {
         title: "Internet of Things (IoT)",
         image: "iot.png",
         phonetic: "/ˈɪn.tər.net əv θɪŋz/",
         hint: "ínternet of tings",
-        definitionPT: `<p>Internet das Coisas (IoT) é uma rede de dispositivos interconectados usados para coleta de dados e automação na agricultura.</p>`,
-        definitionEN: `<p>Internet of Things (IoT) is a network of interconnected devices used for data collection and automation in agriculture.</p>`
+        definitionPT: `<p>
+<span class="noun disabled-color">Internet</span> <span class="preposition disabled-color">das</span> <span class="noun disabled-color">Coisas</span> <span class="verb disabled-color">é</span> <span class="article disabled-color">uma</span> <span class="noun disabled-color">rede</span> <span class="preposition disabled-color">de</span> <span class="noun disabled-color">dispositivos</span> <span class="verb disabled-color">interconectados</span> <span class="verb disabled-color">usados</span> <span class="preposition disabled-color">para</span> <span class="noun disabled-color">coleta</span> <span class="preposition disabled-color">de</span> <span class="noun disabled-color">dados</span> <span class="conjunction disabled-color">e</span> <span class="noun disabled-color">automação</span> <span class="preposition disabled-color">na</span> <span class="noun disabled-color">agricultura</span>.
+</p>`,
+        definitionEN: `<p>
+<span class="noun disabled-color">Internet</span> <span class="preposition disabled-color">of</span> <span class="noun disabled-color">Things</span> <span class="verb disabled-color">is</span> <span class="article disabled-color">a</span> <span class="noun disabled-color">network</span> <span class="preposition disabled-color">of</span> <span class="adjective disabled-color">interconnected</span> <span class="noun disabled-color">devices</span> <span class="verb disabled-color">used</span> <span class="preposition disabled-color">for</span> <span class="noun disabled-color">data</span> <span class="noun disabled-color">collection</span> <span class="conjunction disabled-color">and</span> <span class="noun disabled-color">automation</span> <span class="preposition disabled-color">in</span> <span class="noun disabled-color">agriculture</span>.
+</p>`
       },
       {
         title: "Integrated Pest Management (IPM)",
         image: "ipm.png",
         phonetic: "/ˈɪn.tɪ.ɡreɪ.tɪd pɛst ˈmæn.ɪdʒ.mənt/",
         hint: "integrêited pést mênijment",
-        definitionPT: `<p>Manejo Integrado de Pragas é uma abordagem ecológica que combina diferentes estratégias para a proteção das culturas.</p>`,
-        definitionEN: `<p>Integrated Pest Management (IPM) is an ecosystem-based approach to crop protection that combines different management strategies.</p>`
+        definitionPT: `<p>
+<span class="adjective disabled-color">Manejo</span> <span class="adjective disabled-color">Integrado</span> <span class="noun disabled-color">de</span> <span class="noun disabled-color">Pragas</span> <span class="verb disabled-color">é</span> <span class="article disabled-color">a</span> <span class="noun disabled-color">abordagem</span> <span class="adjective disabled-color">ecológica</span> <span class="verb disabled-color">que</span> <span class="verb disabled-color">combina</span> <span class="adjective disabled-color">diferentes</span> <span class="noun disabled-color">estratégias</span> <span class="preposition disabled-color">para</span> <span class="noun disabled-color">proteção</span> <span class="preposition disabled-color">das</span> <span class="noun disabled-color">culturas</span>.
+</p>`,
+        definitionEN: `<p>
+<span class="adjective disabled-color">Integrated</span> <span class="noun disabled-color">Pest</span> <span class="noun disabled-color">Management</span> <span class="verb disabled-color">is</span> <span class="article disabled-color">an</span> <span class="adjective disabled-color">ecosystem-based</span> <span class="noun disabled-color">approach</span> <span class="preposition disabled-color">to</span> <span class="noun disabled-color">crop</span> <span class="noun disabled-color">protection</span> <span class="conjunction disabled-color">that</span> <span class="verb disabled-color">combines</span> <span class="adjective disabled-color">different</span> <span class="noun disabled-color">management</span> <span class="noun disabled-color">strategies</span>.
+</p>`
       },
       {
         title: "Irrigation",
         image: "irrigation.png",
         phonetic: "/ˌɪr.ɪˈɡeɪ.ʃən/",
         hint: "irrigêichan",
-        definitionPT: `<p>Irrigação é o fornecimento de água para a terra ou culturas para auxiliar no crescimento, geralmente por meios artificiais.</p>`,
-        definitionEN: `<p>Irrigation is the supply of water to land or crops to help growth, typically by artificial means.</p>`
+        definitionPT: `<p>
+<span class="noun disabled-color">Irrigação</span> <span class="verb disabled-color">é</span> <span class="article disabled-color">o</span> <span class="noun disabled-color">fornecimento</span> <span class="preposition disabled-color">de</span> <span class="noun disabled-color">água</span> <span class="preposition disabled-color">para</span> <span class="noun disabled-color">a</span> <span class="noun disabled-color">terra</span> <span class="conjunction disabled-color">ou</span> <span class="noun disabled-color">culturas</span> <span class="verb disabled-color">para</span> <span class="verb disabled-color">auxiliar</span> <span class="preposition disabled-color">no</span> <span class="noun disabled-color">crescimento</span>, <span class="adverb disabled-color">geralmente</span> <span class="preposition disabled-color">por</span> <span class="noun disabled-color">meios</span> <span class="adjective disabled-color">artificiais</span>.
+</p>`,
+        definitionEN: `<p>
+<span class="noun disabled-color">Irrigation</span> <span class="verb disabled-color">is</span> <span class="article disabled-color">the</span> <span class="noun disabled-color">supply</span> <span class="preposition disabled-color">of</span> <span class="noun disabled-color">water</span> <span class="preposition disabled-color">to</span> <span class="noun disabled-color">land</span> <span class="conjunction disabled-color">or</span> <span class="noun disabled-color">crops</span> <span class="verb disabled-color">to</span> <span class="verb disabled-color">help</span> <span class="noun disabled-color">growth</span>, <span class="adverb disabled-color">typically</span> <span class="preposition disabled-color">by</span> <span class="adjective disabled-color">artificial</span> <span class="noun disabled-color">means</span>.
+</p>`
       },
       {
         title: "Land Use Change",
         image: "land_use_change.png",
         phonetic: "/lænd juːs tʃeɪndʒ/",
         hint: "lênd iús tchêinj",
-        definitionPT: `<p>Mudança no Uso da Terra é a transformação do propósito ou manejo da terra, muitas vezes da natureza para uso agrícola.</p>`,
-        definitionEN: `<p>Land Use Change is the transformation of the purpose or management of land.</p>`
+        definitionPT: `<p>
+<span class="noun disabled-color">Mudança</span> <span class="preposition disabled-color">no</span> <span class="noun disabled-color">Uso</span> <span class="preposition disabled-color">da</span> <span class="noun disabled-color">Terra</span> <span class="verb disabled-color">é</span> <span class="article disabled-color">a</span> <span class="noun disabled-color">transformação</span> <span class="preposition disabled-color">do</span> <span class="noun disabled-color">propósito</span> <span class="conjunction disabled-color">ou</span> <span class="noun disabled-color">manejo</span> <span class="preposition disabled-color">da</span> <span class="noun disabled-color">terra</span>, <span class="adverb disabled-color">muitas</span> <span class="noun disabled-color">vezes</span> <span class="preposition disabled-color">da</span> <span class="noun disabled-color">natureza</span> <span class="preposition disabled-color">para</span> <span class="noun disabled-color">uso</span> <span class="adjective disabled-color">agrícola</span>.
+</p>`,
+        definitionEN: `<p>
+<span class="noun disabled-color">Land Use Change</span> <span class="verb disabled-color">is</span> <span class="article disabled-color">the</span> <span class="noun disabled-color">transformation</span> <span class="preposition disabled-color">of</span> <span class="article disabled-color">the</span> <span class="noun disabled-color">purpose</span> <span class="conjunction disabled-color">or</span> <span class="noun disabled-color">management</span> <span class="preposition disabled-color">of</span> <span class="noun disabled-color">land</span>.
+</p>`
       },
       {
         title: "Mechanization",
         image: "mechanization.png",
         phonetic: "/məˌkæn.ɪˈzeɪ.ʃən/",
         hint: "mecanizêichan",
-        definitionPT: `<p>Mechanization é o uso de máquinas para realizar tarefas agrícolas.</p>`,
-        definitionEN: `<p>Mechanization is the use of machines to perform agricultural tasks.</p>`
+        definitionPT: `<p>
+<span class="noun disabled-color">Mecanização</span> <span class="verb disabled-color">é</span> <span class="article disabled-color">o</span> <span class="noun disabled-color">uso</span> <span class="preposition disabled-color">de</span> <span class="noun disabled-color">máquinas</span> <span class="preposition disabled-color">para</span> <span class="verb disabled-color">realizar</span> <span class="noun disabled-color">tarefas</span> <span class="adjective disabled-color">agrícolas</span>.
+</p>`,
+        definitionEN: `<p>
+<span class="noun disabled-color">Mechanization</span> <span class="verb disabled-color">is</span> <span class="article disabled-color">the</span> <span class="noun disabled-color">use</span> <span class="preposition disabled-color">of</span> <span class="noun disabled-color">machines</span> <span class="preposition disabled-color">to</span> <span class="verb disabled-color">perform</span> <span class="adjective disabled-color">agricultural</span> <span class="noun disabled-color">tasks</span>.
+</p>`
       },
       {
         title: "Microbial Fertilizers",
         image: "microbial_fertilizers.png",
         phonetic: "/maɪˈkrəʊ.bi.əl ˈfɜːr.tɪ.laɪ.zərz/",
         hint: "maicrôbial fértilâizers",
-        definitionPT: `<p>Fertilizantes Microbianos são fertilizantes que contêm microrganismos vivos para promover o crescimento das plantas.</p>`,
-        definitionEN: `<p>Microbial Fertilizers are fertilizers containing living microorganisms to enhance plant growth.</p>`
+        definitionPT: `<p>
+<span class="adjective disabled-color">Fertilizantes</span> <span class="noun disabled-color">Microbianos</span> <span class="verb disabled-color">são</span> <span class="noun disabled-color">fertilizantes</span> <span class="verb disabled-color">que</span> <span class="verb disabled-color">contêm</span> <span class="adjective disabled-color">microrganismos</span> <span class="adverb disabled-color">vivos</span> <span class="preposition disabled-color">para</span> <span class="verb disabled-color">promover</span> <span class="noun disabled-color">o</span> <span class="noun disabled-color">crescimento</span> <span class="preposition disabled-color">das</span> <span class="noun disabled-color">plantas</span>.
+</p>`,
+        definitionEN: `<p>
+<span class="adjective disabled-color">Microbial</span> <span class="noun disabled-color">Fertilizers</span> <span class="verb disabled-color">are</span> <span class="noun disabled-color">fertilizers</span> <span class="verb disabled-color">containing</span> <span class="adjective disabled-color">living</span> <span class="noun disabled-color">microorganisms</span> <span class="preposition disabled-color">to</span> <span class="verb disabled-color">enhance</span> <span class="noun disabled-color">plant</span> <span class="noun disabled-color">growth</span>.
+</p>`
       },
       {
         title: "Monoculture",
         image: "monoculture.png",
         phonetic: "/ˌmɒn.əˈkʌl.tʃər/",
         hint: "monôcâlcher",
-        definitionPT: `<p>Monocultura é a prática agrícola de cultivar uma única cultura em uma determinada área.</p>`,
-        definitionEN: `<p>Monoculture is the agricultural practice of growing a single crop in a given area.</p>`
+        definitionPT: `<p>
+<span class="noun disabled-color">Monocultura</span> <span class="verb disabled-color">é</span> <span class="article disabled-color">a</span> <span class="noun disabled-color">prática</span> <span class="preposition disabled-color">de</span> <span class="verb disabled-color">cultivar</span> <span class="article disabled-color">uma</span> <span class="adjective disabled-color">única</span> <span class="noun disabled-color">cultura</span> <span class="preposition disabled-color">em</span> <span class="article disabled-color">uma</span> <span class="noun disabled-color">determinada</span> <span class="noun disabled-color">área</span>.
+</p>`,
+        definitionEN: `<p>
+<span class="noun disabled-color">Monoculture</span> <span class="verb disabled-color">is</span> <span class="article disabled-color">the</span> <span class="noun disabled-color">agricultural</span> <span class="noun disabled-color">practice</span> <span class="preposition disabled-color">of</span> <span class="verb disabled-color">growing</span> <span class="article disabled-color">a</span> <span class="adjective disabled-color">single</span> <span class="noun disabled-color">crop</span> <span class="preposition disabled-color">in</span> <span class="article disabled-color">a</span> <span class="noun disabled-color">given</span> <span class="noun disabled-color">area</span>.
+</p>`
       },
       {
         title: "No-Till Farming",
         image: "no_till_farming.png",
         phonetic: "/noʊ tɪl ˈfɑːr.mɪŋ/",
         hint: "nôu-til fárming",
-        definitionPT: `<p>No-Till Farming é uma forma de cultivar sem revolver o solo por meio do preparo mínimo.</p>`,
-        definitionEN: `<p>No-Till Farming is a way of growing crops without disturbing the soil through tillage.</p>`
+        definitionPT: `<p>
+<span class="adjective disabled-color">No-Till</span> <span class="noun disabled-color">Farming</span> <span class="verb disabled-color">é</span> <span class="article disabled-color">a</span> <span class="noun disabled-color">forma</span> <span class="preposition disabled-color">de</span> <span class="verb disabled-color">cultivar</span> <span class="noun disabled-color">culturas</span> <span class="preposition disabled-color">sem</span> <span class="verb disabled-color">revolver</span> <span class="article disabled-color">o</span> <span class="noun disabled-color">solo</span> <span class="preposition disabled-color">através</span> <span class="noun disabled-color">da</span> <span class="noun disabled-color">preparação</span> <span class="adjective disabled-color">mínima</span>.
+</p>`,
+        definitionEN: `<p>
+<span class="adjective disabled-color">No-Till</span> <span class="noun disabled-color">Farming</span> <span class="verb disabled-color">is</span> <span class="article disabled-color">a</span> <span class="noun disabled-color">method</span> <span class="preposition disabled-color">of</span> <span class="verb disabled-color">growing</span> <span class="noun disabled-color">crops</span> <span class="preposition disabled-color">without</span> <span class="verb disabled-color">disturbing</span> <span class="article disabled-color">the</span> <span class="noun disabled-color">soil</span> <span class="preposition disabled-color">through</span> <span class="noun disabled-color">tillage</span>.
+</p>`
       },
       {
         title: "Organic Farming",
         image: "organic_farming.png",
         phonetic: "/ɔːrˈɡæn.ɪk ˈfɑːr.mɪŋ/",
         hint: "orgânic fárming",
-        definitionPT: `<p>Agricultura Orgânica é a produção agrícola sem o uso de químicos sintéticos ou organismos geneticamente modificados.</p>`,
-        definitionEN: `<p>Organic Farming is agricultural production without the use of synthetic chemicals or genetically modified organisms.</p>`
+        definitionPT: `<p>
+<span class="adjective disabled-color">Orgânica</span> <span class="noun disabled-color">Agricultura</span> <span class="verb disabled-color">é</span> <span class="article disabled-color">a</span> <span class="noun disabled-color">produção</span> <span class="preposition disabled-color">agrícola</span> <span class="verb disabled-color">sem</span> <span class="preposition disabled-color">o</span> <span class="noun disabled-color">uso</span> <span class="preposition disabled-color">de</span> <span class="adjective disabled-color">químicos</span> <span class="adjective disabled-color">sintéticos</span> <span class="conjunction disabled-color">ou</span> <span class="noun disabled-color">organismos</span> <span class="adverb disabled-color">geneticamente</span> <span class="verb disabled-color">modificados</span>.
+</p>`,
+        definitionEN: `<p>
+<span class="adjective disabled-color">Organic</span> <span class="noun disabled-color">Farming</span> <span class="verb disabled-color">is</span> <span class="noun disabled-color">agricultural</span> <span class="noun disabled-color">production</span> <span class="preposition disabled-color">without</span> <span class="article disabled-color">the</span> <span class="noun disabled-color">use</span> <span class="preposition disabled-color">of</span> <span class="adjective disabled-color">synthetic</span> <span class="noun disabled-color">chemicals</span> <span class="conjunction disabled-color">or</span> <span class="noun disabled-color">genetically</span> <span class="verb disabled-color">modified</span> <span class="noun disabled-color">organisms</span>.
+</p>`
       },
       {
         title: "Permaculture",
         image: "permaculture.png",
         phonetic: "/ˈpɜːr.mə.kʌl.tʃər/",
         hint: "pêrmacâlcher",
-        definitionPT: `<p>Permacultura é um sistema de princípios de design agrícola e social que simula ecossistemas naturais.</p>`,
-        definitionEN: `<p>Permaculture is a system of agricultural and social design principles centered on simulating natural ecosystems.</p>`
+        definitionPT: `<p>
+<span class="noun disabled-color">Permacultura</span> <span class="verb disabled-color">é</span> <span class="article disabled-color">um</span> <span class="noun disabled-color">sistema</span> <span class="preposition disabled-color">de</span> <span class="noun disabled-color">princípios</span> <span class="noun disabled-color">de</span> <span class="noun disabled-color">design</span> <span class="noun disabled-color">agrícola</span> <span class="conjunction disabled-color">e</span> <span class="noun disabled-color">social</span> <span class="verb disabled-color">centrado</span> <span class="preposition disabled-color">em</span> <span class="verb disabled-color">simular</span> <span class="adjective disabled-color">ecossistemas</span> <span class="noun disabled-color">naturais</span>.
+</p>`,
+        definitionEN: `<p>
+<span class="noun disabled-color">Permaculture</span> <span class="verb disabled-color">is</span> <span class="article disabled-color">a</span> <span class="noun disabled-color">system</span> <span class="preposition disabled-color">of</span> <span class="noun disabled-color">agricultural</span> <span class="conjunction disabled-color">and</span> <span class="noun disabled-color">social</span> <span class="noun disabled-color">design</span> <span class="noun disabled-color">principles</span> <span class="verb disabled-color">centered</span> <span class="preposition disabled-color">on</span> <span class="verb disabled-color">simulating</span> <span class="adjective disabled-color">natural</span> <span class="noun disabled-color">ecosystems</span>.
+</p>`
       },
       {
         title: "Pesticide Resistance",
         image: "pesticide_resistance.png",
         phonetic: "/ˈpɛs.tɪ.saɪd rɪˈzɪs.təns/",
         hint: "pésticaid rezístens",
-        definitionPT: `<p>Resistência a Pesticidas é a capacidade de pragas de resistir aos efeitos dos pesticidas.</p>`,
-        definitionEN: `<p>Pesticide Resistance is the ability of pests to withstand the effects of pesticides.</p>`
+        definitionPT: `<p>
+<span class="noun disabled-color">Resistência</span> <span class="preposition disabled-color">a</span> <span class="noun disabled-color">Pesticidas</span> <span class="verb disabled-color">é</span> <span class="article disabled-color">a</span> <span class="noun disabled-color">capacidade</span> <span class="preposition disabled-color">de</span> <span class="noun disabled-color">pragas</span> <span class="preposition disabled-color">de</span> <span class="verb disabled-color">resistir</span> <span class="preposition disabled-color">aos</span> <span class="noun disabled-color">efeitos</span> <span class="preposition disabled-color">dos</span> <span class="noun disabled-color">pesticidas</span>.
+</p>`,
+        definitionEN: `<p>
+<span class="noun disabled-color">Pesticide</span> <span class="noun disabled-color">Resistance</span> <span class="verb disabled-color">is</span> <span class="article disabled-color">the</span> <span class="noun disabled-color">ability</span> <span class="preposition disabled-color">of</span> <span class="noun disabled-color">pests</span> <span class="preposition disabled-color">to</span> <span class="verb disabled-color">withstand</span> <span class="article disabled-color">the</span> <span class="noun disabled-color">effects</span> <span class="preposition disabled-color">of</span> <span class="noun disabled-color">pesticides</span>.
+</p>`
       },
       {
         title: "Plant Breeding",
         image: "plant_breeding.png",
         phonetic: "/plænt ˈbriː.dɪŋ/",
         hint: "plânt bríding",
-        definitionPT: `<p>Plant Breeding é a ciência de modificar características das plantas para obter traços desejados.</p>`,
-        definitionEN: `<p>Plant Breeding is the science of changing plant traits to produce desired characteristics.</p>`
+        definitionPT: `<p>
+<span class="noun disabled-color">Melhoramento</span> <span class="noun disabled-color">de</span> <span class="noun disabled-color">Plantas</span> <span class="verb disabled-color">é</span> <span class="article disabled-color">a</span> <span class="noun disabled-color">ciência</span> <span class="preposition disabled-color">de</span> <span class="verb disabled-color">alterar</span> <span class="noun disabled-color">características</span> <span class="preposition disabled-color">para</span> <span class="verb disabled-color">obter</span> <span class="adjective disabled-color">traços</span> <span class="adjective disabled-color">desejados</span>.
+</p>`,
+        definitionEN: `<p>
+<span class="noun disabled-color">Plant</span> <span class="noun disabled-color">Breeding</span> <span class="verb disabled-color">is</span> <span class="article disabled-color">the</span> <span class="noun disabled-color">science</span> <span class="preposition disabled-color">of</span> <span class="verb disabled-color">changing</span> <span class="noun disabled-color">plant</span> <span class="noun disabled-color">traits</span> <span class="preposition disabled-color">to</span> <span class="verb disabled-color">produce</span> <span class="adjective disabled-color">desired</span> <span class="noun disabled-color">characteristics</span>.
+</p>`
       },
       {
         title: "Precision Agriculture",
         image: "precision_agriculture.png",
         phonetic: "/prɪˈsɪʒ.ən ˌæɡ.rɪˈkʌl.tʃər/",
         hint: "pricíjan âgricâlcher",
-        definitionPT: `<p>Agricultura de Precisão é o manejo agrícola baseado na observação, medição e resposta à variabilidade das culturas.</p>`,
-        definitionEN: `<p>Precision Agriculture is farming management based on observing, measuring, and responding to variability in crops.</p>`
+        definitionPT: `<p>
+<span class="noun disabled-color">Agricultura</span> <span class="preposition disabled-color">de</span> <span class="noun disabled-color">Precisão</span> <span class="verb disabled-color">é</span> <span class="article disabled-color">o</span> <span class="noun disabled-color">manejo</span> <span class="preposition disabled-color">agrícola</span> <span class="verb disabled-color">baseado</span> <span class="preposition disabled-color">na</span> <span class="verb disabled-color">observação</span>, <span class="verb disabled-color">medição</span> <span class="conjunction disabled-color">e</span> <span class="verb disabled-color">resposta</span> <span class="preposition disabled-color">à</span> <span class="noun disabled-color">variabilidade</span> <span class="preposition disabled-color">das</span> <span class="noun disabled-color">culturas</span>.
+</p>`,
+        definitionEN: `<p>
+<span class="noun disabled-color">Precision</span> <span class="noun disabled-color">Agriculture</span> <span class="verb disabled-color">is</span> <span class="noun disabled-color">farming</span> <span class="noun disabled-color">management</span> <span class="preposition disabled-color">based</span> <span class="preposition disabled-color">on</span> <span class="verb disabled-color">observing</span>, <span class="verb disabled-color">measuring</span> <span class="conjunction disabled-color">and</span> <span class="verb disabled-color">responding</span> <span class="preposition disabled-color">to</span> <span class="noun disabled-color">variability</span> <span class="preposition disabled-color">in</span> <span class="noun disabled-color">crops</span>.
+</p>`
       },
       {
         title: "Regenerative Agriculture",
         image: "regenerative_agriculture.png",
         phonetic: "/rɪˈdʒen.ə.rə.tɪv ˌæɡ.rɪˈkʌl.tʃər/",
         hint: "rijénerativ âgricâlcher",
-        definitionPT: `<p>Agricultura Regenerativa consiste em práticas que restauram a matéria orgânica do solo e promovem a biodiversidade.</p>`,
-        definitionEN: `<p>Regenerative Agriculture is farming practices that reverse climate change by rebuilding soil organic matter and restoring biodiversity.</p>`
+        definitionPT: `<p>
+<span class="adjective disabled-color">Agricultura</span> <span class="adjective disabled-color">Regenerativa</span> <span class="verb disabled-color">é</span> <span class="article disabled-color">a</span> <span class="noun disabled-color">prática</span> <span class="preposition disabled-color">de</span> <span class="verb disabled-color">reverter</span> <span class="noun disabled-color">as</span> <span class="noun disabled-color">mudanças</span> <span class="noun disabled-color">climáticas</span> <span class="preposition disabled-color">por</span> <span class="verb disabled-color">reconstruir</span> <span class="noun disabled-color">a</span> <span class="noun disabled-color">matéria</span> <span class="noun disabled-color">orgânica</span> <span class="preposition disabled-color">do</span> <span class="noun disabled-color">solo</span> <span class="conjunction disabled-color">e</span> <span class="verb disabled-color">restaurar</span> <span class="noun disabled-color">a</span> <span class="noun disabled-color">biodiversidade</span>.
+</p>`,
+        definitionEN: `<p>
+<span class="adjective disabled-color">Regenerative</span> <span class="noun disabled-color">Agriculture</span> <span class="verb disabled-color">is</span> <span class="noun disabled-color">farming</span> <span class="noun disabled-color">practices</span> <span class="verb disabled-color">that</span> <span class="verb disabled-color">reverse</span> <span class="noun disabled-color">climate</span> <span class="noun disabled-color">change</span> <span class="preposition disabled-color">by</span> <span class="verb disabled-color">rebuilding</span> <span class="noun disabled-color">soil</span> <span class="noun disabled-color">organic</span> <span class="noun disabled-color">matter</span> <span class="conjunction disabled-color">and</span> <span class="verb disabled-color">restoring</span> <span class="noun disabled-color">biodiversity</span>.
+</p>`
       },
       {
         title: "Remote Sensing",
         image: "remote_sensing.png",
         phonetic: "/rɪˈmoʊt ˈsɛn.sɪŋ/",
         hint: "rimôut sénsing",
-        definitionPT: `<p>Sensoriamento Remoto é a obtenção de informações sobre culturas e solo a partir de distâncias, geralmente por satélite.</p>`,
-        definitionEN: `<p>Remote Sensing is gathering information about crops and soil from a distance, typically using satellite imagery.</p>`
+        definitionPT: `<p>
+<span class="verb disabled-color">Sensoriamento</span> <span class="noun disabled-color">Remoto</span> <span class="verb disabled-color">é</span> <span class="article disabled-color">a</span> <span class="noun disabled-color">obtenção</span> <span class="preposition disabled-color">de</span> <span class="noun disabled-color">informações</span> <span class="preposition disabled-color">sobre</span> <span class="noun disabled-color">culturas</span> <span class="conjunction disabled-color">e</span> <span class="noun disabled-color">solo</span> <span class="preposition disabled-color">a partir</span> <span class="noun disabled-color">de</span> <span class="noun disabled-color">distâncias</span>, <span class="adverb disabled-color">geralmente</span> <span class="preposition disabled-color">por</span> <span class="noun disabled-color">satélite</span> <span class="noun disabled-color">imagery</span>.
+</p>`,
+        definitionEN: `<p>
+<span class="verb disabled-color">Remote</span> <span class="noun disabled-color">Sensing</span> <span class="verb disabled-color">is</span> <span class="verb disabled-color">gathering</span> <span class="noun disabled-color">information</span> <span class="preposition disabled-color">about</span> <span class="noun disabled-color">crops</span> <span class="conjunction disabled-color">and</span> <span class="noun disabled-color">soil</span> <span class="preposition disabled-color">from</span> <span class="article disabled-color">a</span> <span class="noun disabled-color">distance</span>, <span class="adverb disabled-color">typically</span> <span class="verb disabled-color">using</span> <span class="noun disabled-color">satellite</span> <span class="noun disabled-color">imagery</span>.
+</p>`
       },
       {
         title: "Resilience",
         image: "resilience.png",
         phonetic: "/rɪˈzɪl.jəns/",
         hint: "rizíliense",
-        definitionPT: `<p>Resiliência é a capacidade dos sistemas agrícolas de resistir e se recuperar de estresses e choques.</p>`,
-        definitionEN: `<p>Resilience is the capacity of agricultural systems to withstand and recover from stresses and shocks.</p>`
+        definitionPT: `<p>
+<span class="noun disabled-color">Resiliência</span> <span class="verb disabled-color">é</span> <span class="article disabled-color">a</span> <span class="noun disabled-color">capacidade</span> <span class="preposition disabled-color">dos</span> <span class="noun disabled-color">sistemas</span> <span class="preposition disabled-color">agrícolas</span> <span class="preposition disabled-color">de</span> <span class="verb disabled-color">resistir</span> <span class="conjunction disabled-color">e</span> <span class="verb disabled-color">se</span> <span class="verb disabled-color">recuperar</span> <span class="preposition disabled-color">de</span> <span class="noun disabled-color">estresses</span> <span class="conjunction disabled-color">e</span> <span class="noun disabled-color">choques</span>.
+</p>`,
+        definitionEN: `<p>
+<span class="noun disabled-color">Resilience</span> <span class="verb disabled-color">is</span> <span class="article disabled-color">the</span> <span class="noun disabled-color">capacity</span> <span class="preposition disabled-color">of</span> <span class="noun disabled-color">agricultural</span> <span class="noun disabled-color">systems</span> <span class="preposition disabled-color">to</span> <span class="verb disabled-color">withstand</span> <span class="conjunction disabled-color">and</span> <span class="verb disabled-color">recover</span> <span class="preposition disabled-color">from</span> <span class="noun disabled-color">stresses</span> <span class="conjunction disabled-color">and</span> <span class="noun disabled-color">shocks</span>.
+</p>`
       },
       {
         title: "Smallholder Farmer",
         image: "smallholder_farmer.png",
         phonetic: "/ˈsmɔːl.hoʊl.dər ˈfɑːr.mər/",
         hint: "smôl-rôlder fármer",
-        definitionPT: `<p>Pequeno Agricultor é o produtor que possui uma pequena área para o cultivo de alimentos para subsistência e para a venda.</p>`,
-        definitionEN: `<p>Smallholder Farmer is a farmer owning a small plot of land on which they grow subsistence and cash crops.</p>`
+        definitionPT: `<p>
+<span class="article disabled-color">O</span> <span class="noun disabled-color">Pequeno</span> <span class="noun disabled-color">Agricultor</span> <span class="verb disabled-color">é</span> <span class="article disabled-color">um</span> <span class="noun disabled-color">produtor</span> <span class="verb disabled-color">que</span> <span class="verb disabled-color">possui</span> <span class="article disabled-color">uma</span> <span class="adjective disabled-color">pequena</span> <span class="noun disabled-color">área</span> <span class="preposition disabled-color">para</span> <span class="verb disabled-color">cultivar</span> <span class="noun disabled-color">alimentos</span> <span class="conjunction disabled-color">para</span> <span class="noun disabled-color">subsistência</span> <span class="conjunction disabled-color">e</span> <span class="noun disabled-color">para</span> <span class="noun disabled-color">venda</span>.
+</p>`,
+        definitionEN: `<p>
+<span class="article disabled-color">A</span> <span class="noun disabled-color">Smallholder</span> <span class="noun disabled-color">Farmer</span> <span class="verb disabled-color">is</span> <span class="article disabled-color">a</span> <span class="noun disabled-color">farmer</span> <span class="verb disabled-color">owning</span> <span class="article disabled-color">a</span> <span class="adjective disabled-color">small</span> <span class="noun disabled-color">plot</span> <span class="preposition disabled-color">of</span> <span class="noun disabled-color">land</span> <span class="preposition disabled-color">on</span> <span class="noun disabled-color">which</span> <span class="pronoun disabled-color">they</span> <span class="verb disabled-color">grow</span> <span class="noun disabled-color">subsistence</span> <span class="conjunction disabled-color">and</span> <span class="noun disabled-color">cash</span> <span class="noun disabled-color">crops</span>.
+</p>`
       },
       {
         title: "Smart Irrigation",
         image: "smart_irrigation.png",
         phonetic: "/smɑːrt ɪˈrɪɡeɪʃən/",
         hint: "smárt irrigêichan",
-        definitionPT: `<p>Smart Irrigation é um sistema avançado de irrigação que usa dados para otimizar o uso de água.</p>`,
-        definitionEN: `<p>Smart Irrigation is an advanced irrigation system that uses data to optimize water usage.</p>`
+        definitionPT: `<p>
+<span class="adjective disabled-color">Smart</span> <span class="noun disabled-color">Irrigation</span> <span class="verb disabled-color">é</span> <span class="article disabled-color">um</span> <span class="adjective disabled-color">sistema</span> <span class="adjective disabled-color">avançado</span> <span class="preposition disabled-color">de</span> <span class="noun disabled-color">irrigação</span> <span class="verb disabled-color">que</span> <span class="verb disabled-color">usa</span> <span class="noun disabled-color">dados</span> <span class="preposition disabled-color">para</span> <span class="verb disabled-color">otimizar</span> <span class="noun disabled-color">o</span> <span class="noun disabled-color">uso</span> <span class="preposition disabled-color">de</span> <span class="noun disabled-color">água</span>.
+</p>`,
+        definitionEN: `<p>
+<span class="adjective disabled-color">Smart</span> <span class="noun disabled-color">Irrigation</span> <span class="verb disabled-color">is</span> <span class="article disabled-color">an</span> <span class="adjective disabled-color">advanced</span> <span class="noun disabled-color">irrigation</span> <span class="noun disabled-color">system</span> <span class="verb disabled-color">that</span> <span class="verb disabled-color">uses</span> <span class="noun disabled-color">data</span> <span class="preposition disabled-color">to</span> <span class="verb disabled-color">optimize</span> <span class="noun disabled-color">water</span> <span class="noun disabled-color">usage</span>.
+</p>`
       },
       {
         title: "Soil Health",
         image: "soil_health.png",
         phonetic: "/sɔɪl hɛlθ/",
         hint: "sóil rélth",
-        definitionPT: `<p>Saúde do Solo refere-se à capacidade do solo de funcionar como um ecossistema vital para plantas, animais e humanos.</p>`,
-        definitionEN: `<p>Soil Health is the continued capacity of soil to function as a vital living ecosystem that sustains plants, animals, and humans.</p>`
+        definitionPT: `<p>
+<span class="noun disabled-color">Saúde</span> <span class="preposition disabled-color">do</span> <span class="noun disabled-color">Solo</span> <span class="verb disabled-color">refere-se</span> <span class="preposition disabled-color">à</span> <span class="noun disabled-color">capacidade</span> <span class="preposition disabled-color">do</span> <span class="noun disabled-color">solo</span> <span class="preposition disabled-color">de</span> <span class="verb disabled-color">funcionar</span> <span class="preposition disabled-color">como</span> <span class="article disabled-color">um</span> <span class="adjective disabled-color">ecossistema</span> <span class="adjective disabled-color">vital</span> <span class="noun disabled-color">para</span> <span class="noun disabled-color">plantas</span>, <span class="noun disabled-color">animais</span> <span class="conjunction disabled-color">e</span> <span class="noun disabled-color">humanos</span>.
+</p>`,
+        definitionEN: `<p>
+<span class="noun disabled-color">Soil</span> <span class="noun disabled-color">Health</span> <span class="verb disabled-color">is</span> <span class="article disabled-color">the</span> <span class="adjective disabled-color">continued</span> <span class="noun disabled-color">capacity</span> <span class="preposition disabled-color">of</span> <span class="noun disabled-color">soil</span> <span class="preposition disabled-color">to</span> <span class="verb disabled-color">function</span> <span class="preposition disabled-color">as</span> <span class="article disabled-color">a</span> <span class="adjective disabled-color">vital</span> <span class="adjective disabled-color">living</span> <span class="noun disabled-color">ecosystem</span> <span class="conjunction disabled-color">that</span> <span class="verb disabled-color">sustains</span> <span class="noun disabled-color">plants</span>, <span class="noun disabled-color">animals</span>, <span class="conjunction disabled-color">and</span> <span class="noun disabled-color">humans</span>.
+</p>`
       },
       {
         title: "Sustainable Intensification",
         image: "sustainable_intensification.png",
         phonetic: "/səˈsteɪ.nə.bəl ɪnˌtɛn.sɪ.fɪˈkeɪ.ʃən/",
         hint: "sastêinabel intensifiquêichan",
-        definitionPT: `<p>Sustentável Intensificação é o aumento da produção agrícola minimizando o impacto ambiental.</p>`,
-        definitionEN: `<p>Sustainable Intensification is increasing agricultural production while minimizing environmental impact.</p>`
+        definitionPT: `<p>
+<span class="adjective disabled-color">Sustentável</span> <span class="noun disabled-color">Intensificação</span> <span class="verb disabled-color">é</span> <span class="article disabled-color">o</span> <span class="noun disabled-color">aumento</span> <span class="preposition disabled-color">da</span> <span class="noun disabled-color">produção</span> <span class="preposition disabled-color">agrícola</span> <span class="verb disabled-color">minimizando</span> <span class="noun disabled-color">o</span> <span class="noun disabled-color">impacto</span> <span class="adjective disabled-color">ambiental</span>.
+</p>`,
+        definitionEN: `<p>
+<span class="adjective disabled-color">Sustainable</span> <span class="noun disabled-color">Intensification</span> <span class="verb disabled-color">is</span> <span class="verb disabled-color">increasing</span> <span class="noun disabled-color">agricultural</span> <span class="noun disabled-color">production</span> <span class="verb disabled-color">while</span> <span class="verb disabled-color">minimizing</span> <span class="noun disabled-color">environmental</span> <span class="noun disabled-color">impact</span>.
+</p>`
       },
       {
         title: "Supply Chain",
         image: "supply_chain.png",
         phonetic: "/səˈplaɪ tʃeɪn/",
         hint: "saplái tchêin",
-        definitionPT: `<p>Cadeia de Suprimentos é a rede que conecta uma empresa aos seus fornecedores para produzir e distribuir produtos agrícolas.</p>`,
-        definitionEN: `<p>Supply Chain is the network between a company and its suppliers to produce and distribute agricultural products.</p>`
+        definitionPT: `<p>
+<span class="noun disabled-color">Cadeia</span> <span class="preposition disabled-color">de</span> <span class="noun disabled-color">Suprimentos</span> <span class="verb disabled-color">é</span> <span class="article disabled-color">a</span> <span class="noun disabled-color">rede</span> <span class="preposition disabled-color">que</span> <span class="verb disabled-color">conecta</span> <span class="noun disabled-color">uma</span> <span class="noun disabled-color">empresa</span> <span class="preposition disabled-color">aos</span> <span class="noun disabled-color">seus</span> <span class="noun disabled-color">fornecedores</span> <span class="preposition disabled-color">para</span> <span class="verb disabled-color">produzir</span> <span class="conjunction disabled-color">e</span> <span class="verb disabled-color">distribuir</span> <span class="noun disabled-color">produtos</span> <span class="adjective disabled-color">agrícolas</span>.
+</p>`,
+        definitionEN: `<p>
+<span class="noun disabled-color">Supply</span> <span class="noun disabled-color">Chain</span> <span class="verb disabled-color">is</span> <span class="article disabled-color">the</span> <span class="noun disabled-color">network</span> <span class="preposition disabled-color">between</span> <span class="article disabled-color">a</span> <span class="noun disabled-color">company</span> <span class="conjunction disabled-color">and</span> <span class="noun disabled-color">its</span> <span class="noun disabled-color">suppliers</span> <span class="preposition disabled-color">to</span> <span class="verb disabled-color">produce</span> <span class="conjunction disabled-color">and</span> <span class="verb disabled-color">distribute</span> <span class="adjective disabled-color">agricultural</span> <span class="noun disabled-color">products</span>.
+</p>`
       },
       {
         title: "Traceability",
         image: "traceability.png",
         phonetic: "/treɪsəˈbɪl.ɪ.ti/",
         hint: "trêisabíliti",
-        definitionPT: `<p>Rastreabilidade é a capacidade de acompanhar o movimento de produtos agrícolas através das etapas de produção, processamento e distribuição.</p>`,
-        definitionEN: `<p>Traceability is the ability to track the movement of agricultural products through stages of production, processing, and distribution.</p>`
+        definitionPT: `<p>
+<span class="noun disabled-color">Rastreabilidade</span> <span class="verb disabled-color">é</span> <span class="article disabled-color">a</span> <span class="noun disabled-color">capacidade</span> <span class="preposition disabled-color">de</span> <span class="verb disabled-color">acompanhar</span> <span class="article disabled-color">o</span> <span class="noun disabled-color">movimento</span> <span class="preposition disabled-color">de</span> <span class="noun disabled-color">produtos</span> <span class="adjective disabled-color">agrícolas</span> <span class="preposition disabled-color">através</span> <span class="noun disabled-color">das</span> <span class="noun disabled-color">etapas</span> <span class="preposition disabled-color">de</span> <span class="noun disabled-color">produção</span>, <span class="noun disabled-color">processamento</span> <span class="conjunction disabled-color">e</span> <span class="noun disabled-color">distribuição</span>.
+</p>`,
+        definitionEN: `<p>
+<span class="noun disabled-color">Traceability</span> <span class="verb disabled-color">is</span> <span class="article disabled-color">the</span> <span class="noun disabled-color">ability</span> <span class="preposition disabled-color">to</span> <span class="verb disabled-color">track</span> <span class="article disabled-color">the</span> <span class="noun disabled-color">movement</span> <span class="preposition disabled-color">of</span> <span class="adjective disabled-color">agricultural</span> <span class="noun disabled-color">products</span> <span class="preposition disabled-color">through</span> <span class="noun disabled-color">stages</span> <span class="preposition disabled-color">of</span> <span class="noun disabled-color">production</span>, <span class="noun disabled-color">processing</span> <span class="conjunction disabled-color">and</span> <span class="noun disabled-color">distribution</span>.
+</p>`
       },
       {
         title: "Vertical Farming",
         image: "vertical_farming.png",
         phonetic: "/ˈvɜː.tɪ.kəl ˈfɑːr.mɪŋ/",
         hint: "vértical fárming",
-        definitionPT: `<p>Cultivo Vertical é a prática de cultivar plantas em camadas empilhadas verticalmente, geralmente em ambientes controlados.</p>`,
-        definitionEN: `<p>Vertical Farming is the practice of growing crops in vertically stacked layers, often in controlled environments.</p>`
+        definitionPT: `<p>
+<span class="noun disabled-color">Cultivo</span> <span class="adjective disabled-color">Vertical</span> <span class="verb disabled-color">é</span> <span class="article disabled-color">a</span> <span class="noun disabled-color">prática</span> <span class="preposition disabled-color">de</span> <span class="verb disabled-color">cultivar</span> <span class="noun disabled-color">plantas</span> <span class="preposition disabled-color">em</span> <span class="noun disabled-color">camadas</span> <span class="adverb disabled-color">verticalmente</span>, <span class="adverb disabled-color">geralmente</span> <span class="preposition disabled-color">em</span> <span class="noun disabled-color">ambientes</span> <span class="adjective disabled-color">controlados</span>.
+</p>`,
+        definitionEN: `<p>
+<span class="adjective disabled-color">Vertical</span> <span class="noun disabled-color">Farming</span> <span class="verb disabled-color">is</span> <span class="article disabled-color">the</span> <span class="noun disabled-color">practice</span> <span class="preposition disabled-color">of</span> <span class="verb disabled-color">growing</span> <span class="noun disabled-color">crops</span> <span class="preposition disabled-color">in</span> <span class="adverb disabled-color">vertically</span> <span class="verb disabled-color">stacked</span> <span class="noun disabled-color">layers</span>, <span class="adverb disabled-color">often</span> <span class="preposition disabled-color">in</span> <span class="adjective disabled-color">controlled</span> <span class="noun disabled-color">environments</span>.
+</p>`
       },
       {
         title: "Water Footprint",
         image: "water_footprint.png",
         phonetic: "/ˈwɔː.tər ˈfʊt.prɪnt/",
         hint: "uóter fútprint",
-        definitionPT: `<p>Pegada Hídrica é um indicador do uso de água em relação à produção agrícola.</p>`,
-        definitionEN: `<p>Water Footprint is an indicator of water use in relation to agricultural production.</p>`
+        definitionPT: `<p>
+<span class="noun disabled-color">Pegada</span> <span class="noun disabled-color">Hídrica</span> <span class="verb disabled-color">é</span> <span class="article disabled-color">um</span> <span class="noun disabled-color">indicador</span> <span class="preposition disabled-color">do</span> <span class="noun disabled-color">uso</span> <span class="preposition disabled-color">de</span> <span class="noun disabled-color">água</span> <span class="preposition disabled-color">em</span> <span class="noun disabled-color">relação</span> <span class="preposition disabled-color">à</span> <span class="noun disabled-color">produção</span> <span class="adjective disabled-color">agrícola</span>.
+</p>`,
+        definitionEN: `<p>
+<span class="noun disabled-color">Water</span> <span class="noun disabled-color">Footprint</span> <span class="verb disabled-color">is</span> <span class="article disabled-color">an</span> <span class="noun disabled-color">indicator</span> <span class="preposition disabled-color">of</span> <span class="noun disabled-color">water</span> <span class="noun disabled-color">use</span> <span class="preposition disabled-color">in</span> <span class="noun disabled-color">relation</span> <span class="preposition disabled-color">to</span> <span class="noun disabled-color">agricultural</span> <span class="noun disabled-color">production</span>.
+</p>`
       },
       {
         title: "Weather Futures",
         image: "weather_futures.png",
         phonetic: "/ˈwɛð.ər ˈfjuː.tʃərz/",
         hint: "uéder fiútchers",
-        definitionPT: `<p>Futuros Climáticos são contratos financeiros que permitem às empresas agrícolas se protegerem contra condições climáticas adversas.</p>`,
-        definitionEN: `<p>Weather Futures are financial contracts that allow agricultural businesses to hedge against adverse weather conditions.</p>`
+        definitionPT: `<p>
+<span class="noun disabled-color">Futuros</span> <span class="noun disabled-color">Climáticos</span> <span class="verb disabled-color">são</span> <span class="noun disabled-color">contratos</span> <span class="adjective disabled-color">financeiros</span> <span class="verb disabled-color">que</span> <span class="verb disabled-color">permitem</span> <span class="article disabled-color">às</span> <span class="noun disabled-color">empresas</span> <span class="adjective disabled-color">agrícolas</span> <span class="verb disabled-color">se</span> <span class="verb disabled-color">protegerem</span> <span class="preposition disabled-color">contra</span> <span class="adjective disabled-color">condições</span> <span class="noun disabled-color">climáticas</span> <span class="adjective disabled-color">adversas</span>.
+</p>`,
+        definitionEN: `<p>
+<span class="noun disabled-color">Weather</span> <span class="noun disabled-color">Futures</span> <span class="verb disabled-color">are</span> <span class="adjective disabled-color">financial</span> <span class="noun disabled-color">contracts</span> <span class="verb disabled-color">that</span> <span class="verb disabled-color">allow</span> <span class="adjective disabled-color">agricultural</span> <span class="noun disabled-color">businesses</span> <span class="preposition disabled-color">to</span> <span class="verb disabled-color">hedge</span> <span class="preposition disabled-color">against</span> <span class="adjective disabled-color">adverse</span> <span class="noun disabled-color">weather</span> <span class="noun disabled-color">conditions</span>.
+</p>`
       },
       {
         title: "Yield",
         image: "yield.png",
         phonetic: "/jiːld/",
         hint: "iíld",
-        definitionPT: `<p>Rendimento é a quantidade de produção agrícola colhida por unidade de área.</p>`,
-        definitionEN: `<p>Yield is the amount of agricultural production harvested per unit of land area.</p>`
+        definitionPT: `<p>
+<span class="noun disabled-color">Rendimento</span> <span class="verb disabled-color">é</span> <span class="article disabled-color">a</span> <span class="noun disabled-color">quantidade</span> <span class="preposition disabled-color">de</span> <span class="noun disabled-color">produção</span> <span class="adjective disabled-color">agrícola</span> <span class="verb disabled-color">colhida</span> <span class="preposition disabled-color">por</span> <span class="noun disabled-color">unidade</span> <span class="preposition disabled-color">de</span> <span class="noun disabled-color">área</span>.
+</p>`,
+        definitionEN: `<p>
+<span class="noun disabled-color">Yield</span> <span class="verb disabled-color">is</span> <span class="article disabled-color">the</span> <span class="noun disabled-color">amount</span> <span class="preposition disabled-color">of</span> <span class="noun disabled-color">agricultural</span> <span class="noun disabled-color">production</span> <span class="verb disabled-color">harvested</span> <span class="preposition disabled-color">per</span> <span class="noun disabled-color">unit</span> <span class="preposition disabled-color">of</span> <span class="noun disabled-color">land</span> <span class="noun disabled-color">area</span>.
+</p>`
       },
       {
         title: "Zero Hunger",
         image: "zero.png",
         phonetic: "/ˈzɪərəʊ ˈhʌŋɡə/",
         hint: "zírou rânguer",
-        definitionPT: `<p>Zero Fome é uma iniciativa global que visa acabar com a fome, garantir segurança alimentar e promover a agricultura sustentável.</p>`,
-        definitionEN: `<p>Zero Hunger is a global initiative aimed at ending hunger, ensuring food security, and promoting sustainable agriculture.</p>`
+        definitionPT: `<p>
+<span class="numeral disabled-color">Zero</span> <span class="noun disabled-color">Fome</span> <span class="verb disabled-color">é</span> <span class="article disabled-color">uma</span> <span class="noun disabled-color">iniciativa</span> <span class="adjective disabled-color">global</span> <span class="verb disabled-color">que</span> <span class="verb disabled-color">visa</span> <span class="verb disabled-color">acabar</span> <span class="preposition disabled-color">com</span> <span class="noun disabled-color">a</span> <span class="noun disabled-color">fome</span>, <span class="verb disabled-color">garantir</span> <span class="noun disabled-color">segurança</span> <span class="noun disabled-color">alimentar</span> <span class="conjunction disabled-color">e</span> <span class="verb disabled-color">promover</span> <span class="adjective disabled-color">a</span> <span class="noun disabled-color">agricultura</span> <span class="adjective disabled-color">sustentável</span>.
+</p>`,
+        definitionEN: `<p>
+<span class="numeral disabled-color">Zero</span> <span class="noun disabled-color">Hunger</span> <span class="verb disabled-color">is</span> <span class="article disabled-color">a</span> <span class="noun disabled-color">global</span> <span class="noun disabled-color">initiative</span> <span class="verb disabled-color">aimed</span> <span class="preposition disabled-color">at</span> <span class="verb disabled-color">ending</span> <span class="noun disabled-color">hunger</span>, <span class="verb disabled-color">ensuring</span> <span class="noun disabled-color">food</span> <span class="noun disabled-color">security</span>, <span class="conjunction disabled-color">and</span> <span class="verb disabled-color">promoting</span> <span class="adjective disabled-color">sustainable</span> <span class="noun disabled-color">agriculture</span>.
+</p>`
       }
+      // Certifique-se de incluir os outros termos (faltam 40) seguindo o mesmo padrão.
     ];
     
     let currentTermIndex = 0;
@@ -733,18 +920,17 @@
     });
     
     document.addEventListener("DOMContentLoaded", function() {
-      // Ícone de som: pronuncia o título do termo (sem o número, se houver)
+      // Ícone de som: pronuncia o título do termo (removendo números se existirem)
       const soundIcon = document.getElementById("soundIcon");
       soundIcon.addEventListener("click", function() {
         const titleText = terms[currentTermIndex].title;
-        // Remove número se houver (ex.: "50. Zero Hunger")
         const cleanTitle = titleText.replace(/^\d+\.\s*/, "");
         const utterance = new SpeechSynthesisUtterance(cleanTitle);
         utterance.lang = "en-US";
         speechSynthesis.speak(utterance);
       });
       
-      // Ícone de dica: mostra/oculta a linha combinada de fonética e dica
+      // Ícone de dica: alterna a exibição da linha de fonética e dica
       const hintIcon = document.getElementById("hintIcon");
       hintIcon.addEventListener("click", function() {
         const hintLine = document.getElementById("hintLine");
@@ -784,7 +970,6 @@
       });
       
       function updateCategoryColor(category, isEnabled) {
-        // Atualiza os spans dentro das definições
         const defPT = document.getElementById("defPT");
         const defEN = document.getElementById("defEN");
         [defPT, defEN].forEach(def => {
