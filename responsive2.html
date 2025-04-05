@@ -7,17 +7,16 @@
   <style>
     :root {
       /* Cores: 7 cores do arco-íris para as primeiras categorias, rosa para Artigo e marrom claro para Numeral */
-      --cor-substantivo: #FF0000;    /* Vermelho */
-      --cor-verbo: #FFA500;           /* Laranja */
-      --cor-adjetivo: #FFFF00;        /* Amarelo */
-      --cor-adverbio: #008000;        /* Verde */
-      --cor-preposicao: #0000FF;      /* Azul */
-      --cor-conjuncao: #4B0082;       /* Índigo */
-      --cor-pronome: #EE82EE;         /* Violeta */
-      --cor-artigo: #FFC0CB;          /* Rosa */
-      --cor-numeral: #D2B48C;         /* Marrom claro */
+      --cor-substantivo: #FF0000;
+      --cor-verbo: #FFA500;
+      --cor-adjetivo: #FFFF00;
+      --cor-adverbio: #008000;
+      --cor-preposicao: #0000FF;
+      --cor-conjuncao: #4B0082;
+      --cor-pronome: #EE82EE;
+      --cor-artigo: #FFC0CB;
+      --cor-numeral: #D2B48C;
     }
-    
     body {
       background-color: #2E2E2E;
       color: #EEE;
@@ -28,29 +27,24 @@
       margin-left: auto;
       margin-right: auto;
     }
-    
     h1 {
       text-align: center;
       margin-bottom: 20px;
       font-size: 2em;
     }
-    
     .container {
       display: flex;
       flex-direction: column;
       gap: 20px;
     }
-    
     .image-section {
       text-align: center;
     }
-    
     .image-section img {
       max-width: 100%;
       border: 3px solid #555;
       border-radius: 10px;
     }
-    
     .term-title {
       display: flex;
       align-items: center;
@@ -58,26 +52,21 @@
       gap: 10px;
       font-size: 1.4em;
     }
-    
     .pronunciation {
       cursor: pointer;
       color: #3498db;
       font-size: 1.2em;
     }
-    
     .pronunciation:hover {
       color: #2079b0;
     }
-    
     .hidden {
       display: none;
     }
-    
     .lang-buttons {
       text-align: center;
       margin-top: 10px;
     }
-    
     .lang-buttons button {
       background-color: #555;
       border: none;
@@ -88,34 +77,28 @@
       cursor: pointer;
       font-size: 1em;
     }
-    
     .lang-buttons button:hover {
       background-color: #777;
     }
-    
-    /* Definitions com texto justificado */
+    /* Definições com texto justificado */
     .definition {
       text-align: justify;
       margin-top: 10px;
       font-size: 1em;
     }
-    
     #defPT {
       display: block;
     }
-    
     #defEN {
       display: none;
     }
-    
-    /* Parágrafo único para fonética e dica na mesma linha */
+    /* Linha única para fonética e dica */
     #hintLine {
       text-align: justify;
       margin: 5px 0;
       font-size: 16px;
       display: none;
     }
-    
     /* Categorias morfológicas */
     .noun { color: var(--cor-substantivo); }
     .verb { color: var(--cor-verbo); }
@@ -126,12 +109,10 @@
     .pronoun { color: var(--cor-pronome); }
     .article { color: var(--cor-artigo); }
     .numeral { color: var(--cor-numeral); }
-    
     .disabled-color {
       color: inherit !important;
     }
-    
-    /* Legend Panel */
+    /* Painel de Legenda */
     .legend {
       background-color: #3E3E3E;
       border: 1px solid #555;
@@ -142,7 +123,6 @@
       max-width: 500px;
       margin: 20px auto;
     }
-    
     .legend h3 {
       text-align: center;
       font-size: 1em;
@@ -150,7 +130,6 @@
       padding-bottom: 5px;
       margin-top: 0;
     }
-    
     .legend ul {
       list-style: none;
       padding: 0;
@@ -159,22 +138,18 @@
       flex-direction: column;
       gap: 10px;
     }
-    
     .legend li {
       display: flex;
       align-items: center;
       justify-content: flex-start;
       gap: 5px;
     }
-    
     .legend li input {
       margin: 0;
     }
-    
     .legend label {
       text-align: left;
     }
-    
     .color-box {
       display: inline-block;
       width: 15px;
@@ -182,7 +157,6 @@
       border-radius: 3px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.5);
     }
-    
     .color-box.noun { background-color: var(--cor-substantivo); }
     .color-box.verb { background-color: var(--cor-verbo); }
     .color-box.adjective { background-color: var(--cor-adjetivo); }
@@ -192,7 +166,6 @@
     .color-box.pronoun { background-color: var(--cor-pronome); }
     .color-box.article { background-color: var(--cor-artigo); }
     .color-box.numeral { background-color: var(--cor-numeral); }
-    
     .legend button {
       width: 100%;
       margin-top: 10px;
@@ -204,32 +177,28 @@
       cursor: pointer;
       font-size: 1em;
     }
-    
     .legend button:hover {
       background-color: #26a65b;
     }
-    
+    /* Botões de Navegação: Incluindo Início e Fim */
     .navigation {
       text-align: center;
       margin-top: 20px;
     }
-    
     .navigation button {
       background-color: #555;
       border: none;
       color: #EEE;
       padding: 10px 15px;
-      margin: 0 10px;
+      margin: 0 5px;
       font-size: 1.2em;
       border-radius: 5px;
       cursor: pointer;
     }
-    
     .navigation button:hover {
       background-color: #777;
     }
-    
-    /* Responsive adjustments */
+    /* Responsive */
     @media (max-width: 768px) {
       .term-title {
         font-size: 1.2em;
@@ -249,67 +218,42 @@
   <h1>Termos de Agronegócio</h1>
   
   <div class="container">
-    <!-- Image Section -->
+    <!-- Seção de Imagem -->
     <div class="image-section">
-      <img src="zero.png" alt="Imagem do termo" />
+      <img id="termImage" src="zero.png" alt="Imagem do termo" />
     </div>
     
-    <!-- Term Title and Icons -->
+    <!-- Título do Termo e Ícones -->
     <div class="term-title">
       <span id="termTitle">50. Zero Hunger</span>
-      <!-- Sound Icon -->
       <span class="pronunciation" id="soundIcon" title="Tocar som">🔊</span>
-      <!-- Hint Icon -->
       <span class="pronunciation" id="hintIcon" title="Mostrar dica">💡</span>
     </div>
     
-    <!-- Combined phonetic & hint text -->
+    <!-- Linha combinada para fonética e dica -->
     <p id="hintLine" class="hidden">/ˈzɪərəʊ ˈhʌŋɡə/ (zírou rânguer)</p>
     
-    <!-- Language Buttons -->
+    <!-- Botões de Idioma -->
     <div class="lang-buttons">
       <button class="lang-btn" data-lang="pt" data-term="def">Português</button>
       <button class="lang-btn" data-lang="en" data-term="def">English</button>
       <button class="lang-btn" data-lang="both" data-term="def">Eng/Port</button>
     </div>
     
-    <!-- Definitions -->
-    <div class="definition" id="defPT">
-      <!-- A definição abaixo é um exemplo; você poderá personalizar cada termo -->
-      <p>
-        <span class="noun disabled-color">Objetivo</span> 
-        <span class="preposition disabled-color">de</span> 
-        <span class="noun disabled-color">desenvolvimento</span> 
-        <span class="adjective disabled-color">sustentável</span> 
-        <span class="article disabled-color">da</span> 
-        <span class="noun disabled-color">ONU</span> 
-        <span class="pronoun disabled-color">que</span> 
-        <span class="verb disabled-color">visa</span> 
-        <span class="verb disabled-color">erradicar</span> 
-        <span class="article disabled-color">a</span> 
-        <span class="noun disabled-color">fome</span>.
-      </p>
-    </div>
-    <div class="definition hidden" id="defEN">
-      <p>
-        <span class="noun disabled-color">Goal</span> 
-        <span class="preposition disabled-color">of</span> 
-        <span class="adjective disabled-color">sustainable</span> 
-        <span class="noun disabled-color">development</span> 
-        <span class="preposition disabled-color">by</span> 
-        <span class="article disabled-color">the</span> 
-        <span class="noun disabled-color">UN</span>.
-      </p>
-    </div>
+    <!-- Definições -->
+    <div class="definition" id="defPT"></div>
+    <div class="definition hidden" id="defEN"></div>
   </div>
   
-  <!-- Navigation Buttons -->
+  <!-- Botões de Navegação: Início, Anterior, Próximo, Fim -->
   <div class="navigation">
+    <button id="first-term">Início</button>
     <button id="prev-term">← Anterior</button>
     <button id="next-term">Próximo →</button>
+    <button id="last-term">Fim</button>
   </div>
   
-  <!-- Legend Panel -->
+  <!-- Painel de Legenda -->
   <aside class="legend">
     <h3>Legenda de Categorias Morfológi­cas</h3>
     <ul>
@@ -363,71 +307,1818 @@
   </aside>
   
   <script>
-    // Array de 50 termos com definições (placeholders)
-    const termNames = [
-      "Agroecology", "Agronomy", "Animal Welfare", "Aquaculture", "Biodiversity", 
-      "Biofortification", "Biofuels", "Biosecurity", "Blockchain", "Carbon Sequestration", 
-      "Circular Economy", "Climate-Smart Agriculture", "Commodity", "Crop Rotation", 
-      "Digital Agriculture", "Drone Technology", "Eco-labeling", "Farm-to-Table", 
-      "Food Security", "Genetically Modified Organism (GMO)", "Global Food System", 
-      "Greenhouse Gas Emissions", "Hydroponics", "Internet of Things (IoT)", 
-      "Integrated Pest Management (IPM)", "Irrigation", "Land Use Change", "Mechanization", 
-      "Microbial Fertilizers", "Monoculture", "No-Till Farming", "Organic Farming", 
-      "Permaculture", "Pesticide Resistance", "Plant Breeding", "Precision Agriculture", 
-      "Regenerative Agriculture", "Remote Sensing", "Resilience", "Smallholder Farmer", 
-      "Smart Irrigation", "Soil Health", "Sustainable Intensification", "Supply Chain", 
-      "Traceability", "Vertical Farming", "Water Footprint", "Weather Futures", "Yield"
+    // Array de 50 termos com definições e classificações morfológicas
+    const terms = [
+      {
+        title: "Agroecology",
+        image: "agroecology.png",
+        phonetic: "/əˌgroʊ.ɪˈkɒl.ə.dʒi/",
+        hint: "(estudo ecológico aplicado à agricultura)",
+        definitionPT: `<p>
+Agroecology: <strong>Substantivo</strong><br>
+The: <strong>Artigo</strong><br>
+study: <strong>Substantivo</strong><br>
+of: <strong>Preposição</strong><br>
+ecological: <strong>Adjetivo</strong><br>
+processes: <strong>Substantivo</strong><br>
+applied: <strong>Verbo (particípio passado usado como adjetivo)</strong><br>
+to: <strong>Preposição</strong><br>
+agricultural: <strong>Adjetivo</strong><br>
+production: <strong>Substantivo</strong><br>
+systems: <strong>Substantivo</strong>
+</p>`,
+        definitionEN: `<p>
+Agroecology: <strong>Noun</strong><br>
+The: <strong>Article</strong><br>
+study: <strong>Noun</strong><br>
+of: <strong>Preposition</strong><br>
+ecological: <strong>Adjective</strong><br>
+processes: <strong>Noun</strong><br>
+applied: <strong>Verb (past participle used as adjective)</strong><br>
+to: <strong>Preposition</strong><br>
+agricultural: <strong>Adjective</strong><br>
+production: <strong>Noun</strong><br>
+systems: <strong>Noun</strong>
+</p>`
+      },
+      {
+        title: "Agronomy",
+        image: "agronomy.png",
+        phonetic: "/əˈɡrɒnəmi/",
+        hint: "(ciência da produção agrícola)",
+        definitionPT: `<p>
+Agronomy: <strong>Substantivo</strong><br>
+The: <strong>Artigo</strong><br>
+science: <strong>Substantivo</strong><br>
+of: <strong>Preposição</strong><br>
+soil: <strong>Substantivo</strong><br>
+management: <strong>Substantivo</strong><br>
+and: <strong>Conjunção</strong><br>
+crop: <strong>Substantivo</strong><br>
+production: <strong>Substantivo</strong>
+</p>`,
+        definitionEN: `<p>
+Agronomy: <strong>Noun</strong><br>
+The: <strong>Article</strong><br>
+science: <strong>Noun</strong><br>
+of: <strong>Preposition</strong><br>
+soil: <strong>Noun</strong><br>
+management: <strong>Noun</strong><br>
+and: <strong>Conjunction</strong><br>
+crop: <strong>Noun</strong><br>
+production: <strong>Noun</strong>
+</p>`
+      },
+      {
+        title: "Animal Welfare",
+        image: "animal_welfare.png",
+        phonetic: "/ˈæn.ɪ.məl ˈwɛl.fɛər/",
+        hint: "(bem-estar animal)",
+        definitionPT: `<p>
+Animal Welfare: <strong>Substantivo</strong> (Animal usado como adjetivo) e <strong>Substantivo</strong><br>
+Practices: <strong>Substantivo</strong><br>
+ensuring: <strong>Verbo (gerúndio)</strong><br>
+the: <strong>Artigo</strong><br>
+physical: <strong>Adjetivo</strong><br>
+and: <strong>Conjunção</strong><br>
+mental: <strong>Adjetivo</strong><br>
+well-being: <strong>Substantivo</strong><br>
+of: <strong>Preposição</strong><br>
+livestock: <strong>Substantivo</strong>
+</p>`,
+        definitionEN: `<p>
+Animal Welfare: <strong>Noun</strong><br>
+Practices: <strong>Noun</strong><br>
+ensuring: <strong>Verb (gerund)</strong><br>
+the: <strong>Article</strong><br>
+physical: <strong>Adjective</strong><br>
+and: <strong>Conjunction</strong><br>
+mental: <strong>Adjective</strong><br>
+well-being: <strong>Noun</strong><br>
+of: <strong>Preposition</strong><br>
+livestock: <strong>Noun</strong>
+</p>`
+      },
+      {
+        title: "Aquaculture",
+        image: "aquaculture.png",
+        phonetic: "/ˈæk.wəˌkʌl.tʃər/",
+        hint: "(criação de organismos aquáticos)",
+        definitionPT: `<p>
+Aquaculture: <strong>Substantivo</strong><br>
+Farming: <strong>Substantivo</strong><br>
+of: <strong>Preposição</strong><br>
+aquatic: <strong>Adjetivo</strong><br>
+organisms: <strong>Substantivo</strong><br>
+such: <strong>Adjetivo</strong><br>
+as: <strong>Preposição</strong><br>
+fish: <strong>Substantivo</strong><br>
+shellfish: <strong>Substantivo</strong><br>
+and: <strong>Conjunção</strong><br>
+aquatic: <strong>Adjetivo</strong><br>
+plants: <strong>Substantivo</strong>
+</p>`,
+        definitionEN: `<p>
+Aquaculture: <strong>Noun</strong><br>
+Farming: <strong>Noun</strong><br>
+of: <strong>Preposition</strong><br>
+aquatic: <strong>Adjective</strong><br>
+organisms: <strong>Noun</strong><br>
+such: <strong>Adjective</strong><br>
+as: <strong>Preposition</strong><br>
+fish: <strong>Noun</strong><br>
+shellfish: <strong>Noun</strong><br>
+and: <strong>Conjunction</strong><br>
+aquatic: <strong>Adjective</strong><br>
+plants: <strong>Noun</strong>
+</p>`
+      },
+      {
+        title: "Biodiversity",
+        image: "biodiversity.png",
+        phonetic: "/ˌbaɪ.oʊ.daɪˈvɜːr.sə.ti/",
+        hint: "(variedade biológica)",
+        definitionPT: `<p>
+Biodiversity: <strong>Substantivo</strong><br>
+The: <strong>Artigo</strong><br>
+variety: <strong>Substantivo</strong><br>
+of: <strong>Preposição</strong><br>
+plant: <strong>Substantivo</strong><br>
+and: <strong>Conjunção</strong><br>
+animal: <strong>Substantivo</strong><br>
+life: <strong>Substantivo</strong><br>
+in: <strong>Preposição</strong><br>
+a: <strong>Artigo</strong><br>
+particular: <strong>Adjetivo</strong><br>
+habitat: <strong>Substantivo</strong><br>
+or: <strong>Conjunção</strong><br>
+ecosystem: <strong>Substantivo</strong>
+</p>`,
+        definitionEN: `<p>
+Biodiversity: <strong>Noun</strong><br>
+The: <strong>Article</strong><br>
+variety: <strong>Noun</strong><br>
+of: <strong>Preposition</strong><br>
+plant: <strong>Noun</strong><br>
+and: <strong>Conjunction</strong><br>
+animal: <strong>Noun</strong><br>
+life: <strong>Noun</strong><br>
+in: <strong>Preposition</strong><br>
+a: <strong>Article</strong><br>
+particular: <strong>Adjective</strong><br>
+habitat: <strong>Noun</strong><br>
+or: <strong>Conjunction</strong><br>
+ecosystem: <strong>Noun</strong>
+</p>`
+      },
+      // ... Continue para os demais termos
+      {
+        title: "Biofortification",
+        image: "biofortification.png",
+        phonetic: "/ˌbaɪ.oʊ.fɔːr.tɪˈfɪk.eɪ.ʃən/",
+        hint: "(aumento do valor nutricional)",
+        definitionPT: `<p>
+Biofortification: <strong>Substantivo</strong><br>
+Enhancing: <strong>Verbo (gerúndio)</strong><br>
+the: <strong>Artigo</strong><br>
+nutritional: <strong>Adjetivo</strong><br>
+value: <strong>Substantivo</strong><br>
+of: <strong>Preposição</strong><br>
+crops: <strong>Substantivo</strong><br>
+through: <strong>Preposição</strong><br>
+breeding: <strong>Substantivo</strong><br>
+or: <strong>Conjunção</strong><br>
+biotechnology: <strong>Substantivo</strong>
+</p>`,
+        definitionEN: `<p>
+Biofortification: <strong>Noun</strong><br>
+Enhancing: <strong>Verb (gerund)</strong><br>
+the: <strong>Article</strong><br>
+nutritional: <strong>Adjective</strong><br>
+value: <strong>Noun</strong><br>
+of: <strong>Preposition</strong><br>
+crops: <strong>Noun</strong><br>
+through: <strong>Preposition</strong><br>
+breeding: <strong>Noun</strong><br>
+or: <strong>Conjunction</strong><br>
+biotechnology: <strong>Noun</strong>
+</p>`
+      },
+      {
+        title: "Biofuels",
+        image: "biofuels.png",
+        phonetic: "/ˈbaɪ.oʊ.fjuːlz/",
+        hint: "(combustíveis biológicos)",
+        definitionPT: `<p>
+Biofuels: <strong>Substantivo</strong><br>
+Fuels: <strong>Substantivo</strong><br>
+derived: <strong>Verbo (particípio passado)</strong><br>
+from: <strong>Preposição</strong><br>
+organic: <strong>Adjetivo</strong><br>
+matter: <strong>Substantivo</strong><br>
+such: <strong>Adjetivo</strong><br>
+as: <strong>Preposição</strong><br>
+ethanol: <strong>Substantivo</strong><br>
+or: <strong>Conjunção</strong><br>
+biodiesel: <strong>Substantivo</strong>
+</p>`,
+        definitionEN: `<p>
+Biofuels: <strong>Noun</strong><br>
+Fuels: <strong>Noun</strong><br>
+derived: <strong>Verb (past participle)</strong><br>
+from: <strong>Preposition</strong><br>
+organic: <strong>Adjective</strong><br>
+matter: <strong>Noun</strong><br>
+such: <strong>Adjective</strong><br>
+as: <strong>Preposition</strong><br>
+ethanol: <strong>Noun</strong><br>
+or: <strong>Conjunction</strong><br>
+biodiesel: <strong>Noun</strong>
+</p>`
+      },
+      {
+        title: "Biosecurity",
+        image: "biosecurity.png",
+        phonetic: "/ˌbaɪ.oʊ.sɪˈkjʊr.ɪ.ti/",
+        hint: "(medidas de proteção biológica)",
+        definitionPT: `<p>
+Biosecurity: <strong>Substantivo</strong><br>
+Measures: <strong>Substantivo</strong><br>
+to: <strong>Preposição</strong><br>
+prevent: <strong>Verbo</strong><br>
+the: <strong>Artigo</strong><br>
+introduction: <strong>Substantivo</strong><br>
+and: <strong>Conjunção</strong><br>
+spread: <strong>Substantivo</strong><br>
+of: <strong>Preposição</strong><br>
+harmful: <strong>Adjetivo</strong><br>
+organisms: <strong>Substantivo</strong><br>
+to: <strong>Preposição</strong><br>
+animals: <strong>Substantivo</strong><br>
+and: <strong>Conjunção</strong><br>
+plants: <strong>Substantivo</strong>
+</p>`,
+        definitionEN: `<p>
+Biosecurity: <strong>Noun</strong><br>
+Measures: <strong>Noun</strong><br>
+to: <strong>Preposition</strong><br>
+prevent: <strong>Verb</strong><br>
+the: <strong>Article</strong><br>
+introduction: <strong>Noun</strong><br>
+and: <strong>Conjunction</strong><br>
+spread: <strong>Noun</strong><br>
+of: <strong>Preposition</strong><br>
+harmful: <strong>Adjective</strong><br>
+organisms: <strong>Noun</strong><br>
+to: <strong>Preposition</strong><br>
+animals: <strong>Noun</strong><br>
+and: <strong>Conjunction</strong><br>
+plants: <strong>Noun</strong>
+</p>`
+      },
+      {
+        title: "Blockchain",
+        image: "blockchain.png",
+        phonetic: "/ˈblɒk.tʃeɪn/",
+        hint: "(tecnologia de ledger digital descentralizado)",
+        definitionPT: `<p>
+Blockchain: <strong>Substantivo</strong><br>
+A: <strong>Artigo</strong><br>
+decentralized: <strong>Adjetivo</strong><br>
+digital: <strong>Adjetivo</strong><br>
+ledger: <strong>Substantivo</strong><br>
+technology: <strong>Substantivo</strong><br>
+used: <strong>Verbo (particípio passado)</strong><br>
+for: <strong>Preposição</strong><br>
+tracing: <strong>Verbo (gerúndio)</strong><br>
+agricultural: <strong>Adjetivo</strong><br>
+products: <strong>Substantivo</strong>
+</p>`,
+        definitionEN: `<p>
+Blockchain: <strong>Noun</strong><br>
+A: <strong>Article</strong><br>
+decentralized: <strong>Adjective</strong><br>
+digital: <strong>Adjective</strong><br>
+ledger: <strong>Noun</strong><br>
+technology: <strong>Noun</strong><br>
+used: <strong>Verb (past participle)</strong><br>
+for: <strong>Preposition</strong><br>
+tracing: <strong>Verb (gerund)</strong><br>
+agricultural: <strong>Adjective</strong><br>
+products: <strong>Noun</strong>
+</p>`
+      },
+      {
+        title: "Carbon Sequestration",
+        image: "carbon_sequestration.png",
+        phonetic: "/ˈkɑːr.bən ˌsɛk.wəˈstreɪ.ʃən/",
+        hint: "(captura e armazenamento de carbono)",
+        definitionPT: `<p>
+Carbon Sequestration: <strong>Substantivo</strong><br>
+The: <strong>Artigo</strong><br>
+process: <strong>Substantivo</strong><br>
+of: <strong>Preposição</strong><br>
+capturing: <strong>Verbo (gerúndio)</strong><br>
+and: <strong>Conjunção</strong><br>
+storing: <strong>Verbo (gerúndio)</strong><br>
+atmospheric: <strong>Adjetivo</strong><br>
+carbon: <strong>Substantivo</strong><br>
+dioxide: <strong>Substantivo</strong><br>
+in: <strong>Preposição</strong><br>
+soil: <strong>Substantivo</strong><br>
+or: <strong>Conjunção</strong><br>
+plants: <strong>Substantivo</strong>
+</p>`,
+        definitionEN: `<p>
+Carbon Sequestration: <strong>Noun</strong><br>
+The: <strong>Article</strong><br>
+process: <strong>Noun</strong><br>
+of: <strong>Preposition</strong><br>
+capturing: <strong>Verb (gerund)</strong><br>
+and: <strong>Conjunction</strong><br>
+storing: <strong>Verb (gerund)</strong><br>
+atmospheric: <strong>Adjective</strong><br>
+carbon: <strong>Noun</strong><br>
+dioxide: <strong>Noun</strong><br>
+in: <strong>Preposition</strong><br>
+soil: <strong>Noun</strong><br>
+or: <strong>Conjunction</strong><br>
+plants: <strong>Noun</strong>
+</p>`
+      },
+      {
+        title: "Circular Economy",
+        image: "circular_economy.png",
+        phonetic: "/ˈsɜː.kjʊ.lər iˈkɒn.ə.mi/",
+        hint: "(economia circular)",
+        definitionPT: `<p>
+Circular Economy: <strong>Adjetivo</strong> e <strong>Substantivo</strong><br>
+An: <strong>Artigo</strong><br>
+economic: <strong>Adjetivo</strong><br>
+system: <strong>Substantivo</strong><br>
+aimed: <strong>Verbo (particípio passado)</strong><br>
+at: <strong>Preposição</strong><br>
+eliminating: <strong>Verbo (gerúndio)</strong><br>
+waste: <strong>Substantivo</strong><br>
+and: <strong>Conjunção</strong><br>
+maximizing: <strong>Verbo (gerúndio)</strong><br>
+resource: <strong>Substantivo</strong><br>
+use: <strong>Substantivo</strong>
+</p>`,
+        definitionEN: `<p>
+Circular Economy: <strong>Adjective</strong> and <strong>Noun</strong><br>
+An: <strong>Article</strong><br>
+economic: <strong>Adjective</strong><br>
+system: <strong>Noun</strong><br>
+aimed: <strong>Verb (past participle)</strong><br>
+at: <strong>Preposition</strong><br>
+eliminating: <strong>Verb (gerund)</strong><br>
+waste: <strong>Noun</strong><br>
+and: <strong>Conjunction</strong><br>
+maximizing: <strong>Verb (gerund)</strong><br>
+resource: <strong>Noun</strong><br>
+use: <strong>Noun</strong>
+</p>`
+      },
+      {
+        title: "Climate-Smart Agriculture",
+        image: "climate_smart_agriculture.png",
+        phonetic: "/ˈklaɪ.mət smɑːrt ˌæɡ.rɪˈkʌl.tʃər/",
+        hint: "(agricultura inteligente para o clima)",
+        definitionPT: `<p>
+Climate-Smart Agriculture: <strong>Adjetivo composto</strong> e <strong>Substantivo</strong><br>
+Farming: <strong>Substantivo</strong><br>
+practices: <strong>Substantivo</strong><br>
+that: <strong>Pronome relativo</strong><br>
+increase: <strong>Verbo</strong><br>
+productivity: <strong>Substantivo</strong><br>
+while: <strong>Conjunção</strong><br>
+adapting: <strong>Verbo (gerúndio)</strong><br>
+to: <strong>Preposição</strong><br>
+climate: <strong>Substantivo</strong><br>
+change: <strong>Substantivo</strong>
+</p>`,
+        definitionEN: `<p>
+Climate-Smart Agriculture: <strong>Compound Adjective</strong> and <strong>Noun</strong><br>
+Farming: <strong>Noun</strong><br>
+practices: <strong>Noun</strong><br>
+that: <strong>Relative Pronoun</strong><br>
+increase: <strong>Verb</strong><br>
+productivity: <strong>Noun</strong><br>
+while: <strong>Conjunction</strong><br>
+adapting: <strong>Verb (gerund)</strong><br>
+to: <strong>Preposition</strong><br>
+climate: <strong>Noun</strong><br>
+change: <strong>Noun</strong>
+</p>`
+      },
+      {
+        title: "Commodity",
+        image: "commodity.png",
+        phonetic: "/kəˈmɒd.ɪ.ti/",
+        hint: "(produto agrícola básico)",
+        definitionPT: `<p>
+Commodity: <strong>Substantivo</strong><br>
+A: <strong>Artigo</strong><br>
+raw: <strong>Adjetivo</strong><br>
+material: <strong>Substantivo</strong><br>
+or: <strong>Conjunção</strong><br>
+primary: <strong>Adjetivo</strong><br>
+agricultural: <strong>Adjetivo</strong><br>
+product: <strong>Substantivo</strong><br>
+that: <strong>Pronome relativo</strong><br>
+can: <strong>Verbo auxiliar</strong><br>
+be: <strong>Verbo</strong><br>
+bought: <strong>Verbo (particípio passado)</strong><br>
+and: <strong>Conjunção</strong><br>
+sold: <strong>Verbo (particípio passado)</strong>
+</p>`,
+        definitionEN: `<p>
+Commodity: <strong>Noun</strong><br>
+A: <strong>Article</strong><br>
+raw: <strong>Adjective</strong><br>
+material: <strong>Noun</strong><br>
+or: <strong>Conjunction</strong><br>
+primary: <strong>Adjective</strong><br>
+agricultural: <strong>Adjective</strong><br>
+product: <strong>Noun</strong><br>
+that: <strong>Relative Pronoun</strong><br>
+can: <strong>Auxiliary Verb</strong><br>
+be: <strong>Verb</strong><br>
+bought: <strong>Verb (past participle)</strong><br>
+and: <strong>Conjunction</strong><br>
+sold: <strong>Verb (past participle)</strong>
+</p>`
+      },
+      {
+        title: "Crop Rotation",
+        image: "crop_rotation.png",
+        phonetic: "/krɒp roʊˈteɪ.ʃən/",
+        hint: "(prática de rotação de culturas)",
+        definitionPT: `<p>
+Crop Rotation: <strong>Substantivo</strong><br>
+The: <strong>Artigo</strong><br>
+practice: <strong>Substantivo</strong><br>
+of: <strong>Preposição</strong><br>
+growing: <strong>Verbo (gerúndio)</strong><br>
+different: <strong>Adjetivo</strong><br>
+types: <strong>Substantivo</strong><br>
+of: <strong>Preposição</strong><br>
+crops: <strong>Substantivo</strong><br>
+in: <strong>Preposição</strong><br>
+the: <strong>Artigo</strong><br>
+same: <strong>Adjetivo</strong><br>
+area: <strong>Substantivo</strong><br>
+across: <strong>Preposição</strong><br>
+seasons: <strong>Substantivo</strong>
+</p>`,
+        definitionEN: `<p>
+Crop Rotation: <strong>Noun</strong><br>
+The: <strong>Article</strong><br>
+practice: <strong>Noun</strong><br>
+of: <strong>Preposition</strong><br>
+growing: <strong>Verb (gerund)</strong><br>
+different: <strong>Adjective</strong><br>
+types: <strong>Noun</strong><br>
+of: <strong>Preposition</strong><br>
+crops: <strong>Noun</strong><br>
+in: <strong>Preposition</strong><br>
+the: <strong>Article</strong><br>
+same: <strong>Adjective</strong><br>
+area: <strong>Noun</strong><br>
+across: <strong>Preposition</strong><br>
+seasons: <strong>Noun</strong>
+</p>`
+      },
+      {
+        title: "Digital Agriculture",
+        image: "digital_agriculture.png",
+        phonetic: "/ˈdɪdʒ.ɪ.təl ˌæɡ.rɪˈkʌl.tʃər/",
+        hint: "(agricultura digital)",
+        definitionPT: `<p>
+Digital Agriculture: <strong>Adjetivo</strong> e <strong>Substantivo</strong><br>
+The: <strong>Artigo</strong><br>
+use: <strong>Substantivo</strong><br>
+of: <strong>Preposição</strong><br>
+digital: <strong>Adjetivo</strong><br>
+technologies: <strong>Substantivo</strong><br>
+to: <strong>Preposição</strong><br>
+optimize: <strong>Verbo</strong><br>
+agricultural: <strong>Adjetivo</strong><br>
+processes: <strong>Substantivo</strong>
+</p>`,
+        definitionEN: `<p>
+Digital Agriculture: <strong>Adjective</strong> and <strong>Noun</strong><br>
+The: <strong>Article</strong><br>
+use: <strong>Noun</strong><br>
+of: <strong>Preposition</strong><br>
+digital: <strong>Adjective</strong><br>
+technologies: <strong>Noun</strong><br>
+to: <strong>Preposition</strong><br>
+optimize: <strong>Verb</strong><br>
+agricultural: <strong>Adjective</strong><br>
+processes: <strong>Noun</strong>
+</p>`
+      },
+      {
+        title: "Drone Technology",
+        image: "drone_technology.png",
+        phonetic: "/droʊn tɛkˈnɒl.ə.dʒi/",
+        hint: "(tecnologia de drones)",
+        definitionPT: `<p>
+Drone Technology: <strong>Substantivo</strong><br>
+Drone: <strong>Substantivo</strong><br>
+Technology: <strong>Substantivo</strong><br>
+Unmanned: <strong>Adjetivo</strong><br>
+aerial: <strong>Adjetivo</strong><br>
+vehicles: <strong>Substantivo</strong><br>
+used: <strong>Verbo (particípio passado)</strong><br>
+for: <strong>Preposição</strong><br>
+crop: <strong>Substantivo</strong><br>
+monitoring: <strong>Substantivo</strong><br>
+and: <strong>Conjunção</strong><br>
+precision: <strong>Substantivo</strong><br>
+agriculture: <strong>Substantivo</strong>
+</p>`,
+        definitionEN: `<p>
+Drone Technology: <strong>Noun</strong><br>
+Drone: <strong>Noun</strong><br>
+Technology: <strong>Noun</strong><br>
+Unmanned: <strong>Adjective</strong><br>
+aerial: <strong>Adjective</strong><br>
+vehicles: <strong>Noun</strong><br>
+used: <strong>Verb (past participle)</strong><br>
+for: <strong>Preposition</strong><br>
+crop: <strong>Noun</strong><br>
+monitoring: <strong>Noun</strong><br>
+and: <strong>Conjunction</strong><br>
+precision: <strong>Noun</strong><br>
+agriculture: <strong>Noun</strong>
+</p>`
+      },
+      {
+        title: "Eco-labeling",
+        image: "eco_labeling.png",
+        phonetic: "/ˈiː.koʊˌleɪ.bəl.ɪŋ/",
+        hint: "(certificação ambiental)",
+        definitionPT: `<p>
+Eco-labeling: <strong>Substantivo</strong><br>
+Certification: <strong>Substantivo</strong><br>
+and: <strong>Conjunção</strong><br>
+labeling: <strong>Substantivo</strong><br>
+of: <strong>Preposição</strong><br>
+products: <strong>Substantivo</strong><br>
+based: <strong>Verbo (particípio passado)</strong><br>
+on: <strong>Preposição</strong><br>
+environmental: <strong>Adjetivo</strong><br>
+impact: <strong>Substantivo</strong>
+</p>`,
+        definitionEN: `<p>
+Eco-labeling: <strong>Noun</strong><br>
+Certification: <strong>Noun</strong><br>
+and: <strong>Conjunction</strong><br>
+labeling: <strong>Noun</strong><br>
+of: <strong>Preposition</strong><br>
+products: <strong>Noun</strong><br>
+based: <strong>Verb (past participle)</strong><br>
+on: <strong>Preposition</strong><br>
+environmental: <strong>Adjective</strong><br>
+impact: <strong>Noun</strong>
+</p>`
+      },
+      {
+        title: "Farm-to-Table",
+        image: "farm_to_table.png",
+        phonetic: "/fɑːrm tə ˈteɪ.bəl/",
+        hint: "(do produtor à mesa)",
+        definitionPT: `<p>
+Farm-to-Table: <strong>Adjetivo composto</strong><br>
+A: <strong>Artigo</strong><br>
+movement: <strong>Substantivo</strong><br>
+focused: <strong>Verbo (particípio passado)</strong><br>
+on: <strong>Preposição</strong><br>
+producing: <strong>Verbo (gerúndio)</strong><br>
+food: <strong>Substantivo</strong><br>
+locally: <strong>Advérbio</strong><br>
+and: <strong>Conjunção</strong><br>
+delivering: <strong>Verbo (gerúndio)</strong><br>
+it: <strong>Pronome</strong><br>
+directly: <strong>Advérbio</strong><br>
+to: <strong>Preposição</strong><br>
+consumers: <strong>Substantivo</strong>
+</p>`,
+        definitionEN: `<p>
+Farm-to-Table: <strong>Compound Adjective</strong><br>
+A: <strong>Article</strong><br>
+movement: <strong>Noun</strong><br>
+focused: <strong>Verb (past participle)</strong><br>
+on: <strong>Preposition</strong><br>
+producing: <strong>Verb (gerund)</strong><br>
+food: <strong>Noun</strong><br>
+locally: <strong>Adverb</strong><br>
+and: <strong>Conjunction</strong><br>
+delivering: <strong>Verb (gerund)</strong><br>
+it: <strong>Pronoun</strong><br>
+directly: <strong>Adverb</strong><br>
+to: <strong>Preposition</strong><br>
+consumers: <strong>Noun</strong>
+</p>`
+      },
+      {
+        title: "Food Security",
+        image: "food_security.png",
+        phonetic: "/fuːd sɪˈkjʊr.ə.ti/",
+        hint: "(segurança alimentar)",
+        definitionPT: `<p>
+Food Security: <strong>Substantivo</strong><br>
+The: <strong>Artigo</strong><br>
+state: <strong>Substantivo</strong><br>
+of: <strong>Preposição</strong><br>
+having: <strong>Verbo (gerúndio)</strong><br>
+reliable: <strong>Adjetivo</strong><br>
+access: <strong>Substantivo</strong><br>
+to: <strong>Preposição</strong><br>
+sufficient: <strong>Adjetivo</strong><br>
+affordable: <strong>Adjetivo</strong><br>
+nutritious: <strong>Adjetivo</strong><br>
+food: <strong>Substantivo</strong>
+</p>`,
+        definitionEN: `<p>
+Food Security: <strong>Noun</strong><br>
+The: <strong>Article</strong><br>
+state: <strong>Noun</strong><br>
+of: <strong>Preposition</strong><br>
+having: <strong>Verb (gerund)</strong><br>
+reliable: <strong>Adjective</strong><br>
+access: <strong>Noun</strong><br>
+to: <strong>Preposition</strong><br>
+sufficient: <strong>Adjective</strong><br>
+affordable: <strong>Adjective</strong><br>
+nutritious: <strong>Adjective</strong><br>
+food: <strong>Noun</strong>
+</p>`
+      },
+      {
+        title: "Genetically Modified Organism (GMO)",
+        image: "gmo.png",
+        phonetic: "/dʒəˈnet.ɪ.kəl.i ˈmɒd.ɪ.faɪd ˈɔːr.ɡə.nɪ.zəm/",
+        hint: "(organismo geneticamente modificado)",
+        definitionPT: `<p>
+Genetically Modified Organism (GMO): <strong>Substantivo</strong><br>
+Genetically: <strong>Advérbio</strong><br>
+Modified: <strong>Verbo (particípio passado usado como adjetivo)</strong><br>
+Organism: <strong>Substantivo</strong><br>
+An: <strong>Artigo</strong><br>
+organism: <strong>Substantivo</strong><br>
+whose: <strong>Pronome relativo possessivo</strong><br>
+genetic: <strong>Adjetivo</strong><br>
+material: <strong>Substantivo</strong><br>
+has: <strong>Verbo auxiliar</strong><br>
+been: <strong>Verbo auxiliar</strong><br>
+altered: <strong>Verbo (particípio passado)</strong><br>
+using: <strong>Verbo (gerúndio)</strong><br>
+genetic: <strong>Adjetivo</strong><br>
+engineering: <strong>Substantivo</strong><br>
+techniques: <strong>Substantivo</strong>
+</p>`,
+        definitionEN: `<p>
+Genetically Modified Organism (GMO): <strong>Noun</strong><br>
+Genetically: <strong>Adverb</strong><br>
+Modified: <strong>Verb (past participle used as adjective)</strong><br>
+Organism: <strong>Noun</strong><br>
+An: <strong>Article</strong><br>
+organism: <strong>Noun</strong><br>
+whose: <strong>Possessive Relative Pronoun</strong><br>
+genetic: <strong>Adjective</strong><br>
+material: <strong>Noun</strong><br>
+has: <strong>Auxiliary Verb</strong><br>
+been: <strong>Auxiliary Verb</strong><br>
+altered: <strong>Verb (past participle)</strong><br>
+using: <strong>Verb (gerund)</strong><br>
+genetic: <strong>Adjective</strong><br>
+engineering: <strong>Noun</strong><br>
+techniques: <strong>Noun</strong>
+</p>`
+      },
+      {
+        title: "Global Food System",
+        image: "global_food_system.png",
+        phonetic: "/ˈɡloʊ.bəl fuːd ˈsɪs.təm/",
+        hint: "(sistema alimentar global)",
+        definitionPT: `<p>
+Global Food System: <strong>Adjetivo</strong> e <strong>Substantivo</strong><br>
+The: <strong>Artigo</strong><br>
+complex: <strong>Adjetivo</strong><br>
+network: <strong>Substantivo</strong><br>
+of: <strong>Preposição</strong><br>
+activities: <strong>Substantivo</strong><br>
+involving: <strong>Verbo (gerúndio)</strong><br>
+food: <strong>Substantivo</strong><br>
+production: <strong>Substantivo</strong><br>
+processing: <strong>Substantivo</strong><br>
+and: <strong>Conjunção</strong><br>
+distribution: <strong>Substantivo</strong><br>
+worldwide: <strong>Advérbio</strong>
+</p>`,
+        definitionEN: `<p>
+Global Food System: <strong>Compound</strong> (Adjective + Noun)<br>
+The: <strong>Article</strong><br>
+complex: <strong>Adjective</strong><br>
+network: <strong>Noun</strong><br>
+of: <strong>Preposition</strong><br>
+activities: <strong>Noun</strong><br>
+involving: <strong>Verb (gerund)</strong><br>
+food: <strong>Noun</strong><br>
+production: <strong>Noun</strong><br>
+processing: <strong>Noun</strong><br>
+and: <strong>Conjunction</strong><br>
+distribution: <strong>Noun</strong><br>
+worldwide: <strong>Adverb</strong>
+</p>`
+      },
+      {
+        title: "Greenhouse Gas Emissions",
+        image: "greenhouse_gas_emissions.png",
+        phonetic: "/ˈɡriːn.haʊs ɡæs ɪˈmɪʃ.ənz/",
+        hint: "(emissões de gases de efeito estufa)",
+        definitionPT: `<p>
+Greenhouse Gas Emissions: <strong>Substantivo</strong><br>
+Greenhouse: <strong>Substantivo (usado como adjetivo)</strong><br>
+Gas: <strong>Substantivo</strong><br>
+Emissions: <strong>Substantivo</strong><br>
+Gases: <strong>Substantivo</strong><br>
+that: <strong>Pronome relativo</strong><br>
+trap: <strong>Verbo</strong><br>
+heat: <strong>Substantivo</strong><br>
+in: <strong>Preposição</strong><br>
+the: <strong>Artigo</strong><br>
+Earth's: <strong>Substantivo (possessivo)</strong><br>
+atmosphere: <strong>Substantivo</strong><br>
+contributing: <strong>Verbo (gerúndio)</strong><br>
+to: <strong>Preposição</strong><br>
+global: <strong>Adjetivo</strong><br>
+warming: <strong>Substantivo</strong>
+</p>`,
+        definitionEN: `<p>
+Greenhouse Gas Emissions: <strong>Noun</strong><br>
+Greenhouse: <strong>Noun (used as adjective)</strong><br>
+Gas: <strong>Noun</strong><br>
+Emissions: <strong>Noun</strong><br>
+Gases: <strong>Noun</strong><br>
+that: <strong>Relative Pronoun</strong><br>
+trap: <strong>Verb</strong><br>
+heat: <strong>Noun</strong><br>
+in: <strong>Preposition</strong><br>
+the: <strong>Article</strong><br>
+Earth's: <strong>Noun (possessive)</strong><br>
+atmosphere: <strong>Noun</strong><br>
+contributing: <strong>Verb (gerund)</strong><br>
+to: <strong>Preposition</strong><br>
+global: <strong>Adjective</strong><br>
+warming: <strong>Noun</strong>
+</p>`
+      },
+      {
+        title: "Hydroponics",
+        image: "hydroponics.png",
+        phonetic: "/haɪˈdrɒp.ə.nɪks/",
+        hint: "(cultivo sem solo)",
+        definitionPT: `<p>
+Hydroponics: <strong>Substantivo</strong><br>
+A: <strong>Artigo</strong><br>
+method: <strong>Substantivo</strong><br>
+of: <strong>Preposição</strong><br>
+growing: <strong>Verbo (gerúndio)</strong><br>
+plants: <strong>Substantivo</strong><br>
+without: <strong>Preposição</strong><br>
+soil: <strong>Substantivo</strong><br>
+using: <strong>Verbo (gerúndio)</strong><br>
+mineral: <strong>Adjetivo</strong><br>
+nutrient: <strong>Substantivo</strong><br>
+solutions: <strong>Substantivo</strong><br>
+in: <strong>Preposição</strong><br>
+water: <strong>Substantivo</strong>
+</p>`,
+        definitionEN: `<p>
+Hydroponics: <strong>Noun</strong><br>
+A: <strong>Article</strong><br>
+method: <strong>Noun</strong><br>
+of: <strong>Preposition</strong><br>
+growing: <strong>Verb (gerund)</strong><br>
+plants: <strong>Noun</strong><br>
+without: <strong>Preposition</strong><br>
+soil: <strong>Noun</strong><br>
+using: <strong>Verb (gerund)</strong><br>
+mineral: <strong>Adjective</strong><br>
+nutrient: <strong>Noun</strong><br>
+solutions: <strong>Noun</strong><br>
+in: <strong>Preposition</strong><br>
+water: <strong>Noun</strong>
+</p>`
+      },
+      {
+        title: "Internet of Things (IoT)",
+        image: "iot.png",
+        phonetic: "/ˈɪn.tər.net əv θɪŋz/",
+        hint: "(rede de dispositivos interconectados)",
+        definitionPT: `<p>
+Internet of Things (IoT): <strong>Substantivo</strong><br>
+Internet: <strong>Substantivo</strong><br>
+of: <strong>Preposição</strong><br>
+Things: <strong>Substantivo</strong><br>
+Network: <strong>Substantivo</strong><br>
+of: <strong>Preposição</strong><br>
+interconnected: <strong>Adjetivo</strong><br>
+devices: <strong>Substantivo</strong><br>
+used: <strong>Verbo (particípio passado)</strong><br>
+for: <strong>Preposição</strong><br>
+data: <strong>Substantivo</strong><br>
+collection: <strong>Substantivo</strong><br>
+and: <strong>Conjunção</strong><br>
+automation: <strong>Substantivo</strong>
+</p>`,
+        definitionEN: `<p>
+Internet of Things (IoT): <strong>Noun</strong><br>
+Internet: <strong>Noun</strong><br>
+of: <strong>Preposition</strong><br>
+Things: <strong>Noun</strong><br>
+Network: <strong>Noun</strong><br>
+of: <strong>Preposition</strong><br>
+interconnected: <strong>Adjective</strong><br>
+devices: <strong>Noun</strong><br>
+used: <strong>Verb (past participle)</strong><br>
+for: <strong>Preposition</strong><br>
+data: <strong>Noun</strong><br>
+collection: <strong>Noun</strong><br>
+and: <strong>Conjunction</strong><br>
+automation: <strong>Noun</strong>
+</p>`
+      },
+      {
+        title: "Integrated Pest Management (IPM)",
+        image: "ipm.png",
+        phonetic: "/ˈɪn.tɪ.ɡreɪ.tɪd pɛst ˈmæn.ɪdʒ.mənt/",
+        hint: "(manejo integrado de pragas)",
+        definitionPT: `<p>
+Integrated Pest Management (IPM): <strong>Substantivo</strong><br>
+Integrated: <strong>Adjetivo</strong><br>
+Pest: <strong>Substantivo</strong><br>
+Management: <strong>Substantivo</strong><br>
+An: <strong>Artigo</strong><br>
+ecosystem-based: <strong>Adjetivo composto</strong><br>
+approach: <strong>Substantivo</strong><br>
+to: <strong>Preposição</strong><br>
+crop: <strong>Substantivo</strong><br>
+protection: <strong>Substantivo</strong><br>
+that: <strong>Pronome relativo</strong><br>
+combines: <strong>Verbo</strong><br>
+different: <strong>Adjetivo</strong><br>
+management: <strong>Substantivo</strong><br>
+strategies: <strong>Substantivo</strong>
+</p>`,
+        definitionEN: `<p>
+Integrated Pest Management (IPM): <strong>Noun</strong><br>
+Integrated: <strong>Adjective</strong><br>
+Pest: <strong>Noun</strong><br>
+Management: <strong>Noun</strong><br>
+An: <strong>Article</strong><br>
+ecosystem-based: <strong>Compound Adjective</strong><br>
+approach: <strong>Noun</strong><br>
+to: <strong>Preposition</strong><br>
+crop: <strong>Noun</strong><br>
+protection: <strong>Noun</strong><br>
+that: <strong>Relative Pronoun</strong><br>
+combines: <strong>Verb</strong><br>
+different: <strong>Adjective</strong><br>
+management: <strong>Noun</strong><br>
+strategies: <strong>Noun</strong>
+</p>`
+      },
+      {
+        title: "Irrigation",
+        image: "irrigation.png",
+        phonetic: "/ˌɪr.ɪˈɡeɪ.ʃən/",
+        hint: "(irrigação)",
+        definitionPT: `<p>
+Irrigation: <strong>Substantivo</strong><br>
+The: <strong>Artigo</strong><br>
+supply: <strong>Substantivo</strong><br>
+of: <strong>Preposição</strong><br>
+water: <strong>Substantivo</strong><br>
+to: <strong>Preposição</strong><br>
+land: <strong>Substantivo</strong><br>
+or: <strong>Conjunção</strong><br>
+crops: <strong>Substantivo</strong><br>
+to: <strong>Preposição</strong><br>
+help: <strong>Verbo</strong><br>
+growth: <strong>Substantivo</strong><br>
+typically: <strong>Advérbio</strong><br>
+by: <strong>Preposição</strong><br>
+artificial: <strong>Adjetivo</strong><br>
+means: <strong>Substantivo</strong>
+</p>`,
+        definitionEN: `<p>
+Irrigation: <strong>Noun</strong><br>
+The: <strong>Article</strong><br>
+supply: <strong>Noun</strong><br>
+of: <strong>Preposition</strong><br>
+water: <strong>Noun</strong><br>
+to: <strong>Preposition</strong><br>
+land: <strong>Noun</strong><br>
+or: <strong>Conjunction</strong><br>
+crops: <strong>Noun</strong><br>
+to: <strong>Preposition</strong><br>
+help: <strong>Verb</strong><br>
+growth: <strong>Noun</strong><br>
+typically: <strong>Adverb</strong><br>
+by: <strong>Preposition</strong><br>
+artificial: <strong>Adjective</strong><br>
+means: <strong>Noun</strong>
+</p>`
+      },
+      {
+        title: "Land Use Change",
+        image: "land_use_change.png",
+        phonetic: "/lænd juːs tʃeɪndʒ/",
+        hint: "(mudança no uso da terra)",
+        definitionPT: `<p>
+Land Use Change: <strong>Substantivo</strong><br>
+The: <strong>Artigo</strong><br>
+transformation: <strong>Substantivo</strong><br>
+of: <strong>Preposição</strong><br>
+the: <strong>Artigo</strong><br>
+purpose: <strong>Substantivo</strong><br>
+or: <strong>Conjunção</strong><br>
+management: <strong>Substantivo</strong><br>
+of: <strong>Preposição</strong><br>
+land: <strong>Substantivo</strong><br>
+often: <strong>Advérbio</strong><br>
+from: <strong>Preposição</strong><br>
+natural: <strong>Adjetivo</strong><br>
+to: <strong>Preposição</strong><br>
+agricultural: <strong>Adjetivo</strong><br>
+use: <strong>Substantivo</strong>
+</p>`,
+        definitionEN: `<p>
+Land Use Change: <strong>Noun</strong><br>
+The: <strong>Article</strong><br>
+transformation: <strong>Noun</strong><br>
+of: <strong>Preposition</strong><br>
+the: <strong>Article</strong><br>
+purpose: <strong>Noun</strong><br>
+or: <strong>Conjunction</strong><br>
+management: <strong>Noun</strong><br>
+of: <strong>Preposition</strong><br>
+land: <strong>Noun</strong><br>
+often: <strong>Adverb</strong><br>
+from: <strong>Preposition</strong><br>
+natural: <strong>Adjective</strong><br>
+to: <strong>Preposition</strong><br>
+agricultural: <strong>Adjective</strong><br>
+use: <strong>Noun</strong>
+</p>`
+      },
+      {
+        title: "Mechanization",
+        image: "mechanization.png",
+        phonetic: "/məˌkæn.ɪˈzeɪ.ʃən/",
+        hint: "(uso de máquinas)",
+        definitionPT: `<p>
+Mechanization: <strong>Substantivo</strong><br>
+The: <strong>Artigo</strong><br>
+use: <strong>Substantivo</strong><br>
+of: <strong>Preposição</strong><br>
+machines: <strong>Substantivo</strong><br>
+to: <strong>Preposição</strong><br>
+perform: <strong>Verbo</strong><br>
+agricultural: <strong>Adjetivo</strong><br>
+tasks: <strong>Substantivo</strong>
+</p>`,
+        definitionEN: `<p>
+Mechanization: <strong>Noun</strong><br>
+The: <strong>Article</strong><br>
+use: <strong>Noun</strong><br>
+of: <strong>Preposition</strong><br>
+machines: <strong>Noun</strong><br>
+to: <strong>Preposition</strong><br>
+perform: <strong>Verb</strong><br>
+agricultural: <strong>Adjective</strong><br>
+tasks: <strong>Noun</strong>
+</p>`
+      },
+      {
+        title: "Microbial Fertilizers",
+        image: "microbial_fertilizers.png",
+        phonetic: "/maɪˈkrəʊ.bi.əl ˈfɜːr.tɪ.laɪ.zərz/",
+        hint: "(fertilizantes microbianos)",
+        definitionPT: `<p>
+Microbial Fertilizers: <strong>Substantivo</strong><br>
+Fertilizers: <strong>Substantivo</strong><br>
+containing: <strong>Verbo (gerúndio)</strong><br>
+living: <strong>Adjetivo</strong><br>
+microorganisms: <strong>Substantivo</strong><br>
+to: <strong>Preposição</strong><br>
+enhance: <strong>Verbo</strong><br>
+plant: <strong>Substantivo</strong><br>
+growth: <strong>Substantivo</strong>
+</p>`,
+        definitionEN: `<p>
+Microbial Fertilizers: <strong>Noun</strong><br>
+Fertilizers: <strong>Noun</strong><br>
+containing: <strong>Verb (gerund)</strong><br>
+living: <strong>Adjective</strong><br>
+microorganisms: <strong>Noun</strong><br>
+to: <strong>Preposition</strong><br>
+enhance: <strong>Verb</strong><br>
+plant: <strong>Noun</strong><br>
+growth: <strong>Noun</strong>
+</p>`
+      },
+      {
+        title: "Monoculture",
+        image: "monoculture.png",
+        phonetic: "/ˌmɒn.əˈkʌl.tʃər/",
+        hint: "(cultivo de uma única cultura)",
+        definitionPT: `<p>
+Monoculture: <strong>Substantivo</strong><br>
+The: <strong>Artigo</strong><br>
+agricultural: <strong>Adjetivo</strong><br>
+practice: <strong>Substantivo</strong><br>
+of: <strong>Preposição</strong><br>
+growing: <strong>Verbo (gerúndio)</strong><br>
+a: <strong>Artigo</strong><br>
+single: <strong>Adjetivo</strong><br>
+crop: <strong>Substantivo</strong><br>
+in: <strong>Preposição</strong><br>
+a: <strong>Artigo</strong><br>
+given: <strong>Adjetivo</strong><br>
+area: <strong>Substantivo</strong>
+</p>`,
+        definitionEN: `<p>
+Monoculture: <strong>Noun</strong><br>
+The: <strong>Article</strong><br>
+agricultural: <strong>Adjective</strong><br>
+practice: <strong>Noun</strong><br>
+of: <strong>Preposition</strong><br>
+growing: <strong>Verb (gerund)</strong><br>
+a: <strong>Article</strong><br>
+single: <strong>Adjective</strong><br>
+crop: <strong>Noun</strong><br>
+in: <strong>Preposition</strong><br>
+a: <strong>Article</strong><br>
+given: <strong>Adjective</strong><br>
+area: <strong>Noun</strong>
+</p>`
+      },
+      {
+        title: "No-Till Farming",
+        image: "no_till_farming.png",
+        phonetic: "/noʊ tɪl ˈfɑːr.mɪŋ/",
+        hint: "(agricultura sem revolvimento do solo)",
+        definitionPT: `<p>
+No-Till Farming: <strong>Adjetivo composto</strong> e <strong>Substantivo</strong><br>
+A: <strong>Artigo</strong><br>
+way: <strong>Substantivo</strong><br>
+of: <strong>Preposição</strong><br>
+growing: <strong>Verbo (gerúndio)</strong><br>
+crops: <strong>Substantivo</strong><br>
+without: <strong>Preposição</strong><br>
+disturbing: <strong>Verbo (gerúndio)</strong><br>
+the: <strong>Artigo</strong><br>
+soil: <strong>Substantivo</strong><br>
+through: <strong>Preposição</strong><br>
+tillage: <strong>Substantivo</strong>
+</p>`,
+        definitionEN: `<p>
+No-Till Farming: <strong>Compound Adjective</strong> and <strong>Noun</strong><br>
+A: <strong>Article</strong><br>
+way: <strong>Noun</strong><br>
+of: <strong>Preposition</strong><br>
+growing: <strong>Verb (gerund)</strong><br>
+crops: <strong>Noun</strong><br>
+without: <strong>Preposition</strong><br>
+disturbing: <strong>Verb (gerund)</strong><br>
+the: <strong>Article</strong><br>
+soil: <strong>Noun</strong><br>
+through: <strong>Preposition</strong><br>
+tillage: <strong>Noun</strong>
+</p>`
+      },
+      {
+        title: "Organic Farming",
+        image: "organic_farming.png",
+        phonetic: "/ɔːrˈɡæn.ɪk ˈfɑːr.mɪŋ/",
+        hint: "(agricultura orgânica)",
+        definitionPT: `<p>
+Organic Farming: <strong>Adjetivo</strong> e <strong>Substantivo</strong><br>
+Agricultural: <strong>Adjetivo</strong><br>
+production: <strong>Substantivo</strong><br>
+without: <strong>Preposição</strong><br>
+the: <strong>Artigo</strong><br>
+use: <strong>Substantivo</strong><br>
+of: <strong>Preposição</strong><br>
+synthetic: <strong>Adjetivo</strong><br>
+chemicals: <strong>Substantivo</strong><br>
+or: <strong>Conjunção</strong><br>
+genetically: <strong>Advérbio</strong><br>
+modified: <strong>Verbo (particípio passado)</strong><br>
+organisms: <strong>Substantivo</strong>
+</p>`,
+        definitionEN: `<p>
+Organic Farming: <strong>Adjective</strong> and <strong>Noun</strong><br>
+Agricultural: <strong>Adjective</strong><br>
+production: <strong>Noun</strong><br>
+without: <strong>Preposition</strong><br>
+the: <strong>Article</strong><br>
+use: <strong>Noun</strong><br>
+of: <strong>Preposition</strong><br>
+synthetic: <strong>Adjective</strong><br>
+chemicals: <strong>Noun</strong><br>
+or: <strong>Conjunction</strong><br>
+genetically: <strong>Adverb</strong><br>
+modified: <strong>Verb (past participle)</strong><br>
+organisms: <strong>Noun</strong>
+</p>`
+      },
+      {
+        title: "Permaculture",
+        image: "permaculture.png",
+        phonetic: "/ˈpɜːr.mə.kʌl.tʃər/",
+        hint: "(sistemas agroecológicos integrados)",
+        definitionPT: `<p>
+Permaculture: <strong>Substantivo</strong><br>
+A: <strong>Artigo</strong><br>
+system: <strong>Substantivo</strong><br>
+of: <strong>Preposição</strong><br>
+agricultural: <strong>Adjetivo</strong><br>
+and: <strong>Conjunção</strong><br>
+social: <strong>Adjetivo</strong><br>
+design: <strong>Substantivo</strong><br>
+principles: <strong>Substantivo</strong><br>
+centered: <strong>Verbo (particípio passado)</strong><br>
+on: <strong>Preposição</strong><br>
+simulating: <strong>Verbo (gerúndio)</strong><br>
+natural: <strong>Adjetivo</strong><br>
+ecosystems: <strong>Substantivo</strong>
+</p>`,
+        definitionEN: `<p>
+Permaculture: <strong>Noun</strong><br>
+A: <strong>Article</strong><br>
+system: <strong>Noun</strong><br>
+of: <strong>Preposition</strong><br>
+agricultural: <strong>Adjective</strong><br>
+and: <strong>Conjunction</strong><br>
+social: <strong>Adjective</strong><br>
+design: <strong>Noun</strong><br>
+principles: <strong>Noun</strong><br>
+centered: <strong>Verb (past participle)</strong><br>
+on: <strong>Preposition</strong><br>
+simulating: <strong>Verb (gerund)</strong><br>
+natural: <strong>Adjective</strong><br>
+ecosystems: <strong>Noun</strong>
+</p>`
+      },
+      {
+        title: "Pesticide Resistance",
+        image: "pesticide_resistance.png",
+        phonetic: "/ˈpɛs.tɪ.saɪd rɪˈzɪs.təns/",
+        hint: "(resistência a pesticidas)",
+        definitionPT: `<p>
+Pesticide Resistance: <strong>Substantivo</strong><br>
+The: <strong>Artigo</strong><br>
+ability: <strong>Substantivo</strong><br>
+of: <strong>Preposição</strong><br>
+pests: <strong>Substantivo</strong><br>
+to: <strong>Preposição</strong><br>
+withstand: <strong>Verbo</strong><br>
+the: <strong>Artigo</strong><br>
+effects: <strong>Substantivo</strong><br>
+of: <strong>Preposição</strong><br>
+pesticides: <strong>Substantivo</strong>
+</p>`,
+        definitionEN: `<p>
+Pesticide Resistance: <strong>Noun</strong><br>
+The: <strong>Article</strong><br>
+ability: <strong>Noun</strong><br>
+of: <strong>Preposition</strong><br>
+pests: <strong>Noun</strong><br>
+to: <strong>Preposition</strong><br>
+withstand: <strong>Verb</strong><br>
+the: <strong>Article</strong><br>
+effects: <strong>Noun</strong><br>
+of: <strong>Preposition</strong><br>
+pesticides: <strong>Noun</strong>
+</p>`
+      },
+      {
+        title: "Plant Breeding",
+        image: "plant_breeding.png",
+        phonetic: "/plænt ˈbriː.dɪŋ/",
+        hint: "(melhoramento genético de plantas)",
+        definitionPT: `<p>
+Plant Breeding: <strong>Substantivo</strong><br>
+The: <strong>Artigo</strong><br>
+science: <strong>Substantivo</strong><br>
+of: <strong>Preposição</strong><br>
+changing: <strong>Verbo (gerúndio)</strong><br>
+plant: <strong>Substantivo</strong><br>
+traits: <strong>Substantivo</strong><br>
+to: <strong>Preposição</strong><br>
+produce: <strong>Verbo</strong><br>
+desired: <strong>Adjetivo</strong><br>
+characteristics: <strong>Substantivo</strong>
+</p>`,
+        definitionEN: `<p>
+Plant Breeding: <strong>Noun</strong><br>
+The: <strong>Article</strong><br>
+science: <strong>Noun</strong><br>
+of: <strong>Preposition</strong><br>
+changing: <strong>Verb (gerund)</strong><br>
+plant: <strong>Noun</strong><br>
+traits: <strong>Noun</strong><br>
+to: <strong>Preposition</strong><br>
+produce: <strong>Verb</strong><br>
+desired: <strong>Adjective</strong><br>
+characteristics: <strong>Noun</strong>
+</p>`
+      },
+      {
+        title: "Precision Agriculture",
+        image: "precision_agriculture.png",
+        phonetic: "/prɪˈsɪʒ.ən ˌæɡ.rɪˈkʌl.tʃər/",
+        hint: "(agricultura de precisão)",
+        definitionPT: `<p>
+Precision Agriculture: <strong>Substantivo</strong><br>
+Farming: <strong>Substantivo</strong><br>
+management: <strong>Substantivo</strong><br>
+based: <strong>Verbo (particípio passado)</strong><br>
+on: <strong>Preposição</strong><br>
+observing: <strong>Verbo (gerúndio)</strong><br>
+measuring: <strong>Verbo (gerúndio)</strong><br>
+and: <strong>Conjunção</strong><br>
+responding: <strong>Verbo (gerúndio)</strong><br>
+to: <strong>Preposição</strong><br>
+variability: <strong>Substantivo</strong><br>
+in: <strong>Preposição</strong><br>
+crops: <strong>Substantivo</strong>
+</p>`,
+        definitionEN: `<p>
+Precision Agriculture: <strong>Noun</strong><br>
+Farming: <strong>Noun</strong><br>
+management: <strong>Noun</strong><br>
+based: <strong>Verb (past participle)</strong><br>
+on: <strong>Preposition</strong><br>
+observing: <strong>Verb (gerund)</strong><br>
+measuring: <strong>Verb (gerund)</strong><br>
+and: <strong>Conjunction</strong><br>
+responding: <strong>Verb (gerund)</strong><br>
+to: <strong>Preposition</strong><br>
+variability: <strong>Noun</strong><br>
+in: <strong>Preposition</strong><br>
+crops: <strong>Noun</strong>
+</p>`
+      },
+      {
+        title: "Regenerative Agriculture",
+        image: "regenerative_agriculture.png",
+        phonetic: "/rɪˈdʒen.ə.rə.tɪv ˌæɡ.rɪˈkʌl.tʃər/",
+        hint: "(agricultura regenerativa)",
+        definitionPT: `<p>
+Regenerative Agriculture: <strong>Adjetivo</strong> e <strong>Substantivo</strong><br>
+Farming: <strong>Substantivo</strong><br>
+practices: <strong>Substantivo</strong><br>
+that: <strong>Pronome relativo</strong><br>
+reverse: <strong>Verbo</strong><br>
+climate: <strong>Substantivo</strong><br>
+change: <strong>Substantivo</strong><br>
+by: <strong>Preposição</strong><br>
+rebuilding: <strong>Verbo (gerúndio)</strong><br>
+soil: <strong>Substantivo</strong><br>
+organic: <strong>Adjetivo</strong><br>
+matter: <strong>Substantivo</strong><br>
+and: <strong>Conjunção</strong><br>
+restoring: <strong>Verbo (gerúndio)</strong><br>
+biodiversity: <strong>Substantivo</strong>
+</p>`,
+        definitionEN: `<p>
+Regenerative Agriculture: <strong>Adjective</strong> and <strong>Noun</strong><br>
+Farming: <strong>Noun</strong><br>
+practices: <strong>Noun</strong><br>
+that: <strong>Relative Pronoun</strong><br>
+reverse: <strong>Verb</strong><br>
+climate: <strong>Noun</strong><br>
+change: <strong>Noun</strong><br>
+by: <strong>Preposition</strong><br>
+rebuilding: <strong>Verb (gerund)</strong><br>
+soil: <strong>Noun</strong><br>
+organic: <strong>Adjective</strong><br>
+matter: <strong>Noun</strong><br>
+and: <strong>Conjunction</strong><br>
+restoring: <strong>Verb (gerund)</strong><br>
+biodiversity: <strong>Noun</strong>
+</p>`
+      },
+      {
+        title: "Remote Sensing",
+        image: "remote_sensing.png",
+        phonetic: "/rɪˈmoʊt ˈsɛn.sɪŋ/",
+        hint: "(sensoriamento remoto)",
+        definitionPT: `<p>
+Remote Sensing: <strong>Adjetivo</strong> e <strong>Substantivo</strong><br>
+Gathering: <strong>Verbo (gerúndio)</strong><br>
+information: <strong>Substantivo</strong><br>
+about: <strong>Preposição</strong><br>
+crops: <strong>Substantivo</strong><br>
+and: <strong>Conjunção</strong><br>
+soil: <strong>Substantivo</strong><br>
+from: <strong>Preposição</strong><br>
+a: <strong>Artigo</strong><br>
+distance: <strong>Substantivo</strong><br>
+typically: <strong>Advérbio</strong><br>
+using: <strong>Verbo (gerúndio)</strong><br>
+satellite: <strong>Substantivo</strong><br>
+imagery: <strong>Substantivo</strong>
+</p>`,
+        definitionEN: `<p>
+Remote Sensing: <strong>Adjective</strong> and <strong>Noun</strong><br>
+Gathering: <strong>Verb (gerund)</strong><br>
+information: <strong>Noun</strong><br>
+about: <strong>Preposition</strong><br>
+crops: <strong>Noun</strong><br>
+and: <strong>Conjunction</strong><br>
+soil: <strong>Noun</strong><br>
+from: <strong>Preposition</strong><br>
+a: <strong>Article</strong><br>
+distance: <strong>Noun</strong><br>
+typically: <strong>Adverb</strong><br>
+using: <strong>Verb (gerund)</strong><br>
+satellite: <strong>Noun</strong><br>
+imagery: <strong>Noun</strong>
+</p>`
+      },
+      {
+        title: "Resilience",
+        image: "resilience.png",
+        phonetic: "/rɪˈzɪl.jəns/",
+        hint: "(capacidade de recuperação)",
+        definitionPT: `<p>
+Resilience: <strong>Substantivo</strong><br>
+The: <strong>Artigo</strong><br>
+capacity: <strong>Substantivo</strong><br>
+of: <strong>Preposição</strong><br>
+agricultural: <strong>Adjetivo</strong><br>
+systems: <strong>Substantivo</strong><br>
+to: <strong>Preposição</strong><br>
+withstand: <strong>Verbo</strong><br>
+and: <strong>Conjunção</strong><br>
+recover: <strong>Verbo</strong><br>
+from: <strong>Preposição</strong><br>
+stresses: <strong>Substantivo</strong><br>
+and: <strong>Conjunção</strong><br>
+shocks: <strong>Substantivo</strong>
+</p>`,
+        definitionEN: `<p>
+Resilience: <strong>Noun</strong><br>
+The: <strong>Article</strong><br>
+capacity: <strong>Noun</strong><br>
+of: <strong>Preposition</strong><br>
+agricultural: <strong>Adjective</strong><br>
+systems: <strong>Noun</strong><br>
+to: <strong>Preposition</strong><br>
+withstand: <strong>Verb</strong><br>
+and: <strong>Conjunction</strong><br>
+recover: <strong>Verb</strong><br>
+from: <strong>Preposition</strong><br>
+stresses: <strong>Noun</strong><br>
+and: <strong>Conjunction</strong><br>
+shocks: <strong>Noun</strong>
+</p>`
+      },
+      {
+        title: "Smallholder Farmer",
+        image: "smallholder_farmer.png",
+        phonetic: "/ˈsmɔːl.hoʊl.dər ˈfɑːr.mər/",
+        hint: "(pequeno agricultor)",
+        definitionPT: `<p>
+Smallholder Farmer: <strong>Substantivo</strong><br>
+A: <strong>Artigo</strong><br>
+farmer: <strong>Substantivo</strong><br>
+owning: <strong>Verbo (gerúndio)</strong><br>
+a: <strong>Artigo</strong><br>
+small: <strong>Adjetivo</strong><br>
+plot: <strong>Substantivo</strong><br>
+of: <strong>Preposição</strong><br>
+land: <strong>Substantivo</strong><br>
+on: <strong>Preposição</strong><br>
+which: <strong>Pronome relativo</strong><br>
+they: <strong>Pronome</strong><br>
+grow: <strong>Verbo</strong><br>
+subsistence: <strong>Substantivo</strong><br>
+crops: <strong>Substantivo</strong> and <strong>cash</strong> <strong>crops</strong>
+</p>`,
+        definitionEN: `<p>
+Smallholder Farmer: <strong>Noun</strong><br>
+A: <strong>Article</strong><br>
+farmer: <strong>Noun</strong><br>
+owning: <strong>Verb (gerund)</strong><br>
+a: <strong>Article</strong><br>
+small: <strong>Adjective</strong><br>
+plot: <strong>Noun</strong><br>
+of: <strong>Preposition</strong><br>
+land: <strong>Noun</strong><br>
+on: <strong>Preposition</strong><br>
+which: <strong>Relative Pronoun</strong><br>
+they: <strong>Pronoun</strong><br>
+grow: <strong>Verb</strong><br>
+subsistence: <strong>Noun</strong><br>
+crops: <strong>Noun</strong> and <strong>cash crops</strong>
+</p>`
+      },
+      {
+        title: "Smart Irrigation",
+        image: "smart_irrigation.png",
+        phonetic: "/smɑːrt ɪˈrɪɡeɪʃən/",
+        hint: "(irrigação inteligente)",
+        definitionPT: `<p>
+Smart Irrigation: <strong>Adjetivo</strong> e <strong>Substantivo</strong><br>
+Advanced: <strong>Adjetivo</strong><br>
+irrigation: <strong>Substantivo</strong><br>
+systems: <strong>Substantivo</strong><br>
+that: <strong>Pronome relativo</strong><br>
+use: <strong>Verbo</strong><br>
+data: <strong>Substantivo</strong><br>
+to: <strong>Preposição</strong><br>
+optimize: <strong>Verbo</strong><br>
+water: <strong>Substantivo</strong><br>
+usage: <strong>Substantivo</strong>
+</p>`,
+        definitionEN: `<p>
+Smart Irrigation: <strong>Adjective</strong> and <strong>Noun</strong><br>
+Advanced: <strong>Adjective</strong><br>
+irrigation: <strong>Noun</strong><br>
+systems: <strong>Noun</strong><br>
+that: <strong>Relative Pronoun</strong><br>
+use: <strong>Verb</strong><br>
+data: <strong>Noun</strong><br>
+to: <strong>Preposition</strong><br>
+optimize: <strong>Verb</strong><br>
+water: <strong>Noun</strong><br>
+usage: <strong>Noun</strong>
+</p>`
+      },
+      {
+        title: "Soil Health",
+        image: "soil_health.png",
+        phonetic: "/sɔɪl hɛlθ/",
+        hint: "(qualidade do solo)",
+        definitionPT: `<p>
+Soil Health: <strong>Substantivo</strong><br>
+The: <strong>Artigo</strong><br>
+continued: <strong>Adjetivo</strong><br>
+capacity: <strong>Substantivo</strong><br>
+of: <strong>Preposição</strong><br>
+soil: <strong>Substantivo</strong><br>
+to: <strong>Preposição</strong><br>
+function: <strong>Verbo</strong><br>
+as: <strong>Preposição</strong><br>
+a: <strong>Artigo</strong><br>
+vital: <strong>Adjetivo</strong><br>
+living: <strong>Adjetivo</strong><br>
+ecosystem: <strong>Substantivo</strong><br>
+that: <strong>Pronome relativo</strong><br>
+sustains: <strong>Verbo</strong><br>
+plants: <strong>Substantivo</strong><br>
+animals: <strong>Substantivo</strong><br>
+and: <strong>Conjunção</strong><br>
+humans: <strong>Substantivo</strong>
+</p>`,
+        definitionEN: `<p>
+Soil Health: <strong>Noun</strong><br>
+The: <strong>Article</strong><br>
+continued: <strong>Adjective</strong><br>
+capacity: <strong>Noun</strong><br>
+of: <strong>Preposition</strong><br>
+soil: <strong>Noun</strong><br>
+to: <strong>Preposition</strong><br>
+function: <strong>Verb</strong><br>
+as: <strong>Preposition</strong><br>
+a: <strong>Article</strong><br>
+vital: <strong>Adjective</strong><br>
+living: <strong>Adjective</strong><br>
+ecosystem: <strong>Noun</strong><br>
+that: <strong>Relative Pronoun</strong><br>
+sustains: <strong>Verb</strong><br>
+plants: <strong>Noun</strong><br>
+animals: <strong>Noun</strong><br>
+and: <strong>Conjunction</strong><br>
+humans: <strong>Noun</strong>
+</p>`
+      },
+      {
+        title: "Sustainable Intensification",
+        image: "sustainable_intensification.png",
+        phonetic: "/səˈsteɪ.nə.bəl ɪnˌtɛn.sɪ.fɪˈkeɪ.ʃən/",
+        hint: "(aumento da produção com menor impacto ambiental)",
+        definitionPT: `<p>
+Sustainable Intensification: <strong>Adjetivo</strong> e <strong>Substantivo</strong><br>
+Increasing: <strong>Verbo (gerúndio)</strong><br>
+agricultural: <strong>Adjetivo</strong><br>
+production: <strong>Substantivo</strong><br>
+while: <strong>Conjunção</strong><br>
+minimizing: <strong>Verbo (gerúndio)</strong><br>
+environmental: <strong>Adjetivo</strong><br>
+impact: <strong>Substantivo</strong>
+</p>`,
+        definitionEN: `<p>
+Sustainable Intensification: <strong>Adjective</strong> and <strong>Noun</strong><br>
+Increasing: <strong>Verb (gerund)</strong><br>
+agricultural: <strong>Adjective</strong><br>
+production: <strong>Noun</strong><br>
+while: <strong>Conjunction</strong><br>
+minimizing: <strong>Verb (gerund)</strong><br>
+environmental: <strong>Adjective</strong><br>
+impact: <strong>Noun</strong>
+</p>`
+      },
+      {
+        title: "Supply Chain",
+        image: "supply_chain.png",
+        phonetic: "/səˈplaɪ tʃeɪn/",
+        hint: "(cadeia de suprimentos)",
+        definitionPT: `<p>
+Supply Chain: <strong>Substantivo</strong><br>
+The: <strong>Artigo</strong><br>
+network: <strong>Substantivo</strong><br>
+between: <strong>Preposição</strong><br>
+a: <strong>Artigo</strong><br>
+company: <strong>Substantivo</strong><br>
+and: <strong>Conjunção</strong><br>
+its: <strong>Pronome possessivo</strong><br>
+suppliers: <strong>Substantivo</strong><br>
+to: <strong>Preposição</strong><br>
+produce: <strong>Verbo</strong><br>
+and: <strong>Conjunção</strong><br>
+distribute: <strong>Verbo</strong><br>
+agricultural: <strong>Adjetivo</strong><br>
+products: <strong>Substantivo</strong>
+</p>`,
+        definitionEN: `<p>
+Supply Chain: <strong>Noun</strong><br>
+The: <strong>Article</strong><br>
+network: <strong>Noun</strong><br>
+between: <strong>Preposition</strong><br>
+a: <strong>Article</strong><br>
+company: <strong>Noun</strong><br>
+and: <strong>Conjunction</strong><br>
+its: <strong>Possessive Pronoun</strong><br>
+suppliers: <strong>Noun</strong><br>
+to: <strong>Preposition</strong><br>
+produce: <strong>Verb</strong><br>
+and: <strong>Conjunction</strong><br>
+distribute: <strong>Verb</strong><br>
+agricultural: <strong>Adjective</strong><br>
+products: <strong>Noun</strong>
+</p>`
+      },
+      {
+        title: "Traceability",
+        image: "traceability.png",
+        phonetic: "/treɪsəˈbɪl.ɪ.ti/",
+        hint: "(capacidade de rastreamento)",
+        definitionPT: `<p>
+Traceability: <strong>Substantivo</strong><br>
+The: <strong>Artigo</strong><br>
+ability: <strong>Substantivo</strong><br>
+to: <strong>Preposição</strong><br>
+track: <strong>Verbo</strong><br>
+the: <strong>Artigo</strong><br>
+movement: <strong>Substantivo</strong><br>
+of: <strong>Preposição</strong><br>
+agricultural: <strong>Adjetivo</strong><br>
+products: <strong>Substantivo</strong><br>
+through: <strong>Preposição</strong><br>
+stages: <strong>Substantivo</strong><br>
+of: <strong>Preposição</strong><br>
+production: <strong>Substantivo</strong><br>
+processing: <strong>Substantivo</strong><br>
+and: <strong>Conjunção</strong><br>
+distribution: <strong>Substantivo</strong>
+</p>`,
+        definitionEN: `<p>
+Traceability: <strong>Noun</strong><br>
+The: <strong>Article</strong><br>
+ability: <strong>Noun</strong><br>
+to: <strong>Preposition</strong><br>
+track: <strong>Verb</strong><br>
+the: <strong>Article</strong><br>
+movement: <strong>Noun</strong><br>
+of: <strong>Preposition</strong><br>
+agricultural: <strong>Adjective</strong><br>
+products: <strong>Noun</strong><br>
+through: <strong>Preposition</strong><br>
+stages: <strong>Noun</strong><br>
+of: <strong>Preposition</strong><br>
+production: <strong>Noun</strong><br>
+processing: <strong>Noun</strong><br>
+and: <strong>Conjunction</strong><br>
+distribution: <strong>Noun</strong>
+</p>`
+      },
+      {
+        title: "Vertical Farming",
+        image: "vertical_farming.png",
+        phonetic: "/ˈvɜː.tɪ.kəl ˈfɑːr.mɪŋ/",
+        hint: "(cultivo vertical)",
+        definitionPT: `<p>
+Vertical Farming: <strong>Adjetivo</strong> e <strong>Substantivo</strong><br>
+The: <strong>Artigo</strong><br>
+practice: <strong>Substantivo</strong><br>
+of: <strong>Preposição</strong><br>
+growing: <strong>Verbo (gerúndio)</strong><br>
+crops: <strong>Substantivo</strong><br>
+in: <strong>Preposição</strong><br>
+vertically: <strong>Advérbio</strong><br>
+stacked: <strong>Verbo (particípio passado usado como adjetivo)</strong><br>
+layers: <strong>Substantivo</strong><br>
+often: <strong>Advérbio</strong><br>
+in: <strong>Preposição</strong><br>
+controlled: <strong>Adjetivo</strong> environments: <strong>Substantivo</strong>
+</p>`,
+        definitionEN: `<p>
+Vertical Farming: <strong>Compound Adjective</strong> and <strong>Noun</strong><br>
+The: <strong>Article</strong><br>
+practice: <strong>Noun</strong><br>
+of: <strong>Preposition</strong><br>
+growing: <strong>Verb (gerund)</strong><br>
+crops: <strong>Noun</strong><br>
+in: <strong>Preposition</strong><br>
+vertically: <strong>Adverb</strong><br>
+stacked: <strong>Verb (past participle used as adjective)</strong><br>
+layers: <strong>Noun</strong><br>
+often: <strong>Adverb</strong><br>
+in: <strong>Preposition</strong><br>
+controlled: <strong>Adjective</strong> environments: <strong>Noun</strong>
+</p>`
+      },
+      {
+        title: "Water Footprint",
+        image: "water_footprint.png",
+        phonetic: "/ˈwɔː.tər ˈfʊt.prɪnt/",
+        hint: "(indicador de uso de água)",
+        definitionPT: `<p>
+Water Footprint: <strong>Substantivo</strong><br>
+An: <strong>Artigo</strong><br>
+indicator: <strong>Substantivo</strong><br>
+of: <strong>Preposição</strong><br>
+water: <strong>Substantivo</strong><br>
+use: <strong>Substantivo</strong><br>
+in: <strong>Preposição</strong><br>
+relation: <strong>Substantivo</strong><br>
+to: <strong>Preposição</strong><br>
+agricultural: <strong>Adjetivo</strong><br>
+production: <strong>Substantivo</strong>
+</p>`,
+        definitionEN: `<p>
+Water Footprint: <strong>Noun</strong><br>
+An: <strong>Article</strong><br>
+indicator: <strong>Noun</strong><br>
+of: <strong>Preposition</strong><br>
+water: <strong>Noun</strong><br>
+use: <strong>Noun</strong><br>
+in: <strong>Preposition</strong><br>
+relation: <strong>Noun</strong><br>
+to: <strong>Preposition</strong><br>
+agricultural: <strong>Adjective</strong><br>
+production: <strong>Noun</strong>
+</p>`
+      },
+      {
+        title: "Weather Futures",
+        image: "weather_futures.png",
+        phonetic: "/ˈwɛð.ər ˈfjuː.tʃərz/",
+        hint: "(contratos financeiros climáticos)",
+        definitionPT: `<p>
+Weather Futures: <strong>Substantivo</strong><br>
+Financial: <strong>Adjetivo</strong><br>
+contracts: <strong>Substantivo</strong><br>
+that: <strong>Pronome relativo</strong><br>
+allow: <strong>Verbo</strong><br>
+agricultural: <strong>Adjetivo</strong><br>
+businesses: <strong>Substantivo</strong><br>
+to: <strong>Preposição</strong><br>
+hedge: <strong>Verbo</strong><br>
+against: <strong>Preposição</strong><br>
+adverse: <strong>Adjetivo</strong><br>
+weather: <strong>Substantivo</strong><br>
+conditions: <strong>Substantivo</strong>
+</p>`,
+        definitionEN: `<p>
+Weather Futures: <strong>Noun</strong><br>
+Financial: <strong>Adjective</strong><br>
+contracts: <strong>Noun</strong><br>
+that: <strong>Relative Pronoun</strong><br>
+allow: <strong>Verb</strong><br>
+agricultural: <strong>Adjective</strong><br>
+businesses: <strong>Noun</strong><br>
+to: <strong>Preposition</strong><br>
+hedge: <strong>Verb</strong><br>
+against: <strong>Preposition</strong><br>
+adverse: <strong>Adjective</strong><br>
+weather: <strong>Noun</strong><br>
+conditions: <strong>Noun</strong>
+</p>`
+      },
+      {
+        title: "Yield",
+        image: "yield.png",
+        phonetic: "/jiːld/",
+        hint: "(produção colhida)",
+        definitionPT: `<p>
+Yield: <strong>Substantivo</strong><br>
+The: <strong>Artigo</strong><br>
+amount: <strong>Substantivo</strong><br>
+of: <strong>Preposição</strong><br>
+agricultural: <strong>Adjetivo</strong><br>
+production: <strong>Substantivo</strong><br>
+harvested: <strong>Verbo (particípio passado)</strong><br>
+per: <strong>Preposição</strong><br>
+unit: <strong>Substantivo</strong><br>
+of: <strong>Preposição</strong><br>
+land: <strong>Substantivo</strong><br>
+area: <strong>Substantivo</strong>
+</p>`,
+        definitionEN: `<p>
+Yield: <strong>Noun</strong><br>
+The: <strong>Article</strong><br>
+amount: <strong>Noun</strong><br>
+of: <strong>Preposition</strong><br>
+agricultural: <strong>Adjective</strong><br>
+production: <strong>Noun</strong><br>
+harvested: <strong>Verb (past participle)</strong><br>
+per: <strong>Preposition</strong><br>
+unit: <strong>Noun</strong><br>
+of: <strong>Preposition</strong><br>
+land: <strong>Noun</strong><br>
+area: <strong>Noun</strong>
+</p>`
+      },
+      {
+        title: "Zero Hunger",
+        image: "zero.png",
+        phonetic: "/ˈzɪərəʊ ˈhʌŋɡə/",
+        hint: "(fome zero)",
+        definitionPT: `<p>
+Zero Hunger: <strong>Numeral</strong> e <strong>Substantivo</strong><br>
+A: <strong>Artigo</strong><br>
+global: <strong>Adjetivo</strong><br>
+initiative: <strong>Substantivo</strong><br>
+aimed: <strong>Verbo (particípio passado)</strong><br>
+at: <strong>Preposição</strong><br>
+ending: <strong>Verbo (gerúndio)</strong><br>
+hunger: <strong>Substantivo</strong><br>
+achieving: <strong>Verbo (gerúndio)</strong><br>
+food: <strong>Substantivo</strong><br>
+security: <strong>Substantivo</strong><br>
+and: <strong>Conjunção</strong><br>
+promoting: <strong>Verbo (gerúndio)</strong><br>
+sustainable: <strong>Adjetivo</strong><br>
+agriculture: <strong>Substantivo</strong>
+</p>`,
+        definitionEN: `<p>
+Zero Hunger: <strong>Noun</strong><br>
+A: <strong>Article</strong><br>
+global: <strong>Adjective</strong><br>
+initiative: <strong>Noun</strong><br>
+aimed: <strong>Verb (past participle)</strong><br>
+at: <strong>Preposition</strong><br>
+ending: <strong>Verb (gerund)</strong><br>
+hunger: <strong>Noun</strong><br>
+achieving: <strong>Verb (gerund)</strong><br>
+food: <strong>Noun</strong><br>
+security: <strong>Noun</strong><br>
+and: <strong>Conjunction</strong><br>
+promoting: <strong>Verb (gerund)</strong><br>
+sustainable: <strong>Adjective</strong><br>
+agriculture: <strong>Noun</strong>
+</p>`
+      }
     ];
-    
-    // Cria um array de objetos com os termos e placeholders para as definições
-    const terms = termNames.map(name => ({
-      title: name,
-      image: "zero.png", // Imagem placeholder; altere quando tiver imagens específicas
-      phonetic: `/placeholder/`, // Placeholder para fonética
-      hint: `(dica placeholder)`,
-      // Exemplo de definição com classificação morfológica (use este modelo e ajuste conforme necessário)
-      definitionPT: `<p>
-        <span class="noun disabled-color">${name}</span> 
-        <span class="verb disabled-color">é</span> 
-        <span class="adjective disabled-color">um</span> 
-        <span class="noun disabled-color">conceito</span> 
-        <span class="preposition disabled-color">de</span> 
-        <span class="noun disabled-color">agronegócio</span> 
-        <span class="conjunction disabled-color">que</span> 
-        <span class="verb disabled-color">promove</span> 
-        <span class="adjective disabled-color">práticas</span> 
-        <span class="noun disabled-color">sustentáveis</span>.
-      </p>`,
-      definitionEN: `<p>
-        <span class="noun disabled-color">${name}</span> 
-        <span class="verb disabled-color">is</span> 
-        <span class="noun disabled-color">a</span> 
-        <span class="noun disabled-color">concept</span> 
-        <span class="preposition disabled-color">in</span> 
-        <span class="noun disabled-color">agribusiness</span> 
-        <span class="conjunction disabled-color">that</span> 
-        <span class="verb disabled-color">promotes</span> 
-        <span class="adjective disabled-color">sustainable</span> 
-        <span class="noun disabled-color">practices</span>.
-      </p>`
-    }));
     
     let currentTermIndex = 0;
     
-    // Função para exibir o termo atual
     function showTerm(index) {
       const term = terms[index];
       document.getElementById("termTitle").textContent = term.title;
-      document.querySelector(".image-section img").src = term.image;
+      document.getElementById("termImage").src = term.image;
       document.getElementById("hintLine").textContent = `${term.phonetic} ${term.hint}`;
       document.getElementById("defPT").innerHTML = term.definitionPT;
       document.getElementById("defEN").innerHTML = term.definitionEN;
     }
     
-    // Exibe o primeiro termo
+    // Exibe o termo inicial
     showTerm(currentTermIndex);
     
-    // Navegação entre termos
+    // Navegação
     document.getElementById("prev-term").addEventListener("click", function() {
       currentTermIndex = (currentTermIndex > 0) ? currentTermIndex - 1 : terms.length - 1;
       showTerm(currentTermIndex);
@@ -438,17 +2129,26 @@
       showTerm(currentTermIndex);
     });
     
+    document.getElementById("first-term").addEventListener("click", function() {
+      currentTermIndex = 0;
+      showTerm(currentTermIndex);
+    });
+    
+    document.getElementById("last-term").addEventListener("click", function() {
+      currentTermIndex = terms.length - 1;
+      showTerm(currentTermIndex);
+    });
+    
     document.addEventListener("DOMContentLoaded", function() {
-      // Sound Icon: Toca o som usando a Web Speech API
+      // Som: ao clicar no ícone de som, utiliza a Web Speech API para pronunciar o termo
       const soundIcon = document.getElementById("soundIcon");
       soundIcon.addEventListener("click", function() {
-        // Usa o título do termo (pode ajustar para usar outro campo, se necessário)
         const utterance = new SpeechSynthesisUtterance(terms[currentTermIndex].title);
         utterance.lang = "en-US";
         speechSynthesis.speak(utterance);
       });
       
-      // Hint Icon: Mostra/Esconde a linha combinada de fonética e dica
+      // Dica: ao clicar no ícone de dica, mostra ou esconde a linha combinada de fonética e dica
       const hintIcon = document.getElementById("hintIcon");
       hintIcon.addEventListener("click", function() {
         const hintLine = document.getElementById("hintLine");
@@ -459,7 +2159,7 @@
       const langButtons = document.querySelectorAll(".lang-btn");
       langButtons.forEach(btn => {
         btn.addEventListener("click", function() {
-          const lang = this.dataset.lang; // "pt", "en", ou "both"
+          const lang = this.dataset.lang;
           const defPT = document.getElementById("defPT");
           const defEN = document.getElementById("defEN");
           if (lang === "pt") {
@@ -475,7 +2175,7 @@
         });
       });
       
-      // Legend toggles para categorias morfológicas
+      // Legend toggles
       const legendToggles = document.querySelectorAll(".legend-toggle");
       legendToggles.forEach(chk => {
         chk.checked = false;
@@ -498,7 +2198,7 @@
         });
       }
       
-      // Botão Marcar/Desmarcar Todas na legenda
+      // Botão Marcar/Desmarcar Todas
       const toggleAllBtn = document.getElementById("toggleAllBtn");
       toggleAllBtn.addEventListener("click", function() {
         const allChecked = Array.from(legendToggles).every(chk => chk.checked);
