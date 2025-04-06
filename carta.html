@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Flip Card - Drone Technology</title>
   <style>
-    /* Reset e configurações básicas para ocupar toda a tela */
+    /* Reset para ocupar toda a tela */
     html, body {
       margin: 0;
       padding: 0;
@@ -17,9 +17,9 @@
       background-color: #2E2E2E;
       color: #EEE;
     }
-    /* Container externo para destacar os cantos com background cinza */
+    /* Container externo com background cinza e cantos arredondados */
     .flip-container {
-      background-color: #808080; /* Fundo cinza */
+      background-color: #808080;
       padding: 10px;
       border-radius: 20px;
       height: 100%;
@@ -53,13 +53,13 @@
       backface-visibility: hidden;
       border-radius: 20px;
     }
-    /* Face frontal: imagem de capa sem cortes, com overlay para o título */
+    /* Face frontal: imagem de capa sem cortes e com overlay */
     .flip-card-front {
       position: relative;
       background: url('drone_technology.png') no-repeat center center;
       background-size: contain;
     }
-    .flip-card-front .front-overlay {
+    .front-overlay {
       position: absolute;
       bottom: 10px;
       width: 100%;
@@ -130,13 +130,8 @@
       margin-top: 10px;
       color: #EEE;
     }
-    /* Exibe a definição em PT por padrão */
-    #defPT {
-      display: block;
-    }
-    #defEN {
-      display: none;
-    }
+    #defPT { display: block; }
+    #defEN { display: none; }
     /* Linha para fonética e dica */
     #hintLine {
       text-align: center;
@@ -145,7 +140,7 @@
       display: none;
       color: #EEE;
     }
-    /* Estilos para realce – os spans começam com disabled-color */
+    /* Estilos para realce (spans) */
     .noun { color: #FF0000; }
     .verb { color: #FFA500; }
     .adjective { color: #FFFF00; }
@@ -239,7 +234,7 @@
     .flip-back-btn:hover {
       background-color: #777;
     }
-    /* Ajustes responsivos */
+    /* Responsividade */
     @media (max-width: 768px) {
       .term-title { font-size: 1.2em; }
       .lang-buttons button { font-size: 0.9em; padding: 5px 8px; }
@@ -251,7 +246,7 @@
   <div class="flip-container">
     <div class="flip-card" id="flipCard">
       <div class="flip-card-inner">
-        <!-- Face Frontal: Capa com imagem e overlay com título -->
+        <!-- Face Frontal: Capa com imagem de fundo e overlay com título -->
         <div class="flip-card-front" style="background-image: url('drone_technology.png');">
           <div class="front-overlay">Drone Technology</div>
         </div>
@@ -283,7 +278,7 @@
             </div>
           </div>
           <div class="navigation">
-            <!-- Navegação com símbolos pequenos -->
+            <!-- Navegação com símbolos -->
             <button id="first-term">«</button>
             <button id="prev-term">‹</button>
             <button id="next-term">›</button>
@@ -348,7 +343,7 @@
   </div>
   
   <script>
-    // Usamos apenas o termo "Drone Technology" para este teste
+    // Neste exemplo, usamos apenas o termo "Drone Technology"
     const terms = [
       {
         title: "Drone Technology",
@@ -377,7 +372,7 @@
     // Exibe o termo inicial
     showTerm(currentTermIndex);
     
-    // Navegação (mesmo que haja apenas um termo, mantém a lógica)
+    // Navegação (mesmo que haja apenas um termo)
     document.getElementById("prev-term").addEventListener("click", function() {
       currentTermIndex = (currentTermIndex > 0) ? currentTermIndex - 1 : terms.length - 1;
       showTerm(currentTermIndex);
@@ -395,7 +390,7 @@
       showTerm(currentTermIndex);
     });
     
-    // Configurações após carregar o conteúdo
+    // Configurações após o carregamento
     document.addEventListener("DOMContentLoaded", function() {
       // Ícone de som: pronuncia o título do termo
       const soundIcon = document.getElementById("soundIcon");
@@ -472,7 +467,7 @@
       });
     });
     
-    // Configura o flip: apenas o clique na face frontal (flip-card-front) dispara o flip
+    // Configura o flip: clique somente na face frontal dispara o flip
     const frontFace = document.querySelector('.flip-card-front');
     frontFace.addEventListener("click", function() {
       document.getElementById("flipCard").classList.add("flipped");
