@@ -19,7 +19,7 @@
     }
     /* Container externo para destacar os cantos com background cinza */
     .flip-container {
-      background-color: #808080; /* Fundo cinza */
+      background-color: #808080;
       padding: 10px;
       border-radius: 20px;
       height: 100%;
@@ -41,7 +41,7 @@
       transition: transform 1s;
       transform-style: preserve-3d;
     }
-    /* Gira 180° no eixo Y quando .flipped é aplicada */
+    /* Quando a classe "flipped" é adicionada, gira no eixo Y */
     .flip-card.flipped .flip-card-inner {
       transform: rotateY(180deg);
     }
@@ -53,18 +53,30 @@
       backface-visibility: hidden;
       border-radius: 20px;
     }
-    /* Face frontal: imagem de capa com cantos arredondados */
+    /* Face frontal: imagem de capa sem ser cortada e com overlay do título */
     .flip-card-front {
+      position: relative;
       background: url('drone_technology.png') no-repeat center center;
-      background-size: cover;
+      background-size: contain;
+    }
+    .flip-card-front .front-overlay {
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      text-align: center;
+      font-size: 1.5em;
+      color: #FFF;
+      background: rgba(0,0,0,0.5);
+      padding: 10px 0;
+      border-radius: 0 0 20px 20px;
     }
     /* Face traseira: conteúdo interativo */
     .flip-card-back {
       background-color: #2E2E2E;
       transform: rotateY(180deg);
       overflow-y: auto;
-      padding: 20px 20px; /* Padding lateral */
-      text-align: center; /* Centraliza os textos */
+      padding: 20px;
+      text-align: center;
       border-radius: 20px;
     }
     h1 {
@@ -133,7 +145,7 @@
       display: none;
       color: #EEE;
     }
-    /* Estilos para realce – spans com classes (começam com disabled-color) */
+    /* Estilos para realce – os spans começam com disabled-color */
     .noun { color: #FF0000; }
     .verb { color: #FFA500; }
     .adjective { color: #FFFF00; }
@@ -194,7 +206,7 @@
     .color-box.pronoun { background-color: #EE82EE; }
     .color-box.article { background-color: #FFC0CB; }
     .color-box.numeral { background-color: #D2B48C; }
-    /* Botões de Navegação com símbolos */
+    /* Navegação com símbolos */
     .navigation {
       text-align: center;
       margin-top: 20px;
@@ -239,8 +251,10 @@
   <div class="flip-container">
     <div class="flip-card" id="flipCard">
       <div class="flip-card-inner">
-        <!-- Face Frontal: Capa com imagem de fundo e cantos arredondados -->
-        <div class="flip-card-front" style="background-image: url('drone_technology.png');"></div>
+        <!-- Face Frontal: Capa com imagem de fundo e overlay com título -->
+        <div class="flip-card-front" style="background-image: url('drone_technology.png');">
+          <div class="front-overlay">Drone Technology</div>
+        </div>
         <!-- Face Traseira: Conteúdo interativo -->
         <div class="flip-card-back">
           <h1>Termos de Agronegócio</h1>
@@ -250,7 +264,7 @@
               <span class="pronunciation" id="soundIcon" title="Tocar som">🔊</span>
               <span class="pronunciation" id="hintIcon" title="Mostrar dica">💡</span>
             </div>
-            <!-- Linha para mostrar fonética e dica -->
+            <!-- Linha para fonética e dica -->
             <p id="hintLine" class="hidden">/droʊn tɛkˈnɒl.ə.dʒi/ (drôun tecnôloji)</p>
             <div class="lang-buttons">
               <button class="lang-btn" data-lang="pt">Português</button>
@@ -334,7 +348,7 @@
   </div>
   
   <script>
-    // Neste exemplo, usamos apenas o termo "Drone Technology"
+    // Usamos apenas um termo para este teste: "Drone Technology".
     const terms = [
       {
         title: "Drone Technology",
@@ -363,22 +377,19 @@
     // Exibe o termo inicial
     showTerm(currentTermIndex);
     
-    // Navegação (ainda que haja apenas um termo)
+    // Navegação (mantém comportamento, mesmo com um termo)
     document.getElementById("prev-term").addEventListener("click", function() {
       currentTermIndex = (currentTermIndex > 0) ? currentTermIndex - 1 : terms.length - 1;
       showTerm(currentTermIndex);
     });
-    
     document.getElementById("next-term").addEventListener("click", function() {
       currentTermIndex = (currentTermIndex < terms.length - 1) ? currentTermIndex + 1 : 0;
       showTerm(currentTermIndex);
     });
-    
     document.getElementById("first-term").addEventListener("click", function() {
       currentTermIndex = 0;
       showTerm(currentTermIndex);
     });
-    
     document.getElementById("last-term").addEventListener("click", function() {
       currentTermIndex = terms.length - 1;
       showTerm(currentTermIndex);
