@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Flip Card - Drone Technology</title>
   <style>
-    /* Reset e configurações básicas para ocupar toda a tela */
+    /* Reset para ocupar toda a tela */
     html, body {
       margin: 0;
       padding: 0;
@@ -34,14 +34,15 @@
     .flip-card.flipped .flip-card-inner {
       transform: rotateY(180deg);
     }
-    /* As duas faces do card ocupam toda a tela */
+    /* As duas faces do card */
     .flip-card-front, .flip-card-back {
       position: absolute;
       width: 100%;
       height: 100%;
       backface-visibility: hidden;
+      border-radius: 20px;
     }
-    /* Face frontal: imagem de fundo que ocupa toda a tela */
+    /* Face frontal: imagem de fundo ocupa toda a tela */
     .flip-card-front {
       background: url('drone_technology.png') no-repeat center center;
       background-size: cover;
@@ -63,14 +64,6 @@
       display: flex;
       flex-direction: column;
       gap: 20px;
-    }
-    .image-section {
-      text-align: center;
-    }
-    .image-section img {
-      max-width: 100%;
-      border: 3px solid #555;
-      border-radius: 10px;
     }
     .term-title {
       display: flex;
@@ -125,7 +118,18 @@
       font-size: 16px;
       display: none;
     }
-    /* Legenda de categorias morfológicas */
+    /* Estilos para realce – os spans começam com a classe disabled-color */
+    .noun { color: #FF0000; }
+    .verb { color: #FFA500; }
+    .adjective { color: #FFFF00; }
+    .adverb { color: #008000; }
+    .preposition { color: #0000FF; }
+    .conjunction { color: #4B0082; }
+    .pronoun { color: #EE82EE; }
+    .article { color: #FFC0CB; }
+    .numeral { color: #D2B48C; }
+    .disabled-color { color: inherit !important; }
+    /* Painel de Legenda */
     .legend {
       background-color: #3E3E3E;
       border: 1px solid #555;
@@ -174,7 +178,7 @@
     .color-box.pronoun { background-color: #EE82EE; }
     .color-box.article { background-color: #FFC0CB; }
     .color-box.numeral { background-color: #D2B48C; }
-    /* Botões de navegação */
+    /* Botões de Navegação */
     .navigation {
       text-align: center;
       margin-top: 20px;
@@ -192,7 +196,22 @@
     .navigation button:hover {
       background-color: #777;
     }
-    /* Ajustes para telas menores */
+    /* Botão para virar de volta à capa */
+    .flip-back-btn {
+      background-color: #555;
+      border: none;
+      color: #EEE;
+      padding: 10px 15px;
+      margin: 20px auto;
+      display: block;
+      font-size: 1.2em;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .flip-back-btn:hover {
+      background-color: #777;
+    }
+    /* Responsive */
     @media (max-width: 768px) {
       .term-title { font-size: 1.2em; }
       .lang-buttons button { font-size: 0.9em; padding: 5px 8px; }
@@ -203,23 +222,19 @@
 <body>
   <div class="flip-card" id="flipCard">
     <div class="flip-card-inner">
-      <!-- Face frontal: a imagem ocupa toda a tela -->
-      <div class="flip-card-front" style="background-image: url('front-image.png');">
-        <!-- Use "front-image.png" como imagem de capa que ocupará 100% da tela -->
-      </div>
-      <!-- Face traseira: conteúdo interativo -->
+      <!-- Face Frontal: Capa com imagem de fundo ocupando toda a tela -->
+      <div class="flip-card-front" style="background-image: url('drone_technology.png');"></div>
+      <!-- Face Traseira: Conteúdo interativo sem a imagem -->
       <div class="flip-card-back">
         <h1>Termos de Agronegócio</h1>
         <div class="container">
-          <div class="image-section">
-            <img id="termImage" src="drone_technology.png" alt="Drone Technology" />
-          </div>
+          <!-- Removemos a imagem do termo nesta face -->
           <div class="term-title">
             <span id="termTitle">Drone Technology</span>
             <span class="pronunciation" id="soundIcon" title="Tocar som">🔊</span>
             <span class="pronunciation" id="hintIcon" title="Mostrar dica">💡</span>
           </div>
-          <!-- Linha para mostrar a fonética e a dica (por exemplo, "/droʊn tɛkˈnɒl.ə.dʒi/ (drôun tecnôloji)") -->
+          <!-- Linha para fonética e dica -->
           <p id="hintLine" class="hidden">/droʊn tɛkˈnɒl.ə.dʒi/ (drôun tecnôloji)</p>
           <div class="lang-buttons">
             <button class="lang-btn" data-lang="pt">Português</button>
@@ -243,6 +258,8 @@
           <button id="next-term">Próximo →</button>
           <button id="last-term">Fim</button>
         </div>
+        <!-- Botão para virar de volta para a capa -->
+        <button class="flip-back-btn" id="flipBackBtn">Virar</button>
         <aside class="legend">
           <h3>Legenda de Categorias Morfológi­cas</h3>
           <ul>
@@ -299,7 +316,7 @@
   </div>
   
   <script>
-    // Para teste, usamos apenas um termo.
+    // Neste exemplo, usamos apenas o termo "Drone Technology".
     const terms = [
       {
         title: "Drone Technology",
@@ -320,7 +337,7 @@
     function showTerm(index) {
       const term = terms[index];
       document.getElementById("termTitle").textContent = term.title;
-      document.getElementById("termImage").src = term.image;
+      // Na face traseira não exibimos a imagem do termo
       document.getElementById("hintLine").textContent = `${term.phonetic} ${term.hint}`;
       document.getElementById("defPT").innerHTML = term.definitionPT;
       document.getElementById("defEN").innerHTML = term.definitionEN;
@@ -329,7 +346,7 @@
     // Exibe o termo inicial
     showTerm(currentTermIndex);
     
-    // Como há apenas um termo, a navegação pode manter o comportamento atual (mesmo sem mudança)
+    // Navegação (mantém mesmo comportamento, embora haja apenas um termo neste teste)
     document.getElementById("prev-term").addEventListener("click", function() {
       currentTermIndex = (currentTermIndex > 0) ? currentTermIndex - 1 : terms.length - 1;
       showTerm(currentTermIndex);
@@ -350,9 +367,8 @@
       showTerm(currentTermIndex);
     });
     
-    // Após carregar o conteúdo, configura a funcionalidade dos ícones e legendas
     document.addEventListener("DOMContentLoaded", function() {
-      // Som: pronuncia o título do termo (removendo números, se houver)
+      // Ícone de som: pronuncia o título do termo
       const soundIcon = document.getElementById("soundIcon");
       soundIcon.addEventListener("click", function() {
         const titleText = terms[currentTermIndex].title;
@@ -362,7 +378,7 @@
         speechSynthesis.speak(utterance);
       });
       
-      // Dica: alterna a exibição da linha de fonética e dica
+      // Ícone de dica: alterna a exibição da linha de fonética e dica
       const hintIcon = document.getElementById("hintIcon");
       hintIcon.addEventListener("click", function() {
         const hintLine = document.getElementById("hintLine");
@@ -427,14 +443,20 @@
       });
     });
     
-    // Configura o flip: ao clicar na face frontal, alterna a classe "flipped"
+    // Configura o flip: ao clicar na face frontal, gira o card; o botão "Virar" reverte
     const flipCard = document.getElementById("flipCard");
+    // Ao clicar na face frontal (exceto nos elementos interativos), gira o card
     flipCard.addEventListener("click", function(e) {
-      // Se o clique ocorreu na face frontal (e não em um dos botões da face traseira)
-      // Pode-se verificar se o clique ocorreu fora da face traseira.
+      // Se o clique ocorrer fora da face traseira
       if (!e.target.closest(".flip-card-back")) {
         flipCard.classList.toggle("flipped");
       }
+    });
+    // Botão "Virar" para retornar à capa
+    document.getElementById("flipBackBtn").addEventListener("click", function(e) {
+      // Impede que o clique no botão propague para o flipCard
+      e.stopPropagation();
+      flipCard.classList.remove("flipped");
     });
   </script>
 </body>
