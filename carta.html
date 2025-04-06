@@ -19,7 +19,7 @@
     }
     /* Container externo para destacar os cantos com background cinza */
     .flip-container {
-      background-color: #808080;
+      background-color: #808080; /* Fundo cinza */
       padding: 10px;
       border-radius: 20px;
       height: 100%;
@@ -41,7 +41,7 @@
       transition: transform 1s;
       transform-style: preserve-3d;
     }
-    /* Quando a classe "flipped" é adicionada, gira no eixo Y */
+    /* Gira 180° no eixo Y quando .flipped é aplicada */
     .flip-card.flipped .flip-card-inner {
       transform: rotateY(180deg);
     }
@@ -53,7 +53,7 @@
       backface-visibility: hidden;
       border-radius: 20px;
     }
-    /* Face frontal: imagem de capa sem ser cortada e com overlay do título */
+    /* Face frontal: imagem de capa sem cortes, com overlay para o título */
     .flip-card-front {
       position: relative;
       background: url('drone_technology.png') no-repeat center center;
@@ -66,7 +66,7 @@
       text-align: center;
       font-size: 1.5em;
       color: #FFF;
-      background: rgba(0,0,0,0.5);
+      background: rgba(0, 0, 0, 0.5);
       padding: 10px 0;
       border-radius: 0 0 20px 20px;
     }
@@ -75,7 +75,7 @@
       background-color: #2E2E2E;
       transform: rotateY(180deg);
       overflow-y: auto;
-      padding: 20px;
+      padding: 20px 20px;
       text-align: center;
       border-radius: 20px;
     }
@@ -251,7 +251,7 @@
   <div class="flip-container">
     <div class="flip-card" id="flipCard">
       <div class="flip-card-inner">
-        <!-- Face Frontal: Capa com imagem de fundo e overlay com título -->
+        <!-- Face Frontal: Capa com imagem e overlay com título -->
         <div class="flip-card-front" style="background-image: url('drone_technology.png');">
           <div class="front-overlay">Drone Technology</div>
         </div>
@@ -348,7 +348,7 @@
   </div>
   
   <script>
-    // Usamos apenas um termo para este teste: "Drone Technology".
+    // Usamos apenas o termo "Drone Technology" para este teste
     const terms = [
       {
         title: "Drone Technology",
@@ -377,7 +377,7 @@
     // Exibe o termo inicial
     showTerm(currentTermIndex);
     
-    // Navegação (mantém comportamento, mesmo com um termo)
+    // Navegação (mesmo que haja apenas um termo, mantém a lógica)
     document.getElementById("prev-term").addEventListener("click", function() {
       currentTermIndex = (currentTermIndex > 0) ? currentTermIndex - 1 : terms.length - 1;
       showTerm(currentTermIndex);
@@ -395,6 +395,7 @@
       showTerm(currentTermIndex);
     });
     
+    // Configurações após carregar o conteúdo
     document.addEventListener("DOMContentLoaded", function() {
       // Ícone de som: pronuncia o título do termo
       const soundIcon = document.getElementById("soundIcon");
@@ -471,16 +472,16 @@
       });
     });
     
-    // Configura o flip: clique na face frontal (exceto nos elementos interativos) gira o card; o botão "Virar" retorna à capa.
-    const flipCard = document.getElementById("flipCard");
-    flipCard.addEventListener("click", function(e) {
-      if (!e.target.closest(".flip-card-back")) {
-        flipCard.classList.toggle("flipped");
-      }
+    // Configura o flip: apenas o clique na face frontal (flip-card-front) dispara o flip
+    const frontFace = document.querySelector('.flip-card-front');
+    frontFace.addEventListener("click", function() {
+      document.getElementById("flipCard").classList.add("flipped");
     });
+    
+    // Botão "Virar" na face traseira retorna à capa
     document.getElementById("flipBackBtn").addEventListener("click", function(e) {
       e.stopPropagation();
-      flipCard.classList.remove("flipped");
+      document.getElementById("flipCard").classList.remove("flipped");
     });
   </script>
 </body>
